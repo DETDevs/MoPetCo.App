@@ -3,16 +3,15 @@ import { PawPrint } from "../types/paw";
 
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-
   const [paws, setPaws] = useState<PawPrint[]>([]);
 
   useEffect(() => {
     const generatedPaws: PawPrint[] = [];
-    const pawCount = 4; // Número de huellitas
+    const pawCount = 4;
 
     for (let i = 0; i < pawCount; i++) {
-      const top = `${Math.random() * 50}px`; // Distancia desde arriba
-      const left = `${Math.random() * 90}%`; // Porcentaje desde la izquierda
+      const top = `${Math.random() * 50}px`;
+      const left = `${Math.random() * 90}%`;
       generatedPaws.push({ id: i, top, left });
     }
 
@@ -20,8 +19,8 @@ export const Header = () => {
   }, []);
 
   return (
-    <header className="bg-white shadow-md fixed w-full z-10">
-      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+    <header className="bg-white shadow-md fixed w-full z-20">
+      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between relative">
         {/* Logo */}
         <div>
           <img
@@ -31,46 +30,31 @@ export const Header = () => {
           />
         </div>
 
-         {/* Huellitas aleatorias */}
-         {paws.map((paw) => (
+        {/* Huellitas aleatorias */}
+        {paws.map((paw) => (
           <img
             key={paw.id}
             src="/assets/pawprint.png"
             alt="Paw Print"
-            className="w-6 h-6 absolute opacity-60"
+            className="w-6 h-6 absolute opacity-60 transition-opacity duration-700 ease-in"
             style={{ top: paw.top, left: paw.left }}
           />
         ))}
 
-
         {/* Desktop Nav */}
         <nav className="hidden md:flex space-x-6 items-center z-10">
-          <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">
-            Home
-          </a>
-          <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">
-            About
-          </a>
-          <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">
-            Services
-          </a>
-          <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">
-            Gallery
-          </a>
-          <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">
-            Contact
-          </a>
-          <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">
-            Release Form
-          </a>
-          <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">
-            FAQs
-          </a>
+          <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">Home</a>
+          <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">About</a>
+          <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">Services</a>
+          <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">Gallery</a>
+          <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">Contact</a>
+          <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">Release Form</a>
+          <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">FAQs</a>
         </nav>
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-gray-700 focus:outline-none"
+          className="md:hidden text-gray-700 focus:outline-none z-20"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           <svg
@@ -89,53 +73,22 @@ export const Header = () => {
         </button>
       </div>
 
-      {/* Mobile Nav Dropdown */}
-      {menuOpen && (
-        <div className="md:hidden bg-white shadow-md px-4 py-2 space-y-2">
-          <a
-            href="#"
-            className="block text-gray-700 hover:text-blue-600 font-medium"
-          >
-            Home
-          </a>
-          <a
-            href="#"
-            className="block text-gray-700 hover:text-blue-600 font-medium"
-          >
-            About Us
-          </a>
-          <a
-            href="#"
-            className="block text-gray-700 hover:text-blue-600 font-medium"
-          >
-            Services
-          </a>
-          <a
-            href="#"
-            className="block text-gray-700 hover:text-blue-600 font-medium"
-          >
-            Gallery
-          </a>
-          <a
-            href="#"
-            className="block text-gray-700 hover:text-blue-600 font-medium"
-          >
-            Contact
-          </a>
-          <a
-            href="#"
-            className="block text-gray-700 hover:text-blue-600 font-medium"
-          >
-            Release Form
-          </a>
-          <a
-            href="#"
-            className="block text-gray-700 hover:text-blue-600 font-medium"
-          >
-            FAQs
-          </a>
+      {/* Mobile Nav Dropdown - Animado desde arriba */}
+      <div
+        className={`md:hidden fixed top-0 left-0 w-full h-auto bg-white z-10 transform transition-transform duration-300 ease-in-out ${
+          menuOpen ? "translate-y-0" : "-translate-y-full"
+        }`}
+      >
+        <div className="px-4 py-6 space-y-4 mt-12 flex flex-col items-center">
+          <a href="#" className="text-gray-700 hover:text-blue-600 font-medium text-lg">Home</a>
+          <a href="#" className="text-gray-700 hover:text-blue-600 font-medium text-lg">About Us</a>
+          <a href="#" className="text-gray-700 hover:text-blue-600 font-medium text-lg">Services</a>
+          <a href="#" className="text-gray-700 hover:text-blue-600 font-medium text-lg">Gallery</a>
+          <a href="#" className="text-gray-700 hover:text-blue-600 font-medium text-lg">Contact</a>
+          <a href="#" className="text-gray-700 hover:text-blue-600 font-medium text-lg">Release Form</a>
+          <a href="#" className="text-gray-700 hover:text-blue-600 font-medium text-lg">FAQs</a>
         </div>
-      )}
+      </div>
     </header>
   );
 };
