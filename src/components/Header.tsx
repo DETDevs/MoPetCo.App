@@ -17,7 +17,7 @@ export const Header = () => {
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex space-x-6 items-center">
-          <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">
+          <a href="#" className="text-gray-700 hover:text-red-600 font-medium">
             Home
           </a>
           <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">
@@ -40,7 +40,7 @@ export const Header = () => {
           </a>
         </nav>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Buttons */}
         <button
           className="md:hidden text-gray-700 focus:outline-none"
           onClick={() => setMenuOpen(!menuOpen)}
