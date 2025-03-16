@@ -1,17 +1,20 @@
+import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 
 export const App = () => {
   return (
-    <div> {/* Padding para no tapar el contenido con el header fijo */}
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="p-4">
-        <h1 className="text-2xl font-bold text-center text-blue-600">
-          Bienvenido a MoPetCo 🐶
-        </h1>
-        {/* <p className="text-center mt-2 text-gray-600">
-          ¡Solo lo mejor para tu amigo peludo!
-        </p> */}
+
+      <main className="flex-grow">
+        <section className="p-4 text-center">
+          <h1 className="text-2xl font-bold text-blue-600 p-20">
+            Bienvenido a MoPetCo
+          </h1>
+        </section>
       </main>
+
+      <Footer />
     </div>
   );
 };

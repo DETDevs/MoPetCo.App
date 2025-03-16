@@ -1,7 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { PawPrint } from "../types/paw";
 
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const [paws, setPaws] = useState<PawPrint[]>([]);
+
+  useEffect(() => {
+    const generatedPaws: PawPrint[] = [];
+    const pawCount = 4; // Número de huellitas
+
+    for (let i = 0; i < pawCount; i++) {
+      const top = `${Math.random() * 50}px`; // Distancia desde arriba
+      const left = `${Math.random() * 90}%`; // Porcentaje desde la izquierda
+      generatedPaws.push({ id: i, top, left });
+    }
+
+    setPaws(generatedPaws);
+  }, []);
 
   return (
     <header className="bg-white shadow-md fixed w-full z-10">
@@ -15,9 +31,21 @@ export const Header = () => {
           />
         </div>
 
+         {/* Huellitas aleatorias */}
+         {paws.map((paw) => (
+          <img
+            key={paw.id}
+            src="/assets/pawprint.png"
+            alt="Paw Print"
+            className="w-6 h-6 absolute opacity-60"
+            style={{ top: paw.top, left: paw.left }}
+          />
+        ))}
+
+
         {/* Desktop Nav */}
-        <nav className="hidden md:flex space-x-6 items-center">
-          <a href="#" className="text-gray-700 hover:text-red-600 font-medium">
+        <nav className="hidden md:flex space-x-6 items-center z-10">
+          <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">
             Home
           </a>
           <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">
@@ -40,7 +68,7 @@ export const Header = () => {
           </a>
         </nav>
 
-        {/* Mobile Menu Buttons */}
+        {/* Mobile Menu Button */}
         <button
           className="md:hidden text-gray-700 focus:outline-none"
           onClick={() => setMenuOpen(!menuOpen)}
