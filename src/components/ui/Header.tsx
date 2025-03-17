@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { PawPrint } from "../types/paw";
+import { PawPrint } from "../../types/paw";
 
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -44,7 +44,7 @@ export const Header = () => {
         {/* Desktop Nav */}
         <nav className="hidden md:flex space-x-6 items-center z-10">
           <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">Home</a>
-          <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">About</a>
+          <a href="#about" className="text-gray-700 hover:text-blue-600 font-medium">About</a>
           <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">Services</a>
           <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">Gallery</a>
           <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">Contact</a>

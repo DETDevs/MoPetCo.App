@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { PawPrint } from "../types/paw";
+import { PawPrint } from "../../types/paw";
 
 export const Footer = () => {
   const [paws, setPaws] = useState<PawPrint[]>([]);
