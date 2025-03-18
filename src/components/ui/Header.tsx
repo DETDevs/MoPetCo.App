@@ -80,13 +80,13 @@ export const Header = () => {
         }`}
       >
         <div className="px-4 py-6 space-y-4 mt-12 flex flex-col items-center">
-          <a href="#" className="text-gray-700 hover:text-blue-600 font-medium text-lg">Home</a>
-          <a href="#" className="text-gray-700 hover:text-blue-600 font-medium text-lg">About Us</a>
-          <a href="#" className="text-gray-700 hover:text-blue-600 font-medium text-lg">Services</a>
-          <a href="#" className="text-gray-700 hover:text-blue-600 font-medium text-lg">Gallery</a>
-          <a href="#" className="text-gray-700 hover:text-blue-600 font-medium text-lg">Contact</a>
-          <a href="#" className="text-gray-700 hover:text-blue-600 font-medium text-lg">Release Form</a>
-          <a href="#" className="text-gray-700 hover:text-blue-600 font-medium text-lg">FAQs</a>
+          <a href="#" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-blue-600 font-medium text-lg">Home</a>
+          <a href="#about" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-blue-600 font-medium text-lg">About Us</a>
+          <a href="#" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-blue-600 font-medium text-lg">Services</a>
+          <a href="#" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-blue-600 font-medium text-lg">Gallery</a>
+          <a href="#" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-blue-600 font-medium text-lg">Contact</a>
+          <a href="#" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-blue-600 font-medium text-lg">Release Form</a>
+          <a href="#" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-blue-600 font-medium text-lg">FAQs</a>
         </div>
       </div>
     </header>

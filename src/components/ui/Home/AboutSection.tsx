@@ -1,11 +1,10 @@
 export const AboutSection = () => {
   return (
-    <div
-      id="about"
-      className="flex flex-col md:flex-row w-full h-auto items-center justify-center mt-12"
-    >
+    <div id="about" className="flex flex-col md:flex-row w-full h-auto items-center justify-center mt-12">
       <div className="w-full md:w-1/2 flex justify-center items-center flex-col lg:w-[24rem] xl:w-[37rem]">
-        <h1 className="text-5xl font-bold mb-4">MoPetCO</h1>
+        <h1  className="text-5xl font-bold mb-4">
+          MoPetCO
+        </h1>
         <p className="text-xl text-gray-500 w-[22rem] md:w-[25rem] lg:w-full">
           We are a premier mobile grooming service with over 20 years of
           experience, proudly serving Miami-Dade, Broward, and Palm Beach
