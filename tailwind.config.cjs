@@ -8,6 +8,7 @@ export default {
         "bounce-in": "bounceIn 1s ease-out forwards",
         "puppy-fadeder": "puppyFadeDER 1s ease-out forwards",
         "puppy-fadeizq": "puppyFadeIZQ 1s ease-out forwards",
+        'fade-in-Img': 'fadeInImg 1s ease-in-out forwards',
       },
       keyframes: {
         fadeIn: {
@@ -26,6 +27,10 @@ export default {
           "0%": { transform: "scale(0.5)", opacity: 0 },
           "50%": { transform: "scale(1.1)", opacity: 0.8 },
           "100%": { transform: "scale(1)", opacity: 0.6 },
+        },
+        fadeInImg: {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 1 },
         },
       },
     },
