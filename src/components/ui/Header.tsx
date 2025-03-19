@@ -45,7 +45,7 @@ export const Header = () => {
         <nav className="hidden md:flex space-x-6 items-center z-10">
           <a href="/" className="text-gray-700 hover:text-blue-600 font-medium">Home</a>
           <a href="#about" className="text-gray-700 hover:text-blue-600 font-medium">About</a>
-          <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">Services</a>
+          <a href="/service" className="text-gray-700 hover:text-blue-600 font-medium">Services</a>
           <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">Gallery</a>
           <a href="/contact" className="text-gray-700 hover:text-blue-600 font-medium">Contact</a>
           <a href="/release-form" className="text-gray-700 hover:text-blue-600 font-medium">Release Form</a>
@@ -82,7 +82,7 @@ export const Header = () => {
         <div className="px-4 py-6 space-y-4 mt-12 flex flex-col items-center">
           <a href="/" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-blue-600 font-medium text-lg">Home</a>
           <a href="#about" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-blue-600 font-medium text-lg">About Us</a>
-          <a href="#" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-blue-600 font-medium text-lg">Services</a>
+          <a href="/service" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-blue-600 font-medium text-lg">Services</a>
           <a href="#" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-blue-600 font-medium text-lg">Gallery</a>
           <a href="/contact" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-blue-600 font-medium text-lg">Contact</a>
           <a href="/release-form" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-blue-600 font-medium text-lg">Release Form</a>
