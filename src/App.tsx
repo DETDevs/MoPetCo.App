@@ -1,17 +1,22 @@
-import { Footer } from "./components/ui/Footer";
-import { Header } from "./components/ui/Header";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { HomePage } from "./pages/HomePage";
+import { ReleasePage } from "./pages/ReleasePage";
+import { FAQsPage } from "./pages/FAQsPage";
+import { ContactPage } from "./pages/ContactPage";
 
 export const App = () => {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-
-      <main>
-        <HomePage />
-      </main>
-
-      <Footer />
-    </div>
+    <Router>
+      <div className="flex flex-col min-h-screen">
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/release-form" element={<ReleasePage />} />
+            <Route path="/faqs" element={<FAQsPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
 };

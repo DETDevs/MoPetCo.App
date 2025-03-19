@@ -1,14 +1,8 @@
 import { useEffect, useState } from "react";
+import {GalleryImage} from "../../../types/gallery"
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-// Tipo para las imágenes
-interface GalleryImage {
-  src: string;
-  alt: string;
-}
-
-// Dos sets de imágenes (puedes cambiar las rutas si necesitas otras imágenes)
 const firstSet: GalleryImage[] = [
   { src: "/assets/dog2.jpg", alt: "Dog 1" },
   { src: "/assets/dog1.JPG", alt: "Dog 2" },
@@ -43,12 +37,12 @@ export const GallerySection = () => {
     AOS.init({ duration: 1000 }); // Animación al hacer scroll
 
     const interval = setInterval(() => {
-      setFade(true); // inicia fade-out
+      setFade(true);
       setTimeout(() => {
         setCurrentSet((prev) => (prev === firstSet ? secondSet : firstSet));
         setFade(false); // fade-in
       }, 500); // duración del fade-out
-    }, 10000); // cada 5 segundos
+    }, 20000);
 
     return () => clearInterval(interval);
   }, []);
@@ -68,10 +62,9 @@ export const GallerySection = () => {
           fade ? "opacity-0" : "opacity-100"
         }`}
       >
-        {/* Grid con diseño original */}
         <div
           data-aos="fade-up"
-          className=" grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl w-full grid-auto-rows-[200px] md:auto-rows-[200px] md:w-full  px-4 md:px-0 jus"
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl w-full grid-auto-rows-[200px] md:auto-rows-[200px] md:w-full px-4 md:px-0 jus"
         >
           {/* Imagen grande */}
           <img
@@ -130,7 +123,6 @@ export const GallerySection = () => {
         </div>
       </div>
 
-      {/* Botón */}
       <button className="mt-6 bg-pink-500 text-white px-6 py-2 rounded-full font-semibold hover:bg-pink-600">
         Browse more furry friends!
       </button>
