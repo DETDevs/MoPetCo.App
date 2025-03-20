@@ -28,9 +28,9 @@ export const ServiceDetailPage = () => {
         <div className="my-2">
           <button
             onClick={() => navigate("/service")}
-            className="bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700 transition duration-300"
+            className="text-black font-bold px-2 py-1 rounded-full border-2 border-pink-500 bg-white hover:bg-slate-200 transition duration-300"
           >
-            ← Back to Services
+           <i className="fa-solid fa-arrow-left text-pink-500"></i>
           </button>
         </div>
         <div className="flex flex-col md:flex-row gap-8 items-start">

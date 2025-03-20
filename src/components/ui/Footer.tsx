@@ -64,7 +64,7 @@ export const Footer = () => {
               alt="Redes Icon"
               className="h-6 w-6"
             />
-            <h3 className="font-bold text-lg">redes</h3>
+            <h3 className="font-bold text-lg">Social Media</h3>
           </div>
           <div className="flex justify-center space-x-4 text-xl">
             <a href="#">
