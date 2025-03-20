@@ -5,13 +5,13 @@ import { Link } from "react-router-dom";
 export const ServicesPage = () => {
   const services = [
     {
-      id: "full-bath",
+      id: "dog-bath",
       icon: "fa-bath",
       title: "Dog Bath Services",
       description: "Includes shampoo, conditioner, ear cleaning, and more.",
     },
     {
-      id: "full-grooming",
+      id: "dog-grooming",
       icon: "fa-cut",
       title: "Dog Full Grooming",
       description: "Haircut, shampoo, nail trim, and complete grooming care.",
@@ -33,11 +33,13 @@ export const ServicesPage = () => {
   return (
     <>
       <Header />
-      <section className="bg-gradient-to-r from-pink-100 to-blue-100 py-10 text-center my-12">
-        <h1 className="text-4xl font-bold text-gray-800 mb-3">
+
+      {/* Hero Section con fondo degradado */}
+      <section className="bg-gradient-to-r from-pink-100 via-purple-100 to-blue-100 py-12 text-center shadow-inner my-8 md:my-8">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4">
           Services Pet Care with Love
         </h1>
-        <p className="max-w-3xl mx-auto text-gray-700 text-lg">
+        <p className="max-w-3xl mx-auto text-gray-700 text-lg px-4">
           All grooming options include a complete organic and hypoallergenic
           bath as well as the thorough nose-to-tail attention outlined below.
           Your groomer will have a full consultation with you before getting
@@ -53,26 +55,29 @@ export const ServicesPage = () => {
         </p>
       </section>
 
-      <section className="py-10 px-4 max-w-7xl mx-auto">
-        <h2 className="text-3xl font-semibold text-center mb-8 text-pink-600">
+      {/* Cards de Servicios */}
+      <section className="py-12 px-4 max-w-7xl mx-auto">
+        <h2 className="text-3xl font-bold text-center mb-10 text-pink-600">
           Our Services
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 md:grid-cols-3 gap-8">
           {services.map((service) => (
             <div
               key={service.id}
-              className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center text-center hover:shadow-pink-300 transition-shadow"
+              className="bg-white rounded-2xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-pink-300 transition duration-300 hover:scale-105"
             >
               <i
-                className={`fas ${service.icon} text-pink-500 text-4xl mb-4`}
+                className={`fas ${service.icon} text-pink-500 text-5xl mb-4 transition-transform duration-300 hover:scale-110 hover:rotate-6`}
               ></i>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">
                 {service.title}
               </h3>
-              <p className="text-gray-600 mb-4">{service.description}</p>
+              <p className="text-gray-600 mb-4 text-sm">
+                {service.description}
+              </p>
               <Link
                 to={`/services/${service.id}`}
-                className="mt-auto text-pink-500 hover:underline font-medium"
+                className="mt-auto bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 transition-colors text-sm font-medium"
               >
                 Read More →
               </Link>

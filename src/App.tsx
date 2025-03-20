@@ -4,6 +4,7 @@ import { ReleasePage } from "./pages/ReleasePage";
 import { FAQsPage } from "./pages/FAQsPage";
 import { ContactPage } from "./pages/ContactPage";
 import { ServicesPage } from "./pages/ServicesPage";
+import { ServiceDetailPage } from "./pages/ServiceDetailPage";
 
 export const App = () => {
   return (
@@ -16,6 +17,10 @@ export const App = () => {
             <Route path="/faqs" element={<FAQsPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/service" element={<ServicesPage />} />
+            <Route
+              path="/services/:serviceId"
+              element={<ServiceDetailPage />}
+            />
           </Routes>
         </main>
       </div>

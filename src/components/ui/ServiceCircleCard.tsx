@@ -1,9 +1,10 @@
 import { FC } from "react";
+import { Link } from "react-router-dom";
 
 interface ServiceCircleCardProps {
   label: string;
-  iconClass: string; // Font Awesome class
-  link: string;
+  iconClass: string;
+  link: string; // ruta absoluta o relativa
 }
 
 export const ServiceCircleCard: FC<ServiceCircleCardProps> = ({
@@ -12,8 +13,8 @@ export const ServiceCircleCard: FC<ServiceCircleCardProps> = ({
   link,
 }) => {
   return (
-    <a
-      href={link}
+    <Link
+      to={link}
       className="flex flex-col items-center space-y-2 hover:scale-105 transition-transform duration-300"
     >
       <div className="w-28 h-28 rounded-full bg-blue-200 flex items-center justify-center hover:bg-blue-300 transition-colors duration-300">
@@ -22,6 +23,6 @@ export const ServiceCircleCard: FC<ServiceCircleCardProps> = ({
         ></i>
       </div>
       <p className="text-center font-semibold text-black">{label}</p>
-    </a>
+    </Link>
   );
 };
