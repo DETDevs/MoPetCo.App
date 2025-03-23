@@ -8,7 +8,7 @@ export default {
         "bounce-in": "bounceIn 1s ease-out forwards",
         "puppy-fadeder": "puppyFadeDER 1s ease-out forwards",
         "puppy-fadeizq": "puppyFadeIZQ 1s ease-out forwards",
-        'fade-in-Img': 'fadeInImg 1s ease-in-out forwards',
+        "fade-in-Img": "fadeInImg 1s ease-in-out forwards",
       },
       keyframes: {
         fadeIn: {
@@ -29,11 +29,11 @@ export default {
           "100%": { transform: "scale(1)", opacity: 0.6 },
         },
         fadeInImg: {
-          '0%': { opacity: 0 },
-          '100%': { opacity: 1 },
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
         },
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/line-clamp")],
 };
