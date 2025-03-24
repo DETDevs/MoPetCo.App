@@ -35,8 +35,8 @@ export const Footer = () => {
             <img src="/assets/dog.png" alt="Dog Icon" className="h-6 w-6" />
             <h3 className="font-bold text-lg">Get In Touch</h3>
           </div>
-          <p className="text-sm">📞 Call:</p>
-          <p className="text-sm">✉️ Email:</p>
+          <p className="text-sm">📞 Call: +1 (954) 243-0222 </p>
+          <p className="text-sm">✉️ Email: info@mopetco.com </p>
           <p className="text-sm">
             🏠 Address: 2500 SW 22nd Ter,
             <br />
@@ -67,10 +67,16 @@ export const Footer = () => {
             <h3 className="font-bold text-lg">Social Media</h3>
           </div>
           <div className="flex justify-center space-x-4 text-xl">
-            <a href="#">
+            <a
+              target="_blank"
+              href="https://www.facebook.com/share/169UsqCkHT/?mibextid=wwXIfr"
+            >
               <i className="fab fa-facebook"></i>
             </a>
-            <a href="#">
+            <a
+              target="_blank"
+              href="https://www.instagram.com/mopetco/profilecard/?igsh=djN4ZzRleGluOHA2"
+            >
               <i className="fab fa-instagram"></i>
             </a>
           </div>

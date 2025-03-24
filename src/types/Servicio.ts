@@ -1,3 +1,16 @@
+export interface RangoPeso {
+  idRango: number;
+  nombre: string;
+  pesoMin: number;
+  pesoMax: number;
+}
+
+export interface PrecioItem {
+  idPrecio: number;
+  monto: number;
+  rangoPeso: RangoPeso;
+}
+
 export interface IncluyeItem {
   id: number;
   descripcion: string;
@@ -9,8 +22,8 @@ export interface Servicio {
   subTitulo: string;
   incluye: string;
   descripcion: string;
-  icon: string; // Puede ser clase fa-* o URL (verificados abajo)
+  icon: string;
   urlImagen: string | null;
-  precio: string[]; // Lista de precios si se llena luego
+  precio: PrecioItem[]; // ✅ Aquí corregido
   incluyeLista: IncluyeItem[];
 }

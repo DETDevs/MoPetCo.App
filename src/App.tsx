@@ -5,6 +5,7 @@ import { FAQsPage } from "./pages/FAQsPage";
 import { ContactPage } from "./pages/ContactPage";
 import { ServicesPage } from "./pages/ServicesPage";
 import { ServiceDetailPage } from "./pages/ServiceDetailPage";
+import { GalleryPage } from "./pages/GalleryPage";
 
 export const App = () => {
   return (
@@ -17,6 +18,7 @@ export const App = () => {
             <Route path="/faqs" element={<FAQsPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/service" element={<ServicesPage />} />
+            <Route path="/gallery" element={<GalleryPage />} />
             <Route
               path="/services/:serviceId"
               element={<ServiceDetailPage />}

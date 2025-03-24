@@ -4,17 +4,24 @@ import { obtenerServicios } from "../Service/serviceApi";
 import { Servicio } from "../types/Servicio";
 import { Header } from "../components/ui/Header";
 import { Footer } from "../components/ui/Footer";
+import { Loading } from "../components/ui/Loading";
 
 export const ServicesPage = () => {
   const [servicios, setServicios] = useState<Servicio[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       const data = await obtenerServicios();
       setServicios(data);
+      setTimeout(() => {
+        setLoading(false);
+      }, 500);
     };
     fetchData();
   }, []);
+
+  if (loading) return <Loading />;
 
   return (
     <>
@@ -24,14 +31,18 @@ export const ServicesPage = () => {
           Services Pet Care with Love
         </h1>
         <p className="max-w-3xl mx-auto text-gray-700 text-lg">
-          All grooming options include a complete organic and hypoallergenic bath as well as the thorough nose-to-tail attention outlined below.
-          Your groomer will have a full consultation with you before getting started to review any additional costs.
+          All grooming options include a complete organic and hypoallergenic
+          bath as well as the thorough nose-to-tail attention outlined below.
+          Your groomer will have a full consultation with you before getting
+          started to review any additional costs.
         </p>
         <p className="mt-2 text-gray-700">
-          Work from start to finish usually takes about an hour to an hour and a half.
+          Work from start to finish usually takes about an hour to an hour and a
+          half.
         </p>
         <p className="mt-2 text-gray-700">
-          Pricing may vary due to size, the condition of the coat, matting, knots and length of hair.
+          Pricing may vary due to size, the condition of the coat, matting,
+          knots and length of hair.
         </p>
       </section>
 
@@ -45,9 +56,15 @@ export const ServicesPage = () => {
               key={servicio.idServicio}
               className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center text-center hover:shadow-pink-300 transition-shadow"
             >
-              <i className={`fas ${servicio.icon} text-pink-500 text-4xl mb-4`}></i>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">{servicio.titulo}</h3>
-              <p className="text-gray-600 mb-4">{servicio.descripcion.slice(0, 80)}...</p>
+              <i
+                className={`fas ${servicio.icon} text-pink-500 text-4xl mb-4`}
+              ></i>
+              <h3 className="text-xl font-bold text-gray-800 mb-2">
+                {servicio.titulo}
+              </h3>
+              <p className="text-gray-600 mb-4">
+                {servicio.descripcion.slice(0, 80)}...
+              </p>
               <Link
                 to={`/services/${servicio.idServicio}`}
                 className="mt-auto text-pink-500 hover:underline font-medium"

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {GalleryImage} from "../../../types/gallery"
+import { GalleryImage } from "../../../types/gallery";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -123,9 +123,12 @@ export const GallerySection = () => {
         </div>
       </div>
 
-      <button className="mt-6 bg-pink-500 text-white px-6 py-2 rounded-full font-semibold hover:bg-pink-600">
+      <a
+        href="/gallery"
+        className="mt-6 inline-block bg-pink-500 text-white px-6 py-2 rounded-full font-semibold hover:bg-pink-600 transition-shadow shadow-lg hover:shadow-xl"
+      >
         Browse more furry friends!
-      </button>
+      </a>
     </div>
   );
 };
