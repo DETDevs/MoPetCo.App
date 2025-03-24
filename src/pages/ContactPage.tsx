@@ -1,5 +1,6 @@
 import { Footer } from "../components/ui/Footer";
 import { Header } from "../components/ui/Header";
+import { WhatsAppButton } from "../components/ui/WhatsAppButton";
 
 export const ContactPage = () => {
   return (
@@ -69,16 +70,16 @@ export const ContactPage = () => {
                   className="w-full p-2 rounded text-black"
                   required
                 />
-              <div>
-                <label className="block text-sm font-medium mb-1">
-                  Email Address *
-                </label>
-                <input
-                  type="email"
-                  className="w-full p-2 rounded text-black"
-                  required
-                />
-              </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1">
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    className="w-full p-2 rounded text-black"
+                    required
+                  />
+                </div>
               </div>
               <div>
                 <label className="block text-sm font-medium mb-1">
@@ -149,6 +150,7 @@ export const ContactPage = () => {
           </div>
         </div>
       </main>
+      <WhatsAppButton />
       <Footer />
     </>
   );

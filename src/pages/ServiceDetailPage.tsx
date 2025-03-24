@@ -6,6 +6,7 @@ import { Header } from "../components/ui/Header";
 import { Footer } from "../components/ui/Footer";
 import { Loading } from "../components/ui/Loading";
 import { NotFoundMessage } from "../components/ui/NotFoundMessage";
+import { WhatsAppButton } from "../components/ui/WhatsAppButton";
 
 export const ServiceDetailPage = () => {
   const { serviceId } = useParams<{ serviceId: string }>();
@@ -47,7 +48,6 @@ export const ServiceDetailPage = () => {
       </>
     );
   }
-  
 
   return (
     <>
@@ -114,6 +114,7 @@ export const ServiceDetailPage = () => {
           </div>
         </div>
       </div>
+      <WhatsAppButton />
       <Footer />
     </>
   );

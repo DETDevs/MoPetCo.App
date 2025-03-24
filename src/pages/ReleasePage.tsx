@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Footer } from "../components/ui/Footer";
 import { Header } from "../components/ui/Header";
 import AOS from "aos";
+import { ScrollToTopButton } from "../components/ui/ScrollToTopButton";
 export const ReleasePage = () => {
   useEffect(() => {
     AOS.init({ duration: 1000 }); // Animación al hacer scroll
@@ -236,6 +237,7 @@ export const ReleasePage = () => {
           </p>
         </div>
       </main>
+      <ScrollToTopButton />
       <Footer />
     </>
   );

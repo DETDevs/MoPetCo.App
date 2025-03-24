@@ -1,25 +1,18 @@
-import { useEffect, useState } from "react";
-import { PawPrint } from "../../types/paw";
+import { useState } from "react";
 
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [paws, setPaws] = useState<PawPrint[]>([]);
 
-  useEffect(() => {
-    const generatedPaws: PawPrint[] = [];
-    const pawCount = 4;
-
-    for (let i = 0; i < pawCount; i++) {
-      const top = `${Math.random() * 50}px`;
-      const left = `${Math.random() * 90}%`;
-      generatedPaws.push({ id: i, top, left });
-    }
-
-    setPaws(generatedPaws);
-  }, []);
+  // Huellitas estáticas con posiciones fijas
+  const staticPaws = [
+    { id: 1, top: "5px", left: "20%" },
+    { id: 2, top: "10px", left: "45%" },
+    { id: 3, top: "5px", left: "70%" },
+    { id: 4, top: "15px", left: "85%" },
+  ];
 
   return (
-    <header className="bg-white shadow-md fixed w-full z-20">
+    <header className="bg-white shadow-md fixed w-full z-20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between relative">
         {/* Logo */}
         <div>
@@ -30,61 +23,43 @@ export const Header = () => {
           />
         </div>
 
-        {/* Huellitas aleatorias */}
-        {paws.map((paw) => (
+        {/* Huellitas Estáticas */}
+        {staticPaws.map((paw) => (
           <img
             key={paw.id}
             src="/assets/pawprint.png"
             alt="Paw Print"
-            className="w-6 h-6 absolute opacity-60 transition-opacity duration-700 ease-in"
+            className="w-5 h-5 absolute opacity-60"
             style={{ top: paw.top, left: paw.left }}
           />
         ))}
 
-        {/* Desktop Nav */}
+        {/* Navegación Desktop */}
         <nav className="hidden md:flex space-x-6 items-center z-10">
           <a href="/" className="text-gray-700 hover:text-blue-600 font-medium">
             Home
           </a>
-          <a
-            href="#about"
-            className="text-gray-700 hover:text-blue-600 font-medium"
-          >
+          <a href="#about" className="text-gray-700 hover:text-blue-600 font-medium">
             About
           </a>
-          <a
-            href="/service"
-            className="text-gray-700 hover:text-blue-600 font-medium"
-          >
+          <a href="/service" className="text-gray-700 hover:text-blue-600 font-medium">
             Services
           </a>
-          <a
-            href="/gallery"
-            className="text-gray-700 hover:text-blue-600 font-medium"
-          >
+          <a href="/gallery" className="text-gray-700 hover:text-blue-600 font-medium">
             Gallery
           </a>
-          <a
-            href="/contact"
-            className="text-gray-700 hover:text-blue-600 font-medium"
-          >
+          <a href="/contact" className="text-gray-700 hover:text-blue-600 font-medium">
             Contact
           </a>
-          <a
-            href="/release-form"
-            className="text-gray-700 hover:text-blue-600 font-medium"
-          >
+          <a href="/release-form" className="text-gray-700 hover:text-blue-600 font-medium">
             Release Form
           </a>
-          <a
-            href="/faqs"
-            className="text-gray-700 hover:text-blue-600 font-medium"
-          >
+          <a href="/faqs" className="text-gray-700 hover:text-blue-600 font-medium">
             FAQs
           </a>
         </nav>
 
-        {/* Mobile Menu Button */}
+        {/* Botón Mobile */}
         <button
           className="md:hidden text-gray-700 focus:outline-none z-30"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -105,13 +80,13 @@ export const Header = () => {
         </button>
       </div>
 
-      {/* Mobile Nav Dropdown - Animado desde arriba */}
+      {/* Navegación Mobile */}
       <div
         className={`md:hidden fixed top-0 left-0 w-full h-auto bg-white z-10 transform transition-transform duration-300 ease-in-out ${
           menuOpen ? "translate-y-0" : "-translate-y-full"
         }`}
       >
-        <div className="px-4 py-6 space-y-4 mt-12 flex flex-col items-center">
+        <div className="px-4 py-6 space-y-4 mt-16 flex flex-col items-center">
           <a
             href="/"
             onClick={() => setMenuOpen(false)}

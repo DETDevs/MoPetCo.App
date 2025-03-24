@@ -6,6 +6,8 @@ import "aos/dist/aos.css";
 import { Header } from "../components/ui/Header";
 import { Footer } from "../components/ui/Footer";
 import { Loading } from "../components/ui/Loading";
+import { WhatsAppButton } from "../components/ui/WhatsAppButton";
+import { ScrollToTopButton } from "../components/ui/ScrollToTopButton";
 
 export const GalleryPage = () => {
   const [imagenes, setImagenes] = useState<GalleryImage[]>([]);
@@ -80,6 +82,8 @@ export const GalleryPage = () => {
           </div>
         )}
       </div>
+      <ScrollToTopButton />
+      <WhatsAppButton />
       <Footer />
     </>
   );

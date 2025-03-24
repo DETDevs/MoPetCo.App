@@ -6,6 +6,7 @@ import { ContactPage } from "./pages/ContactPage";
 import { ServicesPage } from "./pages/ServicesPage";
 import { ServiceDetailPage } from "./pages/ServiceDetailPage";
 import { GalleryPage } from "./pages/GalleryPage";
+import { NotFoundPage } from "./components/ui/NotFoundPage";
 
 export const App = () => {
   return (
@@ -19,6 +20,7 @@ export const App = () => {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/service" element={<ServicesPage />} />
             <Route path="/gallery" element={<GalleryPage />} />
+            <Route path="*" element={<NotFoundPage />} />
             <Route
               path="/services/:serviceId"
               element={<ServiceDetailPage />}

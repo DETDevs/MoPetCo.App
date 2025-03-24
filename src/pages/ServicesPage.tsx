@@ -5,6 +5,7 @@ import { Servicio } from "../types/Servicio";
 import { Header } from "../components/ui/Header";
 import { Footer } from "../components/ui/Footer";
 import { Loading } from "../components/ui/Loading";
+import { WhatsAppButton } from "../components/ui/WhatsAppButton";
 
 export const ServicesPage = () => {
   const [servicios, setServicios] = useState<Servicio[]>([]);
@@ -75,7 +76,7 @@ export const ServicesPage = () => {
           ))}
         </div>
       </section>
-
+      <WhatsAppButton />
       <Footer />
     </>
   );

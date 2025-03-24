@@ -5,6 +5,7 @@ import { GallerySection } from "../components/ui/Home/GallerySection";
 import { HomePageSection } from "../components/ui/Home/HomePageSection";
 import { ReviewList } from "../components/ui/Home/ReviewList";
 import { ServiceSection } from "../components/ui/Home/ServiceSection";
+import { WhatsAppButton } from "../components/ui/WhatsAppButton";
 
 export const HomePage = () => {
   return (
@@ -15,7 +16,8 @@ export const HomePage = () => {
       <ServiceSection />
       <GallerySection />
       <ReviewList />
-      <Footer/>
+      <WhatsAppButton />
+      <Footer />
     </>
   );
 };

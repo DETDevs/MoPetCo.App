@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 import { Footer } from "../components/ui/Footer";
 import { Header } from "../components/ui/Header";
-import AOS from 'aos';
+import AOS from "aos";
+import { ScrollToTopButton } from "../components/ui/ScrollToTopButton";
 
 export const FAQsPage = () => {
-
-    useEffect(() => {
-      AOS.init({ duration: 1000 }); // Animación al hacer scroll
-    }, []);
+  useEffect(() => {
+    AOS.init({ duration: 1000 }); // Animación al hacer scroll
+  }, []);
 
   return (
     <>
@@ -160,6 +160,7 @@ export const FAQsPage = () => {
           </p>
         </div>
       </main>
+      <ScrollToTopButton />
       <Footer />
     </>
   );
