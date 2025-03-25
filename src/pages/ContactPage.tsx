@@ -1,8 +1,64 @@
-import { Footer } from "../components/ui/Footer";
+import { useState } from "react";
+import { enviarContacto } from "../Service/contactService";
+import { ContactoRequest } from "../types/contact";
 import { Header } from "../components/ui/Header";
+import { Footer } from "../components/ui/Footer";
 import { WhatsAppButton } from "../components/ui/WhatsAppButton";
+import { toast } from "react-toastify";
 
 export const ContactPage = () => {
+  const [formData, setFormData] = useState({
+    nombre: "",
+    direccion: "",
+    ciudad: "",
+    codigoPostal: "",
+    numero: "",
+    correo: "",
+    mensaje: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const contacto: ContactoRequest = {
+      idContacto: 0,
+      nombre: formData.nombre,
+      direccion: formData.direccion,
+      ciudad: formData.ciudad,
+      codigoPostal: formData.codigoPostal,
+      number: formData.numero, // <- este nombre debe ser `number` para coincidir con el backend
+      correo: formData.correo,
+      mensaje: formData.mensaje,
+      fechaEnvio: new Date().toISOString(),
+      estado: "Pendiente",
+    };
+
+    const success = await enviarContacto(contacto);
+    if (success) {
+      toast.success("Your message has been sent successfully!");
+      setFormData({
+        nombre: "",
+        direccion: "",
+        ciudad: "",
+        codigoPostal: "",
+        numero: "",
+        correo: "",
+        mensaje: "",
+      });
+    } else {
+      toast.error(
+        "There was an error sending your message. Please try again later."
+      );
+    }
+  };
+
   return (
     <>
       <Header />
@@ -20,81 +76,71 @@ export const ContactPage = () => {
             <h2 className="text-2xl font-bold mb-1">Drop us a line!</h2>
             <h3 className="text-xl font-semibold mb-6">Make an appointment</h3>
 
-            <form className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium mb-1">
-                  Your Name *
-                </label>
-                <input
-                  type="text"
-                  className="w-full p-2 rounded text-black"
-                  required
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-1">
-                  Your Address *
-                </label>
-                <input
-                  type="text"
-                  className="w-full p-2 rounded text-black"
-                  required
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-1">
-                  Your City *
-                </label>
-                <input
-                  type="text"
-                  className="w-full p-2 rounded text-black"
-                  required
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-1">
-                  Zip Code *
-                </label>
-                <input
-                  type="number"
-                  className="w-full p-2 rounded text-black"
-                  required
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-1">
-                  Phone Number *
-                </label>
-                <input
-                  type="number"
-                  className="w-full p-2 rounded text-black"
-                  required
-                />
-                <div>
-                  <label className="block text-sm font-medium mb-1">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    className="w-full p-2 rounded text-black"
-                    required
-                  />
-                </div>
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-1">
-                  Your Question *
-                </label>
-                <textarea
-                  className="w-full p-2 rounded text-black"
-                  rows={4}
-                  required
-                ></textarea>
-              </div>
-              {/* reCAPTCHA */}
-              {/* <div className="bg-white rounded p-2">
-                <p className="text-black text-center">[reCAPTCHA]</p>
-              </div> */}
+            <form className="space-y-4" onSubmit={handleSubmit}>
+              <input
+                type="text"
+                name="nombre"
+                placeholder="Your Name *"
+                value={formData.nombre}
+                onChange={handleChange}
+                required
+                className="w-full p-2 rounded text-black"
+              />
+              <input
+                type="text"
+                name="direccion"
+                placeholder="Your Address *"
+                value={formData.direccion}
+                onChange={handleChange}
+                required
+                className="w-full p-2 rounded text-black"
+              />
+              <input
+                type="text"
+                name="ciudad"
+                placeholder="Your City *"
+                value={formData.ciudad}
+                onChange={handleChange}
+                required
+                className="w-full p-2 rounded text-black"
+              />
+              <input
+                type="text"
+                name="codigoPostal"
+                placeholder="Zip Code *"
+                value={formData.codigoPostal}
+                onChange={handleChange}
+                required
+                className="w-full p-2 rounded text-black"
+              />
+              <input
+                type="text"
+                name="numero"
+                placeholder="Phone Number *"
+                value={formData.numero}
+                onChange={handleChange}
+                required
+                className="w-full p-2 rounded text-black"
+              />
+              <input
+                type="email"
+                name="correo"
+                placeholder="Email Address *"
+                value={formData.correo}
+                onChange={handleChange}
+                required
+                className="w-full p-2 rounded text-black"
+              />
+              <textarea
+                name="mensaje"
+                placeholder="Your Question *"
+                value={formData.mensaje}
+                onChange={handleChange}
+                rows={4}
+                required
+                className="w-full p-2 rounded text-black"
+              ></textarea>
+
               <button
                 type="submit"
                 className="bg-black text-white px-4 py-2 rounded font-bold hover:bg-gray-800"

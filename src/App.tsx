@@ -8,6 +8,9 @@ import { ServiceDetailPage } from "./pages/ServiceDetailPage";
 import { GalleryPage } from "./pages/GalleryPage";
 import { NotFoundPage } from "./components/ui/NotFoundPage";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 export const App = () => {
   return (
     <Router>
@@ -27,6 +30,19 @@ export const App = () => {
             />
           </Routes>
         </main>
+
+        {/* Toasts visibles en toda la app */}
+        <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </div>
     </Router>
   );
