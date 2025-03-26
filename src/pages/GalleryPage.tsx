@@ -8,6 +8,7 @@ import { Footer } from "../components/ui/Footer";
 import { Loading } from "../components/ui/Loading";
 import { WhatsAppButton } from "../components/ui/WhatsAppButton";
 import { ScrollToTopButton } from "../components/ui/ScrollToTopButton";
+import { GalleryHeroSection } from "../components/ui/GalleryHeroSection";
 
 export const GalleryPage = () => {
   const [imagenes, setImagenes] = useState<GalleryImage[]>([]);
@@ -37,6 +38,9 @@ export const GalleryPage = () => {
   return (
     <>
       <Header />
+
+      <GalleryHeroSection title="Gallery of Grooming" subtitle="Experience the magic of our mobile pet spa" videoSrc="/assets/herogallery.mp4"/>
+
       <div className="max-w-7xl mx-auto px-4 py-12 mt-20">
         <h2
           className="text-xl sm:text-2xl font-bold text-center mb-8"

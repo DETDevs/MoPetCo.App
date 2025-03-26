@@ -1,9 +1,9 @@
 import { useState } from "react";
+import { LanguageSwitcher } from "../ui/LanguageSwitcher"; // Ajustá la ruta si es distinta
 
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Huellitas estáticas con posiciones fijas
   const staticPaws = [
     { id: 1, top: "5px", left: "20%" },
     { id: 2, top: "10px", left: "45%" },
@@ -34,32 +34,55 @@ export const Header = () => {
           />
         ))}
 
+        {/* Language Switcher alineado a la derecha */}
+        <div className="hidden md:flex items-center space-x-4">
+          <LanguageSwitcher />
+        </div>
+
         {/* Navegación Desktop */}
         <nav className="hidden md:flex space-x-6 items-center z-10">
           <a href="/" className="text-gray-700 hover:text-blue-600 font-medium">
             Home
           </a>
-          <a href="#about" className="text-gray-700 hover:text-blue-600 font-medium">
+          <a
+            href="#about"
+            className="text-gray-700 hover:text-blue-600 font-medium"
+          >
             About
           </a>
-          <a href="/service" className="text-gray-700 hover:text-blue-600 font-medium">
+          <a
+            href="/service"
+            className="text-gray-700 hover:text-blue-600 font-medium"
+          >
             Services
           </a>
-          <a href="/gallery" className="text-gray-700 hover:text-blue-600 font-medium">
+          <a
+            href="/gallery"
+            className="text-gray-700 hover:text-blue-600 font-medium"
+          >
             Gallery
           </a>
-          <a href="/contact" className="text-gray-700 hover:text-blue-600 font-medium">
+          <a
+            href="/contact"
+            className="text-gray-700 hover:text-blue-600 font-medium"
+          >
             Contact
           </a>
-          <a href="/release-form" className="text-gray-700 hover:text-blue-600 font-medium">
+          <a
+            href="/release-form"
+            className="text-gray-700 hover:text-blue-600 font-medium"
+          >
             Release Form
           </a>
-          <a href="/faqs" className="text-gray-700 hover:text-blue-600 font-medium">
+          <a
+            href="/faqs"
+            className="text-gray-700 hover:text-blue-600 font-medium"
+          >
             FAQs
           </a>
         </nav>
 
-        {/* Botón Mobile */}
+        {/* Botón Hamburguesa Mobile */}
         <button
           className="md:hidden text-gray-700 focus:outline-none z-30"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -136,6 +159,11 @@ export const Header = () => {
           >
             FAQs
           </a>
+
+          {/* Language Switcher para Mobile */}
+          <div className="mt-4">
+            <LanguageSwitcher />
+          </div>
         </div>
       </div>
     </header>

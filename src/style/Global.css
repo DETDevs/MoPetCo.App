@@ -1,4 +1,12 @@
 html {
-    scroll-behavior: smooth;
-  }
-  
+  scroll-behavior: smooth;
+}
+
+.swal2-center-buttons {
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.swal2-cancel{
+  display: none !important;
+}

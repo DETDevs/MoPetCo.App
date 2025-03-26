@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { Footer } from "../components/ui/Footer";
 import { Header } from "../components/ui/Header";
+import { TranslatableText } from "../components/ui/TranslatableText";
+
 import AOS from "aos";
 import { ScrollToTopButton } from "../components/ui/ScrollToTopButton";
 export const ReleasePage = () => {
@@ -11,25 +13,29 @@ export const ReleasePage = () => {
   return (
     <>
       <Header />
+
       <main className="bg-white pt-24 pb-12 px-4">
         <div
           className="max-w-4xl mx-auto text-gray-800 space-y-6"
           data-aos="fade-down"
         >
           <h1 className="text-3xl font-bold text-center mb-8 border-b-2 border-pink-400 pb-4">
-            MoPetCo Grooming Release Form
+            <TranslatableText text="MoPetCo Grooming Release Form" />
           </h1>
 
           <p className="text-lg leading-relaxed">
-            Upon accepting your first grooming appointment with MoPetCo, you
+            <TranslatableText
+              text="Upon accepting your first grooming appointment with MoPetCo, you
             will receive a link to our grooming release form. This document
             outlines our company policies and procedures, as we cannot be held
             liable for anything not specified in the release form. Please feel
             free to reach out with any questions or concerns before we begin the
-            grooming service.
+            grooming service."
+            />
           </p>
           <p className="text-lg leading-relaxed">
-            GROOMING RELEASE FORM -Every new client is required to read and
+            <TranslatableText
+              text="GROOMING RELEASE FORM -Every new client is required to read and
             agreed to the following. No ear hair plucking without veterinarian
             consent. Anal gland expression is complete with client full consent.
             We do not provide excessive de-matting services. We do not provide
@@ -45,10 +51,12 @@ export const ReleasePage = () => {
             The Mobile Pet Grooming Co “MePetCo” would like to as-sure you that
             every effort will be made to make your pet’s grooming experience as
             safe and pleasant one. Safety comes first for pets as well as people
-            during the grooming process.
+            during the grooming process."
+            />
           </p>
           <p className="text-lg leading-relaxed">
-            SANITIZING: Our standards have always been to clean/sanitize all
+            <TranslatableText
+              text="SANITIZING: Our standards have always been to clean/sanitize all
             surfaces and tools before and after each session. For liability
             reasons, No humans’ clients are allowed in our workspace while the
             stylist is at work. However, we are happy to showcase the products
@@ -65,45 +73,55 @@ export const ReleasePage = () => {
             groom, MePetCO has the right to stop grooming services or cancel
             grooming services at any time before, during, or after grooming.
             Client would only be charged a grooming fee for what was done up
-            until that point.
+            until that point."
+            />
           </p>
 
           <p className="text-lg leading-relaxed">
-            CANCELLATIONS AND NO SHOWS: Your pet’s appointment is very important
+            <TranslatableText
+              text="CANCELLATIONS AND NO SHOWS: Your pet’s appointment is very important
             to us. The time allocated for your pet’s appointment is reserved
             especially for you. We do understand that sometimes schedule
             adjustments are necessary. Therefore, we respectfully request at
             least 24 hours’ notice for adjustments to your appointments and for
-            cancellations.
+            cancellations."
+            />
           </p>
 
           <p className="text-lg leading-relaxed">
-            PAYMENT: Payment is due at time services are completed unless other
+            <TranslatableText
+              text="PAYMENT: Payment is due at time services are completed unless other
             arrangements have been discussed. Forms of payment: We accept Cash,
-            ZELLE, Venmo, and credit cards payment.
+            ZELLE, Venmo, and credit cards payment."
+            />
           </p>
 
           <p className="text-lg leading-relaxed">
-            SATISFACTION: Your satisfaction is important to us. If you are
+            <TranslatableText
+              text="SATISFACTION: Your satisfaction is important to us. If you are
             unhappy for any reason and would like something adjusted, we will be
             happy to make any adjustments at the end of the groom. Please let us
             know immediately if you would like any adjustments made to your
             pet’s groom. After the day of the appointment, any return visit for
-            adjustment would be treated as a new appointment.
+            adjustment would be treated as a new appointment."
+            />
           </p>
 
           <p className="text-lg leading-relaxed">
-            PHOTOGRAPHS: MePetCO has the right to take photos of your pet for
+            <TranslatableText
+              text="PHOTOGRAPHS: MePetCO has the right to take photos of your pet for
             our client records or for the company website/social media pages.
             All photos taken are the property of MePetCO but can be shared with
             you at your request. We will be happy to remove any photos (at our
             discretion) from our website/social media pages if you are
             displeased with the photos for any reason. We strive to only show
-            your pet looking their best.
+            your pet looking their best."
+            />
           </p>
 
           <p className="text-lg leading-relaxed">
-            Caring for your pet is a responsibility that MePetCO takes very
+            <TranslatableText
+              text="Caring for your pet is a responsibility that MePetCO takes very
             seriously! We want your pet’s experience to be as pleasant and as
             enjoyable as possible. It is important to understand that some pets
             respond to grooming differently even with our best efforts, so we
@@ -112,21 +130,25 @@ export const ReleasePage = () => {
             veterinarian of our choice if the pet’s normal vet is unavailable.
             Vet expenses will be the responsibility of the owner, unless the
             injury is a direct result of negligence by MePetCO while the pet was
-            in our care.
+            in our care."
+            />
           </p>
 
           <p className="text-lg leading-relaxed">
-            MePetCO will not be held responsible for any sickness, injury or
+            <TranslatableText
+              text="MePetCO will not be held responsible for any sickness, injury or
             death caused by the pet to itself during its grooming session from
             pre-existing health conditions, natural disasters, or any illness a
             pet acquires due to missing or expired vaccines. MePetCO will not be
             held responsible for clipper burn, minor nicks or cuts, or
             irritation resulting from grooming of matted, neglected coats, or
-            mild to severe skin allergies (including ears).
+            mild to severe skin allergies (including ears)."
+            />
           </p>
 
           <p className="text-lg leading-relaxed">
-            In the event that your pet displays any aggressive behavior, the
+            <TranslatableText
+              text="In the event that your pet displays any aggressive behavior, the
             groomer reserves the right to use a muzzle or an Elizabethan collar
             to protect themselves from injury. MePetCO should be notified of any
             claims by owner regarding compensation for veterinary care given as
@@ -136,84 +158,104 @@ export const ReleasePage = () => {
             MePetCO reserves the right to charge additional fees for services we
             consider over and above the norm, including but not limited to:
             severe aggression, bad coat condition, excessive parasite
-            infestations, owner neglect.
+            infestations, owner neglect."
+            />
           </p>
 
           <p className="text-lg leading-relaxed">
-            By accepting our grooming service, you are agreeing that you have
+            <TranslatableText
+              text="By accepting our grooming service, you are agreeing that you have
             reviewed this Service Contract for accuracy, and that you understand
             the contents of this contract. You affirm that you are the rightful
             legal owner of the pet(s) for which services are being rendered. You
             authorize this contract to be valid approval for future grooming
             services, permitting MePetCO to accept telephone and/or email
             reservations for service without additional signed contracts or
-            written authorization.
+            written authorization."
+            />
           </p>
 
           <p className="text-lg leading-relaxed">
-            MATTED DOG RELEASE FORM (If applicable) *Matted coats can cause a
+            <TranslatableText
+              text="MATTED DOG RELEASE FORM (If applicable) *Matted coats can cause a
             variety of skin and health problems. Matted fur does not allow for
             air circulation to the skin causing hot spots, bacterial and fungal
             infections. Fleas, ticks, maggots, and other parasites may be
             lurking in the coat causing further skin infections. Matted fur also
             pulls and binds, causing pain to your pet when they move or lay on
             mats. The skin underneath is usually raw and inflamed. Matted coats
-            will not dry properly and can lead to rotting fur and skin.
+            will not dry properly and can lead to rotting fur and skin."
+            />
           </p>
 
           <p className="text-lg leading-relaxed">
-            *In the event of matting, your pet’s hair may need to be shaved
+            <TranslatableText
+              text="*In the event of matting, your pet’s hair may need to be shaved
             extremely short to the skin and may show signs of skin irritation
             and sores due to the matting, wet undercoat, and dirty undercoat. In
             order to take care of a pet that has not been groomed often enough,
             and is matted, the required grooming session may be long, stressful,
-            and/or painful.
+            and/or painful."
+            />
           </p>
 
           <p className="text-lg leading-relaxed">
-            *It is the goal of our salon and our groomers to make your pet’s
-            grooming experience as stress free as possible.
+            <TranslatableText
+              text="*It is the goal of our salon and our groomers to make your pet’s
+            grooming experience as stress free as possible."
+            />
           </p>
 
           <p className="text-lg leading-relaxed">
-            *If we have determined that the only humane way to do this is to
+            <TranslatableText
+              text="*If we have determined that the only humane way to do this is to
             shave the dog’s coat down (Due to the condition of your dog’s coat).
             This is a short clip, removing all the matting. Where feasible, we
             work to de-mat/brush out the dog’s coat, but only when it would not
-            cause excessive pain and suffering to attempt to do so.
+            cause excessive pain and suffering to attempt to do so."
+            />
           </p>
 
           <p className="text-lg leading-relaxed">
-            *There is a possibility that your pet’s skin will become irritated
+            <TranslatableText
+              text="*There is a possibility that your pet’s skin will become irritated
             during the clipping process. We will use a medicated shampoo to help
-            soothe any irritation that may occur.
+            soothe any irritation that may occur."
+            />
           </p>
 
           <p className="text-lg leading-relaxed">
-            The matted hair rests tightly against the skin and the only way to
+            <TranslatableText
+              text="The matted hair rests tightly against the skin and the only way to
             remove it is to use a short blade clip between the skin and mats.
             Your dog may possibly get nicked and cut because the groomer has to
             work so closely to the skin to remove the matted coat. Our groomers
             are very careful but the possibility of injury exists. Understanding
             these risks, our salon is authorized to proceed with the shave down
-            process.
+            process."
+            />
           </p>
 
           <p className="text-lg leading-relaxed">
-            *Please be sure to schedule a follow up appointment to speak with
-            our groomer for the best methods of maintaining your dog’s coat.
+            <TranslatableText
+              text="*Please be sure to schedule a follow up appointment to speak with
+            our groomer for the best methods of maintaining your dog’s coat."
+            />
           </p>
 
           <p className="text-lg leading-relaxed">
-            *I hereby release the MePetCo and Grooming Staff from any liability
+            <TranslatableText
+              text="*I hereby release the MePetCo and Grooming Staff from any liability
             associated with the above mentioned process and any and all medical
             problems that may be uncovered and/or occur during the stripping and
             de-matting process. *Should my pet need veterinarian care after or
-            during this process, I agree to pay any and all veterinarian fees.
+            during this process, I agree to pay any and all veterinarian fees."
+            />
           </p>
 
           <p className="text-lg leading-relaxed">
-            SENIOR PET (pets over the age of ten) AND PETS WITH PRE-EXISTING
+            <TranslatableText
+              text="SENIOR PET (pets over the age of ten) AND PETS WITH PRE-EXISTING
             MEDICAL CONDITIONS RELEASE FORM (if applicable) *Your pet is
             important to us. We want to assure you that every effort will be
             made to make your senior pet’s experience as pleasant as possible.
@@ -224,16 +266,19 @@ export const ReleasePage = () => {
             pets will be groomed for cleanliness and comfort in styles that will
             not add to their stress. If any minor accident or injury to your
             elderly or health-compromised pet occurs during their grooming,
-            MePetCo is not responsible.
+            MePetCo is not responsible."
+            />
           </p>
 
           <p className="text-lg leading-relaxed">
-            Client has read and understands the above, and as the owner or agent
+            <TranslatableText
+              text="Client has read and understands the above, and as the owner or agent
             for the pet described herein agrees not to hold MePetCO responsible
             for the illness or death of their pet, or for any expenses incurred
             because of the illness or death of the pet described herein. You
             understand that pricing is subject to change. I have read,
-            understood and agreed to all of the terms and conditions above.
+            understood and agreed to all of the terms and conditions above."
+            />
           </p>
         </div>
       </main>
