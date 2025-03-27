@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Review } from "../../../types/review";
+import { TranslatableText } from "../TranslatableText";
 
 interface ReviewSliderProps {
   reviews: Review[];
@@ -49,11 +50,11 @@ export const ReviewSlider: React.FC<ReviewSliderProps> = ({ reviews }) => {
       {/* Title and description */}
       <div className="text-center my-8">
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">
-          What Our Clients Are Saying
+          <TranslatableText text="What Our Clients Are Saying"/>
         </h2>
         <p className="text-gray-600 text-sm sm:text-base">
-          Discover why pet lovers trust MoPetCo for their furry friends'
-          grooming needs 🐶🐱
+          <TranslatableText text="Discover why pet lovers trust MoPetCo for their furry friends'
+          grooming needs"/> 🐶🐱
         </p>
       </div>
 
@@ -118,7 +119,7 @@ export const ReviewSlider: React.FC<ReviewSliderProps> = ({ reviews }) => {
           className="inline-flex items-center bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 transition-shadow shadow-lg hover:shadow-xl font-medium text-sm"
         >
           <i className="fab fa-google mr-2 text-base"></i>
-          See all reviews on Google
+          <TranslatableText text="See all reviews on Google"/>
         </a>
       </div>
     </div>

@@ -10,3 +10,7 @@ html {
 .swal2-cancel{
   display: none !important;
 }
+
+html {
+  overflow-y: scroll;
+}

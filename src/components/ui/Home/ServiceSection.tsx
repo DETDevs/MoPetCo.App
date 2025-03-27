@@ -1,4 +1,7 @@
 import { ServiceCircleCard } from "../ServiceCircleCard";
+import { TranslatableText } from "../TranslatableText";
+
+
 
 export const ServiceSection = () => {
   return (
@@ -8,13 +11,13 @@ export const ServiceSection = () => {
           Services Pet Care with Love
         </h2>
         <p className="text-gray-600 w-[22rem] md:w-full lg:w-[30rem] lg:text-xl xl:w-[45rem] xl:text-xl">
-          All grooming options include a complete organic and hypoallergenic
+          <TranslatableText text="All grooming options include a complete organic and hypoallergenic
           bath as well as the thorough nose-to-tail attention outlined below.
           Your groomer will have a full consultation with you before getting
           started to review any additional costs. Work from start to finish
           usually takes about an hour to an hour and a half. Pricing may vary
           due to size, the condition of the coat, matting, knots and length of
-          hair.
+          hair."/>
         </p>
       </div>
 

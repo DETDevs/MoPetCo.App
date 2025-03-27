@@ -37,6 +37,7 @@ export const LanguageSwitcher = () => {
       confirmButtonText: t.confirm,
       cancelButtonText: t.cancel,
       confirmButtonColor: "#f472b6",
+      scrollbarPadding: false,
       customClass: {
         actions: "justify-center", // Centra los botones
       },

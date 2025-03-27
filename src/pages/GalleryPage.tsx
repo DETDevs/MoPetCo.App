@@ -9,6 +9,7 @@ import { Loading } from "../components/ui/Loading";
 import { WhatsAppButton } from "../components/ui/WhatsAppButton";
 import { ScrollToTopButton } from "../components/ui/ScrollToTopButton";
 import { GalleryHeroSection } from "../components/ui/GalleryHeroSection";
+import { TranslatableText } from "../components/ui/TranslatableText";
 
 export const GalleryPage = () => {
   const [imagenes, setImagenes] = useState<GalleryImage[]>([]);
@@ -46,7 +47,7 @@ export const GalleryPage = () => {
           className="text-xl sm:text-2xl font-bold text-center mb-8"
           data-aos="fade-up"
         >
-          Looking & Smelling Great!
+          <TranslatableText text="Looking & Smelling Great!"/>
         </h2>
 
         <div
@@ -81,7 +82,7 @@ export const GalleryPage = () => {
               onClick={handleLoadMore}
               className="bg-pink-500 text-white px-6 py-2 rounded-full font-semibold hover:bg-pink-600 transition-shadow shadow-lg hover:shadow-xl"
             >
-              Browse more furry friends!
+              <TranslatableText text="Browse more furry friends!"/>
             </button>
           </div>
         )}

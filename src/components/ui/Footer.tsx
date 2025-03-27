@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { PawPrint } from "../../types/paw";
+import { TranslatableText } from "./TranslatableText";
 
 export const Footer = () => {
   const [paws, setPaws] = useState<PawPrint[]>([]);
@@ -38,7 +39,7 @@ export const Footer = () => {
           <p className="text-sm">📞 Call: +1 (954) 243-0222 </p>
           <p className="text-sm">✉️ Email: info@mopetco.com </p>
           <p className="text-sm">
-            🏠 Address: 2500 SW 22nd Ter,
+            🏠 <TranslatableText text="Address: 2500 SW 22nd Ter," />
             <br />
             Fort Lauderdale, FL 33312.
           </p>
@@ -51,10 +52,16 @@ export const Footer = () => {
               alt="Office Icon"
               className="h-6 w-6"
             />
-            <h3 className="font-bold text-lg">Office Hours:</h3>
+            <h3 className="font-bold text-lg">
+              <TranslatableText text="Office Hours:" />
+            </h3>
           </div>
-          <p className="text-sm">Monday to Saturday: 9:00 AM – 5:30 PM</p>
-          <p className="text-sm">Sunday: Closed</p>
+          <p className="text-sm">
+            <TranslatableText text="Monday to Saturday: 9:00 AM – 5:30 PM" />
+          </p>
+          <p className="text-sm">
+            <TranslatableText text="Sunday: Closed" />
+          </p>
         </div>
 
         <div>
@@ -64,7 +71,9 @@ export const Footer = () => {
               alt="Redes Icon"
               className="h-6 w-6"
             />
-            <h3 className="font-bold text-lg">Social Media</h3>
+            <h3 className="font-bold text-lg">
+              <TranslatableText text="Social Media" />
+            </h3>
           </div>
           <div className="flex justify-center space-x-4 text-xl">
             <a
@@ -84,7 +93,8 @@ export const Footer = () => {
       </div>
 
       <div className="bg-black text-white text-center py-2 text-sm">
-        © {new Date().getFullYear()} DEVTitans. All rights reserved.
+        © {new Date().getFullYear()} DEVTitans.{" "}
+        <TranslatableText text="All rights reserved." />
       </div>
     </footer>
   );

@@ -7,6 +7,7 @@ import { Footer } from "../components/ui/Footer";
 import { Loading } from "../components/ui/Loading";
 import { NotFoundMessage } from "../components/ui/NotFoundMessage";
 import { WhatsAppButton } from "../components/ui/WhatsAppButton";
+import { TranslatableText } from "../components/ui/TranslatableText";
 
 export const ServiceDetailPage = () => {
   const { serviceId } = useParams<{ serviceId: string }>();
@@ -84,7 +85,7 @@ export const ServiceDetailPage = () => {
             {servicio.incluyeLista.length > 0 && (
               <>
                 <h2 className="text-xl font-semibold mb-2 text-blue-700">
-                  Included
+                  <TranslatableText text="Included"/>
                 </h2>
                 <ul className="list-disc list-inside space-y-1 mb-6 text-gray-800">
                   {servicio.incluyeLista.map((item) => (
@@ -97,7 +98,7 @@ export const ServiceDetailPage = () => {
             {servicio.precio.length > 0 && (
               <div>
                 <h2 className="text-xl font-semibold mb-2 text-blue-700">
-                  Prices
+                  <TranslatableText text="Prices"/>
                 </h2>
                 <ul className="list-disc list-inside space-y-1 text-gray-800">
                   {servicio.precio.map((p) => (

@@ -34,10 +34,7 @@ export const Header = () => {
           />
         ))}
 
-        {/* Language Switcher alineado a la derecha */}
-        <div className="hidden md:flex items-center space-x-4">
-          <LanguageSwitcher />
-        </div>
+        
 
         {/* Navegación Desktop */}
         <nav className="hidden md:flex space-x-6 items-center z-10">
@@ -81,6 +78,11 @@ export const Header = () => {
             FAQs
           </a>
         </nav>
+
+        {/* Language Switcher alineado a la derecha */}
+        <div className="hidden md:flex md:ml-6  items-center">
+          <LanguageSwitcher />
+        </div>
 
         {/* Botón Hamburguesa Mobile */}
         <button

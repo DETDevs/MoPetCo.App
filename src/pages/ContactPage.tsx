@@ -5,6 +5,7 @@ import { Header } from "../components/ui/Header";
 import { Footer } from "../components/ui/Footer";
 import { WhatsAppButton } from "../components/ui/WhatsAppButton";
 import { toast } from "react-toastify";
+import { TranslatableText } from "../components/ui/TranslatableText";
 
 export const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -65,16 +66,16 @@ export const ContactPage = () => {
       <main className="bg-white text-gray-800 py-10 px-4 my-10">
         <h1 className="text-3xl font-bold text-center mb-2">Contact Us</h1>
         <p className="text-center max-w-3xl mx-auto mb-10 text-gray-600">
-          Welcome to MoPetCo Guest Services. We’re always happy to hear from you
+          <TranslatableText text="Welcome to MoPetCo Guest Services. We’re always happy to hear from you
           and will do our best to respond to your inquiry in a timely manner. To
-          contact us please fill out our Guest Service form below.
+          contact us please fill out our Guest Service form below."/>
         </p>
 
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
           {/* Formulario */}
           <div className="bg-pink-500 text-white p-6 rounded-lg shadow-md">
-            <h2 className="text-2xl font-bold mb-1">Drop us a line!</h2>
-            <h3 className="text-xl font-semibold mb-6">Make an appointment</h3>
+            <h2 className="text-2xl font-bold mb-1"><TranslatableText text="Drop us a line!"/></h2>
+            <h3 className="text-xl font-semibold mb-6"><TranslatableText text="Make an appointment"/></h3>
 
             <form className="space-y-4" onSubmit={handleSubmit}>
               <input
@@ -145,7 +146,7 @@ export const ContactPage = () => {
                 type="submit"
                 className="bg-black text-white px-4 py-2 rounded font-bold hover:bg-gray-800"
               >
-                SUBMIT
+                <TranslatableText text="Send Me"/>
               </button>
             </form>
           </div>
@@ -154,17 +155,17 @@ export const ContactPage = () => {
           <div className="flex flex-col justify-center space-y-6">
             <h2 className="text-2xl font-bold text-gray-800">Get in Touch</h2>
             <p className="text-gray-600">
-              If you would like to speak with a team member, please Call or Text
-              us at:
+              <TranslatableText text="If you would like to speak with a team member, please Call or Text
+              us at:"/>
               <br />
-              <strong className="block mt-1">(954) 271-9939</strong> for Broward
-              and Palm Beach
+              <strong className="block mt-1">(954) 271-9939</strong> <TranslatableText text="for Broward
+              and Palm Beach"/>
               <br />
-              <strong className="block mt-1">(305) 902-5008</strong> for Miami
-              Dade
+              <strong className="block mt-1">(305) 902-5008</strong> <TranslatableText text="for Miami
+              Dade"/>
               <br />
               <span className="block mt-1">
-                Availability: Mon to Sat, 9:00 AM - 5:30 PM (ET)
+                <TranslatableText text="Availability: Mon to Sat, 9:00 AM - 5:30 PM (ET)"/>
               </span>
             </p>
 

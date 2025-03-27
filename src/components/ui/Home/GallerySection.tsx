@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { GalleryImage } from "../../../types/gallery";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { TranslatableText } from "../TranslatableText";
 
 const firstSet: GalleryImage[] = [
   { src: "/assets/dog2.jpg", alt: "Dog 1" },
@@ -53,7 +54,7 @@ export const GallerySection = () => {
       data-aos="fade-up"
     >
       <h2 className="text-xl font-bold text-center mb-6">
-        Looking & Smelling Great!
+        <TranslatableText text="Looking & Smelling Great!"/>
       </h2>
 
       {/* Contenedor con animación fade */}
@@ -127,7 +128,7 @@ export const GallerySection = () => {
         href="/gallery"
         className="mt-6 inline-block bg-pink-500 text-white px-6 py-2 rounded-full font-semibold hover:bg-pink-600 transition-shadow shadow-lg hover:shadow-xl"
       >
-        Browse more furry friends!
+        <TranslatableText text="Browse more furry friends!"/>
       </a>
     </div>
   );

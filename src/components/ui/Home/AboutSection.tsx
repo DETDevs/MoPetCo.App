@@ -1,3 +1,7 @@
+import { TranslatableText } from "../TranslatableText";
+
+
+
 export const AboutSection = () => {
   return (
     <div id="about" className="flex flex-col md:flex-row w-full h-auto items-center justify-center mt-12">
@@ -6,7 +10,7 @@ export const AboutSection = () => {
           MoPetCO
         </h1>
         <p className="text-xl text-gray-500 w-[22rem] md:w-[25rem] lg:w-full">
-          We are a premier mobile grooming service with over 20 years of
+          <TranslatableText text="We are a premier mobile grooming service with over 20 years of
           experience, proudly serving Miami-Dade, Broward, and Palm Beach
           counties. As passionate animal lovers, we are dedicated to pampering
           your furry companions with the highest level of care. Understanding
@@ -17,7 +21,7 @@ export const AboutSection = () => {
           traditional salon. We use only the finest, all-natural,
           veterinarian-recommended products to ensure your pet’s safety, health,
           and comfort. At MoPetCo, we are committed to delivering affordable,
-          safe, and top-quality grooming services tailored to your pet’s needs.
+          safe, and top-quality grooming services tailored to your pet’s needs."/>
         </p>
       </div>
       <div className="flex justify-center items-center md:w-[20rem] lg:w-[30rem] lg:h-[30rem]">
