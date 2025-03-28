@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { Footer } from "../components/ui/Footer";
-import { Header } from "../components/ui/Header";
+import { Footer } from "../components/layout/Footer";
+import { Header } from "../components/layout/Header";
 import AOS from "aos";
-import { ScrollToTopButton } from "../components/ui/ScrollToTopButton";
-import { TranslatableText } from "../components/ui/TranslatableText";
+import { ScrollToTopButton } from "../components/common/ScrollToTopButton";
+import { TranslatableText } from "../components/common/TranslatableText";
 
 export const FAQsPage = () => {
   useEffect(() => {

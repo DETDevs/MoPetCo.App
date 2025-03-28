@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { obtenerDetallesServicio } from "../Service/serviceDetailApi";
 import { Servicio } from "../types/Servicio";
-import { Header } from "../components/ui/Header";
-import { Footer } from "../components/ui/Footer";
-import { Loading } from "../components/ui/Loading";
-import { NotFoundMessage } from "../components/ui/NotFoundMessage";
-import { WhatsAppButton } from "../components/ui/WhatsAppButton";
-import { TranslatableText } from "../components/ui/TranslatableText";
+import { Header } from "../components/layout/Header";
+import { Footer } from "../components/layout/Footer";
+import { Loading } from "../components/layout/Loading";
+import { NotFoundMessage } from "../components/layout/NotFoundMessage";
+import { WhatsAppButton } from "../components/common/WhatsAppButton";
+import { TranslatableText } from "../components/common/TranslatableText";
 
 export const ServiceDetailPage = () => {
   const { serviceId } = useParams<{ serviceId: string }>();

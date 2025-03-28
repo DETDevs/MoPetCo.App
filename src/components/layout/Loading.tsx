@@ -1,4 +1,3 @@
-import React from "react";
 import "aos/dist/aos.css";
 
 export const Loading = () => {

@@ -3,13 +3,13 @@ import { obtenerImagenesGaleria } from "../Service/galleryService";
 import { GalleryImage } from "../types/galleryImage";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Header } from "../components/ui/Header";
-import { Footer } from "../components/ui/Footer";
-import { Loading } from "../components/ui/Loading";
-import { WhatsAppButton } from "../components/ui/WhatsAppButton";
-import { ScrollToTopButton } from "../components/ui/ScrollToTopButton";
-import { GalleryHeroSection } from "../components/ui/GalleryHeroSection";
-import { TranslatableText } from "../components/ui/TranslatableText";
+import { Header } from "../components/layout/Header";
+import { Footer } from "../components/layout/Footer";
+import { Loading } from "../components/layout/Loading";
+import { WhatsAppButton } from "../components/common/WhatsAppButton";
+import { ScrollToTopButton } from "../components/common/ScrollToTopButton";
+import { GalleryHeroSection } from "../components/layout/GalleryHeroSection";
+import { TranslatableText } from "../components/common/TranslatableText";
 
 export const GalleryPage = () => {
   const [imagenes, setImagenes] = useState<GalleryImage[]>([]);

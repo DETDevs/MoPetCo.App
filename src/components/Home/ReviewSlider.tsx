@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Review } from "../../../types/review";
-import { TranslatableText } from "../TranslatableText";
+import { Review } from "../../types/review";
+import { TranslatableText } from "../common/TranslatableText";
 
 interface ReviewSliderProps {
   reviews: Review[];

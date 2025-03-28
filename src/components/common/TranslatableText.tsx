@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { translateText } from "../../Service/translationService";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { translateWithGoogle } from "../../Service/googleTranslationService";
 

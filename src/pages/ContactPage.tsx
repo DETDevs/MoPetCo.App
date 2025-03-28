@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { enviarContacto } from "../Service/contactService";
 import { ContactoRequest } from "../types/contact";
-import { Header } from "../components/ui/Header";
-import { Footer } from "../components/ui/Footer";
-import { WhatsAppButton } from "../components/ui/WhatsAppButton";
+import { Header } from "../components/layout/Header";
+import { Footer } from "../components/layout/Footer";
+import { WhatsAppButton } from "../components/common/WhatsAppButton";
 import { toast } from "react-toastify";
-import { TranslatableText } from "../components/ui/TranslatableText";
+import { TranslatableText } from "../components/common/TranslatableText";
 
 export const ContactPage = () => {
   const [formData, setFormData] = useState({

@@ -1,4 +1,4 @@
-import { TranslatableText } from "../TranslatableText";
+import { TranslatableText } from "../common/TranslatableText";
 
 
 

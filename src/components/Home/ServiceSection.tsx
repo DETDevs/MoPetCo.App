@@ -1,5 +1,5 @@
-import { ServiceCircleCard } from "../ServiceCircleCard";
-import { TranslatableText } from "../TranslatableText";
+import { ServiceCircleCard } from "../service/ServiceCircleCard";
+import { TranslatableText } from "../common/TranslatableText";
 
 
 

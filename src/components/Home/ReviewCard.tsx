@@ -1,5 +1,5 @@
 import React from "react";
-import { Review } from "../../../types/review";
+import { Review } from "../../types/review";
 
 interface Props {
   review: Review;

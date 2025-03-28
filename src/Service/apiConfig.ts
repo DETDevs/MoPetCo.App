@@ -1,2 +1,2 @@
-export const API_BASE_URL = "/api"; 
-// Esto permite que Vite redirija la petición al backend automáticamente
+// src/Service/apiConfig.ts
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;

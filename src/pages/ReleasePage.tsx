@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import { Footer } from "../components/ui/Footer";
-import { Header } from "../components/ui/Header";
-import { TranslatableText } from "../components/ui/TranslatableText";
+import { Footer } from "../components/layout/Footer";
+import { Header } from "../components/layout/Header";
+import { TranslatableText } from "../components/common/TranslatableText";
 
 import AOS from "aos";
-import { ScrollToTopButton } from "../components/ui/ScrollToTopButton";
+import { ScrollToTopButton } from "../components/common/ScrollToTopButton";
 export const ReleasePage = () => {
   useEffect(() => {
     AOS.init({ duration: 1000 }); // Animación al hacer scroll

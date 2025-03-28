@@ -1,11 +1,11 @@
-import { Footer } from "../components/ui/Footer";
-import { Header } from "../components/ui/Header";
-import { AboutSection } from "../components/ui/Home/AboutSection";
-import { GallerySection } from "../components/ui/Home/GallerySection";
-import { HomePageSection } from "../components/ui/Home/HomePageSection";
-import { ReviewList } from "../components/ui/Home/ReviewList";
-import { ServiceSection } from "../components/ui/Home/ServiceSection";
-import { WhatsAppButton } from "../components/ui/WhatsAppButton";
+import { Footer } from "../components/layout/Footer";
+import { Header } from "../components/layout/Header";
+import { AboutSection } from "../components/Home/AboutSection";
+import { GallerySection } from "../components/Home/GallerySection";
+import { HomePageSection } from "../components/Home/HomePageSection";
+import { ReviewList } from "../components/Home/ReviewList";
+import { ServiceSection } from "../components/Home/ServiceSection";
+import { WhatsAppButton } from "../components/common/WhatsAppButton";
 
 export const HomePage = () => {
   return (

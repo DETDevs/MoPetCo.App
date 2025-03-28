@@ -1,23 +1,26 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import { defineConfig, loadEnv } from 'vite'
+import react from '@vitejs/plugin-react'
 
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    proxy: {
-      // Proxy para tu backend local
-      "/api": {
-        target: "https://localhost:7188",
-        changeOrigin: true,
-        secure: false,
-      },
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd())
+  const isProduction = env.MODE === 'production'
 
-      // Proxy para Google Maps API
-      "/mapsapi": {
-        target: "https://maps.googleapis.com",
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/mapsapi/, ""), // deja la ruta original de Maps
-      },
-    },
-  },
-});
+  return {
+    base: isProduction ? './' : '/',
+    plugins: [react()],
+    server: {
+      proxy: {
+        '/api': {
+          target: env.VITE_API_BASE_URL,
+          changeOrigin: true,
+          secure: false
+        },
+        '/mapsapi': {
+          target: env.VITE_MAPS_API,
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/mapsapi/, '')
+        }
+      }
+    }
+  }
+})

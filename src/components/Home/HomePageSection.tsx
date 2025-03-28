@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BookingModal } from "../BookingModal";
+import { BookingModal } from "../common/BookingModal";
 
 export const HomePageSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

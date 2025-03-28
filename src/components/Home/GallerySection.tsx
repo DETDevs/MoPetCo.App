@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { GalleryImage } from "../../../types/gallery";
+import { GalleryImage } from "../../types/gallery";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { TranslatableText } from "../TranslatableText";
+import { TranslatableText } from "../common/TranslatableText";
 
 const firstSet: GalleryImage[] = [
   { src: "/assets/dog2.jpg", alt: "Dog 1" },

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { PawPrint } from "../../types/paw";
-import { TranslatableText } from "./TranslatableText";
+import { TranslatableText } from "../common/TranslatableText";
 
 export const Footer = () => {
   const [paws, setPaws] = useState<PawPrint[]>([]);

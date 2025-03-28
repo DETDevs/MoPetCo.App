@@ -6,7 +6,7 @@ import { ContactPage } from "./pages/ContactPage";
 import { ServicesPage } from "./pages/ServicesPage";
 import { ServiceDetailPage } from "./pages/ServiceDetailPage";
 import { GalleryPage } from "./pages/GalleryPage";
-import { NotFoundPage } from "./components/ui/NotFoundPage";
+import { NotFoundPage } from "./components/layout/NotFoundPage";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

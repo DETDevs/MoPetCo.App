@@ -1,5 +1,5 @@
 import { GalleryHeroSectionProps } from "../../types/GalleryHeroSectionProps";
-import { TranslatableText } from "./TranslatableText";
+import { TranslatableText } from "../common/TranslatableText";
 
 export const GalleryHeroSection = ({
   title,

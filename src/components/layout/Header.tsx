@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { LanguageSwitcher } from "../ui/LanguageSwitcher"; // Ajustá la ruta si es distinta
+import { LanguageSwitcher } from "../common/LanguageSwitcher"; // Ajustá la ruta si es distinta
 
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -80,7 +80,7 @@ export const Header = () => {
         </nav>
 
         {/* Language Switcher alineado a la derecha */}
-        <div className="hidden md:flex md:ml-6  items-center">
+        <div className="hidden md:flex lg:mr-4 items-center">
           <LanguageSwitcher />
         </div>
 
