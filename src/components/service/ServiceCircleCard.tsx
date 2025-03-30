@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
+import { TranslatableText } from "../common/TranslatableText";
 
 interface ServiceCircleCardProps {
   label: string;
@@ -22,7 +23,7 @@ export const ServiceCircleCard: FC<ServiceCircleCardProps> = ({
           className={`${iconClass} text-3xl text-blue-600 hover:text-blue-800 transition-colors duration-300`}
         ></i>
       </div>
-      <p className="text-center font-semibold text-black">{label}</p>
+      <p className="text-center font-semibold text-black"><TranslatableText text={label}/></p>
     </Link>
   );
 };

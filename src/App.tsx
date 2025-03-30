@@ -7,6 +7,7 @@ import { ServicesPage } from "./pages/ServicesPage";
 import { ServiceDetailPage } from "./pages/ServiceDetailPage";
 import { GalleryPage } from "./pages/GalleryPage";
 import { NotFoundPage } from "./components/layout/NotFoundPage";
+import { Footer } from "./components/layout/Footer";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -15,7 +16,7 @@ export const App = () => {
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
-        <main>
+        <main className="flex-grow">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/release-form" element={<ReleasePage />} />
@@ -30,6 +31,9 @@ export const App = () => {
             />
           </Routes>
         </main>
+
+        {/* Footer global siempre abajo */}
+        <Footer />
 
         {/* Toasts visibles en toda la app */}
         <ToastContainer

@@ -1,3 +1,4 @@
+// src/components/common/TranslatableText.tsx
 import React, { useEffect, useState } from "react";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { translateWithGoogle } from "../../Service/googleTranslationService";
@@ -9,12 +10,16 @@ interface TranslatableTextProps {
 export const TranslatableText: React.FC<TranslatableTextProps> = ({ text }) => {
   const { language } = useLanguage();
   const [translatedText, setTranslatedText] = useState<string>(text);
-  const apiKey = "AIzaSyCUknJLzYxHC6UCT4Fqn6dHywgTVcuPK0w"; // Idealmente guarda esto en .env
 
   useEffect(() => {
     const translate = async () => {
-      const translated = await translateWithGoogle(text, language, apiKey);
-      setTranslatedText(translated);
+      try {
+        const translated = await translateWithGoogle(text, language);
+        setTranslatedText(translated);
+      } catch (error) {
+        console.error("Translation failed:", error);
+        setTranslatedText(text);
+      }
     };
 
     if (language !== "en") {

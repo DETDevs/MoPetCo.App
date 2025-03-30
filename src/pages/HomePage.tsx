@@ -17,7 +17,6 @@ export const HomePage = () => {
       <GallerySection />
       <ReviewList />
       <WhatsAppButton />
-      <Footer />
     </>
   );
 };

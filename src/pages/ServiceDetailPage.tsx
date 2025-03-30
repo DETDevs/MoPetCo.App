@@ -53,7 +53,7 @@ export const ServiceDetailPage = () => {
   return (
     <>
       <Header />
-      <div className="max-w-7xl mx-auto px-4 py-12 my-20">
+      <div className="max-w-7xl mx-auto px-4 py-12 my-10">
         <div className="my-2">
           <button
             onClick={() => navigate("/service")}
@@ -79,17 +79,19 @@ export const ServiceDetailPage = () => {
             </h1>
 
             <p className="text-gray-700 leading-relaxed mb-6">
-              {servicio.descripcion}
+              <TranslatableText text={servicio.descripcion} />
             </p>
 
             {servicio.incluyeLista.length > 0 && (
               <>
                 <h2 className="text-xl font-semibold mb-2 text-blue-700">
-                  <TranslatableText text="Included"/>
+                  <TranslatableText text="Included" />
                 </h2>
                 <ul className="list-disc list-inside space-y-1 mb-6 text-gray-800">
                   {servicio.incluyeLista.map((item) => (
-                    <li key={item.id}>{item.descripcion}</li>
+                    <li key={item.id}>
+                       <TranslatableText text={item.descripcion} />
+                      </li>
                   ))}
                 </ul>
               </>
@@ -98,14 +100,14 @@ export const ServiceDetailPage = () => {
             {servicio.precio.length > 0 && (
               <div>
                 <h2 className="text-xl font-semibold mb-2 text-blue-700">
-                  <TranslatableText text="Prices"/>
+                  <TranslatableText text="Prices" />
                 </h2>
                 <ul className="list-disc list-inside space-y-1 text-gray-800">
                   {servicio.precio.map((p) => (
                     <li key={p.idPrecio}>
-                      {p.rangoPeso.nombre}:{" "}
+                      <TranslatableText text={p.rangoPeso.nombre}/>:{" "}
                       <span className="font-medium text-green-600">
-                        ${p.monto}
+                        ${p.monto.toFixed(2)}
                       </span>
                     </li>
                   ))}
@@ -116,7 +118,6 @@ export const ServiceDetailPage = () => {
         </div>
       </div>
       <WhatsAppButton />
-      <Footer />
     </>
   );
 };

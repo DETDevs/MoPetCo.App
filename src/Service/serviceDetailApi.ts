@@ -5,7 +5,7 @@ import { Servicio } from "../types/Servicio";
 export const obtenerDetallesServicio = async (): Promise<Servicio[]> => {
   try {
     const response = await axios.get<{ content: Servicio[] }>(
-      `${API_BASE_URL}/Servicio/ObtenerDetalles`
+      `${API_BASE_URL}/api/Servicio/ObtenerDetalles`
     );
     return response.data.content;
   } catch (error) {

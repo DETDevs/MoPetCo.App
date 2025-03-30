@@ -283,7 +283,6 @@ export const ReleasePage = () => {
         </div>
       </main>
       <ScrollToTopButton />
-      <Footer />
     </>
   );
 };

@@ -198,7 +198,6 @@ export const ContactPage = () => {
         </div>
       </main>
       <WhatsAppButton />
-      <Footer />
     </>
   );
 };

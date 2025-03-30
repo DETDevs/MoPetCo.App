@@ -5,7 +5,7 @@ import { GalleryImage } from "../types/galleryImage";
 export const obtenerImagenesGaleria = async (): Promise<GalleryImage[]> => {
   try {
     const response = await axios.get<{ content: GalleryImage[] }>(
-      `${API_BASE_URL}/Media/ObtenerImagenes`
+      `${API_BASE_URL}/api/Media/ObtenerImagenes`
     );
     return response.data.content;
   } catch (error) {

@@ -200,7 +200,6 @@ export const FAQsPage = () => {
         </div>
       </main>
       <ScrollToTopButton />
-      <Footer />
     </>
   );
 };

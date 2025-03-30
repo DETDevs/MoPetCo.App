@@ -7,7 +7,7 @@ export const enviarContacto = async (
 ): Promise<boolean> => {
   try {
     const response = await axios.post(
-      `${API_BASE_URL}/Contacto/EnviarEmail`,
+      `${API_BASE_URL}/api/Contacto/EnviarEmail`,
       contacto
     );
     return response.status === 200;

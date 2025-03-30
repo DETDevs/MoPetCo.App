@@ -60,8 +60,8 @@ export const ReviewSlider: React.FC<ReviewSliderProps> = ({ reviews }) => {
 
       {/* Left arrow */}
       <button
-        className="absolute top-56 transform -translate-y-1/2 z-10 bg-white shadow-md rounded-full p-2 hover:bg-gray-100 transition
-             left-0 sm:left-6 md:left-1/1 lg:left-4 xl:left-[4%] 2xl:left-[10%]"
+        className="absolute top-60 transform -translate-y-1/2 z-10 bg-white shadow-md rounded-full p-2 hover:bg-gray-100 transition
+             left-0 sm:left-6 md:left-1/1 lg:left-4 xl:left-[0%] 2xl:left-[0%]"
         onClick={handlePrev}
       >
         <i className="fas fa-chevron-left"></i>
@@ -87,7 +87,7 @@ export const ReviewSlider: React.FC<ReviewSliderProps> = ({ reviews }) => {
               <div>
                 <p className="font-semibold">{review.author_name}</p>
                 <p className="text-sm text-gray-500">
-                  {review.relative_time_description}
+                <TranslatableText text={review.relative_time_description}/>
                 </p>
               </div>
             </div>
@@ -96,15 +96,15 @@ export const ReviewSlider: React.FC<ReviewSliderProps> = ({ reviews }) => {
                 <i key={idx} className="fas fa-star"></i>
               ))}
             </div>
-            <p className="text-gray-700 text-sm line-clamp-5">{review.text}</p>
+            <p className="text-gray-700 text-sm line-clamp-5"><TranslatableText text={review.text}/></p>
           </div>
         ))}
       </div>
 
       {/* Right arrow */}
       <button
-        className="absolute top-56 transform -translate-y-1/2 z-10 bg-white shadow-md rounded-full p-2 hover:bg-gray-100 transition
-             right-0 sm:right-4 md:right-1/1 lg:right-4 xl:right-[4%] 2xl:right-[10%]"
+        className="absolute top-60 transform -translate-y-1/2 z-10 bg-white shadow-md rounded-full p-2 hover:bg-gray-100 transition
+             right-0 sm:right-4 md:right-1/1 lg:right-4 xl:right-[0%] 2xl:right-[0%]"
         onClick={handleNext}
       >
         <i className="fas fa-chevron-right"></i>

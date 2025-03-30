@@ -42,7 +42,7 @@ export const GalleryPage = () => {
 
       <GalleryHeroSection title="Gallery of Grooming" subtitle="Experience the magic of our mobile pet spa" videoSrc="/assets/herogallery.mp4"/>
 
-      <div className="max-w-7xl mx-auto px-4 py-12 mt-20">
+      <div className="max-w-7xl mx-auto px-4 py-12">
         <h2
           className="text-xl sm:text-2xl font-bold text-center mb-8"
           data-aos="fade-up"
@@ -89,7 +89,6 @@ export const GalleryPage = () => {
       </div>
       <ScrollToTopButton />
       <WhatsAppButton />
-      <Footer />
     </>
   );
 };
