@@ -4,7 +4,7 @@ interface Props {
   
   export const SectionTitle = ({ children }: Props) => {
     return (
-      <div className="relative text-center mb-16 md:mb-0">
+      <div className="relative text-center mb-16 md:mb-6">
         <div className="flex justify-center mb-2">
           <img
             src="/assets/pawprint.png"
