@@ -5,6 +5,7 @@ import { TranslatableText } from "../components/common/TranslatableText";
 
 import AOS from "aos";
 import { ScrollToTopButton } from "../components/common/ScrollToTopButton";
+import { SectionTitle } from "../components/common/SectionTitle";
 export const ReleasePage = () => {
   useEffect(() => {
     AOS.init({ duration: 1000 }); // Animación al hacer scroll
@@ -19,8 +20,8 @@ export const ReleasePage = () => {
           className="max-w-4xl mx-auto text-gray-800 space-y-6"
           data-aos="fade-down"
         >
-          <h1 className="text-3xl font-bold text-center mb-8 border-b-2 border-pink-400 pb-4">
-            <TranslatableText text="MoPetCo Grooming Release Form" />
+          <h1 className="text-3xl font-bold text-center mb-8">
+          <SectionTitle><TranslatableText text="MoPetCo Grooming Release Form" /> </SectionTitle>
           </h1>
 
           <p className="text-lg leading-relaxed">

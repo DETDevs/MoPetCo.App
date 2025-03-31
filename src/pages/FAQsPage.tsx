@@ -4,6 +4,7 @@ import { Header } from "../components/layout/Header";
 import AOS from "aos";
 import { ScrollToTopButton } from "../components/common/ScrollToTopButton";
 import { TranslatableText } from "../components/common/TranslatableText";
+import { SectionTitle } from "../components/common/SectionTitle";
 
 export const FAQsPage = () => {
   useEffect(() => {
@@ -18,8 +19,10 @@ export const FAQsPage = () => {
           className="max-w-4xl mx-auto text-gray-800 space-y-6"
           data-aos="fade-down"
         >
-          <h1 className="text-3xl font-bold text-center mb-8 border-b-2 border-pink-400 pb-4">
-            <TranslatableText text="About Mobile Grooming" />
+          <h1 className="text-3xl font-bold text-center mb-8 pb-4">
+            <SectionTitle>
+              <TranslatableText text="About Mobile Grooming" />
+            </SectionTitle>
           </h1>
 
           <p className="text-lg leading-relaxed">

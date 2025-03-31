@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Review } from "../../types/review";
 import { TranslatableText } from "../common/TranslatableText";
+import { SectionTitle } from "../common/SectionTitle";
 
 interface ReviewSliderProps {
   reviews: Review[];
@@ -50,11 +51,17 @@ export const ReviewSlider: React.FC<ReviewSliderProps> = ({ reviews }) => {
       {/* Title and description */}
       <div className="text-center my-8">
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">
-          <TranslatableText text="What Our Clients Are Saying"/>
+          <SectionTitle>
+            {" "}
+            <TranslatableText text="What Our Clients Are Saying" />{" "}
+          </SectionTitle>
         </h2>
         <p className="text-gray-600 text-sm sm:text-base">
-          <TranslatableText text="Discover why pet lovers trust MoPetCo for their furry friends'
-          grooming needs"/> 🐶🐱
+          <TranslatableText
+            text="Discover why pet lovers trust MoPetCo for their furry friends'
+          grooming needs"
+          />{" "}
+          🐶🐱
         </p>
       </div>
 
@@ -87,7 +94,7 @@ export const ReviewSlider: React.FC<ReviewSliderProps> = ({ reviews }) => {
               <div>
                 <p className="font-semibold">{review.author_name}</p>
                 <p className="text-sm text-gray-500">
-                <TranslatableText text={review.relative_time_description}/>
+                  <TranslatableText text={review.relative_time_description} />
                 </p>
               </div>
             </div>
@@ -96,7 +103,9 @@ export const ReviewSlider: React.FC<ReviewSliderProps> = ({ reviews }) => {
                 <i key={idx} className="fas fa-star"></i>
               ))}
             </div>
-            <p className="text-gray-700 text-sm line-clamp-5"><TranslatableText text={review.text}/></p>
+            <p className="text-gray-700 text-sm line-clamp-5">
+              <TranslatableText text={review.text} />
+            </p>
           </div>
         ))}
       </div>
@@ -119,7 +128,7 @@ export const ReviewSlider: React.FC<ReviewSliderProps> = ({ reviews }) => {
           className="inline-flex items-center bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 transition-shadow shadow-lg hover:shadow-xl font-medium text-sm"
         >
           <i className="fab fa-google mr-2 text-base"></i>
-          <TranslatableText text="See all reviews on Google"/>
+          <TranslatableText text="See all reviews on Google" />
         </a>
       </div>
     </div>

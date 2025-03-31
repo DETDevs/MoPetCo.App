@@ -6,12 +6,15 @@ export const HomePageSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <div className="relative bg-blue-200 w-full min-h-[60vh] px-4 flex items-center justify-center">
+    <div className="relative bg-blue-200 w-full min-h-[60vh] px-4 flex items-center justify-center overflow-hidden">
       {/* Grid texto */}
       <div className="text-center space-y-3 max-w-md mx-auto z-0">
         <h1 className="z-0 text-3xl md:text-[2.5rem] lg:text-[3rem] font-extrabold text-black leading-8 md:leading-none">
-        <TranslatableText text="Only the best"/> <br className="block md:hidden" /> <TranslatableText text="for you"/>{" "}
-          <span className="text-black"><TranslatableText text="friend"/></span>
+          <TranslatableText text="Only the best" />{" "}
+          <br className="block md:hidden" /> <TranslatableText text="for you" />{" "}
+          <span className="text-black">
+            <TranslatableText text="friend" />
+          </span>
         </h1>
         <p className="text-base md:text-lg lg:text-xl text-gray-700">
           Servicing Miami Dade & Broward, FL
