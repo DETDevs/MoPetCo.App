@@ -37,7 +37,6 @@ export const ServiceDetailPage = () => {
   if (!servicio) {
     return (
       <>
-        <Header />
         <NotFoundMessage
           imageUrl="/assets/saddoggi.gif"
           title="Oops! Service not found 🐾"
@@ -45,7 +44,6 @@ export const ServiceDetailPage = () => {
           buttonText="Go back to Services"
           redirectPath="/service"
         />
-        <Footer />
       </>
     );
   }

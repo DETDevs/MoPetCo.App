@@ -14,6 +14,7 @@ export const LanguageSwitcher = () => {
       cancel: "Cancel",
       nextLang: "es",
       flag: "/assets/flag-spain.png",
+      buttonAriaLabel: "Change language to Spanish",
     },
     es: {
       switchTo: "Cambiar a Inglés",
@@ -23,6 +24,7 @@ export const LanguageSwitcher = () => {
       cancel: "Cancelar",
       nextLang: "en",
       flag: "/assets/flag-usa.png",
+      buttonAriaLabel: "Change language to Spanish",
     },
   };
 
@@ -51,14 +53,16 @@ export const LanguageSwitcher = () => {
   return (
     <button
       onClick={handleLanguageChange}
-      className="mx-2 focus:outline-none"
+      className="flex items-center gap-2 bg-white border border-gray-300
+               rounded hover:bg-gray-50 transition-colors focus:outline-none
+               px-2 py-1 text-sm md:px-1 md:py-1 md:text-xs md:mx-2"
       title={t.switchTo}
+      aria-label={t.buttonAriaLabel}
     >
-      <img
-        src={t.flag}
-        alt={t.switchTo}
-        style={{ width: "30px", height: "30px", borderRadius: "4px" }}
-      />
+      <img src={t.flag} alt="" className="w-5 h-5" aria-hidden="true" />
+      <span className="  md:hidden lg:inline font-medium text-gray-600 whitespace-nowrap">
+        {t.switchTo}
+      </span>
     </button>
   );
 };

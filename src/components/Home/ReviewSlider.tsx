@@ -48,33 +48,38 @@ export const ReviewSlider: React.FC<ReviewSliderProps> = ({ reviews }) => {
 
   return (
     <div className="relative px-4 sm:px-10">
-      {/* Title and description */}
+      {/* Título y subtítulo */}
       <div className="text-center my-8">
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">
-          <SectionTitle>
-            {" "}
-            <TranslatableText text="What Our Clients Are Saying" />{" "}
-          </SectionTitle>
-        </h2>
-        <p className="text-gray-600 text-sm sm:text-base">
-          <TranslatableText
-            text="Discover why pet lovers trust MoPetCo for their furry friends'
-          grooming needs"
-          />{" "}
+        <SectionTitle>
+          <TranslatableText text="What Our Clients Are Saying" />
+        </SectionTitle>
+        <p className="text-gray-600 text-sm font-bold sm:text-base">
+          <TranslatableText text="Discover why pet lovers trust MoPetCo for their furry friends' grooming needs" />{" "}
           🐶🐱
         </p>
       </div>
 
-      {/* Left arrow */}
+      {/* Botón - Flecha Izquierda */}
       <button
-        className="absolute top-60 transform -translate-y-1/2 z-10 bg-white shadow-md rounded-full p-2 hover:bg-gray-100 transition
-             left-0 sm:left-6 md:left-1/1 lg:left-4 xl:left-[0%] 2xl:left-[0%]"
+        className="
+          absolute
+          top-[60%]
+          -translate-y-1/2
+          left-2
+          z-10
+          bg-white
+          shadow-md
+          rounded-full
+          p-2
+          hover:bg-gray-100
+          transition
+        "
         onClick={handlePrev}
       >
         <i className="fas fa-chevron-left"></i>
       </button>
 
-      {/* Review cards container */}
+      {/* Contenedor de reviews */}
       <div className="flex justify-center gap-4">
         {visibleReviews.map((review, i) => (
           <div
@@ -110,16 +115,27 @@ export const ReviewSlider: React.FC<ReviewSliderProps> = ({ reviews }) => {
         ))}
       </div>
 
-      {/* Right arrow */}
+      {/* Botón - Flecha Derecha */}
       <button
-        className="absolute top-60 transform -translate-y-1/2 z-10 bg-white shadow-md rounded-full p-2 hover:bg-gray-100 transition
-             right-0 sm:right-4 md:right-1/1 lg:right-4 xl:right-[0%] 2xl:right-[0%]"
+        className="
+          absolute
+          top-[60%]
+          -translate-y-1/2
+          right-2
+          z-10
+          bg-white
+          shadow-md
+          rounded-full
+          p-2
+          hover:bg-gray-100
+          transition
+        "
         onClick={handleNext}
       >
         <i className="fas fa-chevron-right"></i>
       </button>
 
-      {/* Google Reviews button */}
+      {/* Botón ver más en Google */}
       <div className="text-center my-6">
         <a
           href="https://www.google.com/maps/place/?q=place_id:ChIJ4xNFOrG32YgROYhpWhMUv9E"

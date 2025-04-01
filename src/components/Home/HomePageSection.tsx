@@ -6,17 +6,32 @@ export const HomePageSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <div className="relative bg-blue-200 w-full min-h-[60vh] px-4 flex items-center justify-center overflow-hidden">
-      {/* Grid texto */}
-      <div className="text-center space-y-3 max-w-md mx-auto z-0">
-        <h1 className="z-0 text-3xl md:text-[2.5rem] lg:text-[3rem] font-extrabold text-black leading-8 md:leading-none">
+    <div className="relative w-full min-h-[60vh] flex items-center justify-center overflow-hidden">
+      {/* Video de fondo */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0"
+      >
+        <source src="/assets/home.mp4" type="video/mp4" />
+        Tu navegador no soporta el video.
+      </video>
+
+      {/* Overlay para contraste si lo necesitás */}
+      <div className="absolute inset-0 bg-black/30 z-0"></div>
+
+      {/* Contenido sobre el video */}
+      <div className="text-center space-y-3 max-w-md mx-auto z-10 px-4">
+        <h1 className="text-3xl md:text-[2.5rem] lg:text-[3rem] font-extrabold text-white leading-8 md:leading-none">
           <TranslatableText text="Only the best" />{" "}
           <br className="block md:hidden" /> <TranslatableText text="for you" />{" "}
-          <span className="text-black">
-            <TranslatableText text="friend" />
+          <span className="text-white">
+            <TranslatableText text="furry friend" />
           </span>
         </h1>
-        <p className="text-base md:text-lg lg:text-xl text-gray-700">
+        <p className="text-base md:text-lg lg:text-xl text-white">
           Servicing Miami Dade & Broward, FL
         </p>
         <button
@@ -27,20 +42,7 @@ export const HomePageSection = () => {
         </button>
       </div>
 
-      {/* Imagen perrito esquina */}
-      <img
-        src="/assets/dogHomgePage.png"
-        alt="Cute Dog"
-        className="absolute top-4 md:-top-0 right-0 w-32 md:w-40 h-auto z-0 animate-puppy-fadeder"
-      />
-
-      {/* Imagen perrito esquina */}
-      <img
-        src="/assets/dogHomgePage.png"
-        alt="Cute Dog"
-        className="absolute -bottom-0 left-0 w-32 md:w-40 h-auto z-0 animate-puppy-fadeizq"
-      />
-
+      {/* Modal de agendar cita */}
       <BookingModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

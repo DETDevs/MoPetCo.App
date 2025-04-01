@@ -31,11 +31,8 @@ export const App = () => {
             />
           </Routes>
         </main>
-
-        {/* Footer global siempre abajo */}
         <Footer />
 
-        {/* Toasts visibles en toda la app */}
         <ToastContainer
           position="top-center"
           autoClose={3000}
