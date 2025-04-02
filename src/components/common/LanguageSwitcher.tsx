@@ -7,20 +7,20 @@ export const LanguageSwitcher = () => {
 
   const translations = {
     en: {
-      switchTo: "Change to Spanish",
-      title: "Change Language",
-      text: "Do you want to switch to Spanish?",
-      confirm: "Yes, switch",
+      switchTo: "Cambiar a español",
+      title: "Cambiar idioma",
+      text: "¿Deseas cambiar el idioma a Español?",
+      confirm: "Sí, cambiar",
       cancel: "Cancel",
       nextLang: "es",
       flag: "/assets/flag-spain.png",
       buttonAriaLabel: "Change language to Spanish",
     },
     es: {
-      switchTo: "Cambiar a Inglés",
-      title: "Cambiar idioma",
-      text: "¿Deseas cambiar el idioma a Inglés?",
-      confirm: "Sí, cambiar",
+      switchTo: "Change to English",
+      title: "Change Language",
+      text: "Do you want to switch to English?",
+      confirm: "Yes, switch",
       cancel: "Cancelar",
       nextLang: "en",
       flag: "/assets/flag-usa.png",
@@ -55,11 +55,11 @@ export const LanguageSwitcher = () => {
       onClick={handleLanguageChange}
       className="flex items-center gap-2 bg-white border border-gray-300
                rounded hover:bg-gray-50 transition-colors focus:outline-none
-               px-2 py-1 text-sm md:px-1 md:py-1 md:text-xs md:mx-2"
+               px-2 py-1 text-sm md:px-2 md:py-1 md:text-xs md:mx-2 lg:w-[9rem]"
       title={t.switchTo}
       aria-label={t.buttonAriaLabel}
     >
-      <img src={t.flag} alt="" className="w-5 h-5" aria-hidden="true" />
+      <img src={t.flag} alt="" className="w-6 h-5" aria-hidden="true" />
       <span className="  md:hidden lg:inline font-medium text-gray-600 whitespace-nowrap">
         {t.switchTo}
       </span>

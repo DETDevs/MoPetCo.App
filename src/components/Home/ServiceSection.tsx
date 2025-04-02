@@ -21,14 +21,14 @@ export const ServiceSection = () => {
   }, []);
 
   return (
-    <section className="py-16 px-6 max-w-7xl mx-auto">
+    <section className="py-16 px-2 max-w-5xl mx-auto flex flex-col justify-center items-center">
       <SectionTitle>Our Services</SectionTitle>
 
-      <p className="text-center max-w-3xl mx-auto text-gray-600 mt-4 mb-10">
+      <p className="text-content w-[85%]">
         <TranslatableText text="All grooming options include a complete organic and hypoallergenic bath as well as the thorough nose-to-tail attention outlined below. Your groomer will have a full consultation with you before getting started to review any additional costs. Work from start to finish usually takes about an hour to an hour and a half. Pricing may vary due to size, the condition of the coat, matting, knots and length of hair." />
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 w-100 justify-items-center">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 w-100 justify-items-center">
         {servicios.map((servicio) => (
           <Link
             key={servicio.idServicio}

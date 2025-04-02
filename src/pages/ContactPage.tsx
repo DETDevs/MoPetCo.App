@@ -2,11 +2,12 @@ import { useState } from "react";
 import { enviarContacto } from "../Service/contactService";
 import { ContactoRequest } from "../types/contact";
 import { Header } from "../components/layout/Header";
-import { Footer } from "../components/layout/Footer";
-import { WhatsAppButton } from "../components/common/WhatsAppButton";
 import { toast } from "react-toastify";
 import { TranslatableText } from "../components/common/TranslatableText";
 import { SectionTitle } from "../components/common/SectionTitle";
+import { ReCAPTCHA } from "react-google-recaptcha";
+
+const SITE_KEY = "6Lf--gYrAAAAACN80_qyxiqyk2EQhgxx-c7G_MUV";
 
 export const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -19,6 +20,8 @@ export const ContactPage = () => {
     mensaje: "",
   });
 
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -29,13 +32,18 @@ export const ContactPage = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (!captchaToken) {
+      toast.error("Please verify that you're not a robot.");
+      return;
+    }
+
     const contacto: ContactoRequest = {
       idContacto: 0,
       nombre: formData.nombre,
       direccion: formData.direccion,
       ciudad: formData.ciudad,
       codigoPostal: formData.codigoPostal,
-      number: formData.numero, // <- este nombre debe ser `number` para coincidir con el backend
+      number: formData.numero,
       correo: formData.correo,
       mensaje: formData.mensaje,
       fechaEnvio: new Date().toISOString(),
@@ -54,6 +62,7 @@ export const ContactPage = () => {
         correo: "",
         mensaje: "",
       });
+      setCaptchaToken(null);
     } else {
       toast.error(
         "There was an error sending your message. Please try again later."
@@ -73,8 +82,8 @@ export const ContactPage = () => {
         <p className="text-center max-w-3xl mx-auto mb-10 text-gray-600">
           <TranslatableText
             text="Welcome to MoPetCo Guest Services. We’re always happy to hear from you
-          and will do our best to respond to your inquiry in a timely manner. To
-          contact us please fill out our Guest Service form below."
+            and will do our best to respond to your inquiry in a timely manner. To
+            contact us please fill out our Guest Service form below."
           />
         </p>
 
@@ -153,6 +162,15 @@ export const ContactPage = () => {
                 className="w-full p-2 rounded text-black"
               ></textarea>
 
+              {/* CAPTCHA */}
+              <div className="flex justify-center">
+                <ReCAPTCHA
+                  sitekey={SITE_KEY}
+                  onChange={(token) => setCaptchaToken(token)}
+                  theme="dark"
+                />
+              </div>
+
               <button
                 type="submit"
                 className="bg-black text-white px-4 py-2 rounded font-bold hover:bg-gray-800"
@@ -164,7 +182,9 @@ export const ContactPage = () => {
 
           {/* Información de contacto */}
           <div className="flex flex-col justify-center space-y-6">
-            <h2 className="text-2xl font-bold text-gray-800">Get in Touch</h2>
+            <h2 className="text-2xl font-bold text-gray-800">
+              <TranslatableText text="Get in Touch" />
+            </h2>
             <p className="text-gray-600">
               <TranslatableText
                 text="If you would like to speak with a team member, please Call or Text
@@ -189,7 +209,7 @@ export const ContactPage = () => {
             </p>
 
             <div className="space-y-4 text-gray-800">
-              <div className="flex items-center space-x-3">
+              {/* <div className="flex items-center space-x-3">
                 <i className="fas fa-map-marker-alt text-pink-500 text-xl"></i>
                 <a
                   href="https://www.google.com/maps/place/2500+SW+22nd+Ter+%23721,+Fort+Lauderdale,+FL+33312"
@@ -199,7 +219,7 @@ export const ContactPage = () => {
                 >
                   2500 SW 22nd Ter #721, Fort Lauderdale, FL 33312
                 </a>
-              </div>
+              </div> */}
               <div className="flex items-center space-x-3">
                 <i className="fas fa-phone-alt text-pink-500 text-xl"></i>
                 <a href="tel:+19542719939" className="hover:underline">
@@ -216,7 +236,6 @@ export const ContactPage = () => {
           </div>
         </div>
       </main>
-      <WhatsAppButton />
     </>
   );
 };

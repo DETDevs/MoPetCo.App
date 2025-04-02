@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { LanguageSwitcher } from "../common/LanguageSwitcher"; // Ajustá la ruta si es distinta
+import { TranslatableText } from "../common/TranslatableText";
 
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const staticPaws = [
-    { id: 1, top: "5px", left: "20%" },
-    { id: 2, top: "10px", left: "45%" },
-    { id: 3, top: "5px", left: "70%" },
-    { id: 4, top: "15px", left: "85%" },
+    { id: 1, top: "5px", left: "0%" },
+    { id: 2, top: "0px", left: "45%" },
+    { id: 3, top: "45px", left: "50%" },
+    { id: 4, top: "0px", left: "75%" },
   ];
 
   return (
@@ -16,11 +17,13 @@ export const Header = () => {
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between relative">
         {/* Logo */}
         <div>
-          <img
-            src="/assets/cropped-M-Logo.png"
-            alt="MoPetCo Logo"
-            className="h-10 w-auto"
-          />
+          <a href="/">
+            <img
+              src="/assets/cropped-M-Logo.png"
+              alt="MoPetCo Logo"
+              className="h-10 w-auto"
+            />
+          </a>
         </div>
 
         {/* Huellitas Estáticas */}
@@ -29,58 +32,59 @@ export const Header = () => {
             key={paw.id}
             src="/assets/pawprint.png"
             alt="Paw Print"
-            className="w-5 h-5 absolute opacity-60"
+            className="w-5 h-5 absolute opacity-30"
             style={{ top: paw.top, left: paw.left }}
           />
         ))}
 
-        
-
         {/* Navegación Desktop */}
-        <nav className="hidden md:flex space-x-6 items-center z-10">
-          <a href="/" className="text-gray-700 hover:text-blue-600 font-medium">
+        <nav className="hidden md:flex space-x-6 md:space-x-2 lg:space-x-6  items-center z-10">
+          <a
+            href="/"
+            className="text-gray-700 hover:text-blue-600 font-medium md:text-sm"
+          >
             Home
           </a>
           <a
             href="#about"
-            className="text-gray-700 hover:text-blue-600 font-medium"
+            className="text-gray-700 hover:text-blue-600 font-medium text-center md:text-sm"
           >
-            About
+            <TranslatableText text="About" />
           </a>
           <a
             href="/service"
-            className="text-gray-700 hover:text-blue-600 font-medium"
+            className="text-gray-700 hover:text-blue-600 font-medium text-center md:text-sm"
           >
-            Services
+            <TranslatableText text="Services" />
           </a>
           <a
             href="/gallery"
-            className="text-gray-700 hover:text-blue-600 font-medium"
+            className="text-gray-700 hover:text-blue-600 font-medium text-center md:text-sm"
           >
-            Gallery
+            <TranslatableText text="Gallery" />
           </a>
           <a
             href="/contact"
-            className="text-gray-700 hover:text-blue-600 font-medium"
+            className="text-gray-700 hover:text-blue-600 font-medium text-center md:text-sm"
           >
-            Contact
+            <TranslatableText text="Contact" />
           </a>
           <a
             href="/release-form"
-            className="text-gray-700 hover:text-blue-600 font-medium"
+            className="text-gray-700 hover:text-blue-600 font-medium text-center md:text-sm"
           >
-            Release Form
+            <TranslatableText text="Release Form" />
           </a>
           <a
             href="/faqs"
-            className="text-gray-700 hover:text-blue-600 font-medium"
+            className="text-gray-700 hover:text-blue-600 font-medium md:text-sm"
           >
-            FAQs
+            <TranslatableText text="FAQs" />
           </a>
         </nav>
 
         {/* Language Switcher alineado a la derecha */}
-        <div className="hidden md:flex lg:mr-4 items-center">
+        <div className="hidden md:flex lg:mr-2 items-center">
           <LanguageSwitcher />
         </div>
 
@@ -124,42 +128,42 @@ export const Header = () => {
             onClick={() => setMenuOpen(false)}
             className="text-gray-700 hover:text-blue-600 font-medium text-lg"
           >
-            About Us
+            <TranslatableText text="About Us"/>
           </a>
           <a
             href="/service"
             onClick={() => setMenuOpen(false)}
             className="text-gray-700 hover:text-blue-600 font-medium text-lg"
           >
-            Services
+            <TranslatableText text="Services"/>
           </a>
           <a
             href="/gallery"
             onClick={() => setMenuOpen(false)}
             className="text-gray-700 hover:text-blue-600 font-medium text-lg"
           >
-            Gallery
+            <TranslatableText text="Gallery"/>
           </a>
           <a
             href="/contact"
             onClick={() => setMenuOpen(false)}
             className="text-gray-700 hover:text-blue-600 font-medium text-lg"
           >
-            Contact
+            <TranslatableText text="Contact"/>
           </a>
           <a
             href="/release-form"
             onClick={() => setMenuOpen(false)}
             className="text-gray-700 hover:text-blue-600 font-medium text-lg"
           >
-            Release Form
+            <TranslatableText text="Release Form"/>
           </a>
           <a
             href="/faqs"
             onClick={() => setMenuOpen(false)}
             className="text-gray-700 hover:text-blue-600 font-medium text-lg"
           >
-            FAQs
+            <TranslatableText text="FAQs"/>
           </a>
 
           {/* Language Switcher para Mobile */}

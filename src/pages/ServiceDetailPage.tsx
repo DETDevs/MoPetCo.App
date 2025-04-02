@@ -3,10 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { obtenerDetallesServicio } from "../Service/serviceDetailApi";
 import { Servicio } from "../types/Servicio";
 import { Header } from "../components/layout/Header";
-import { Footer } from "../components/layout/Footer";
 import { Loading } from "../components/layout/Loading";
 import { NotFoundMessage } from "../components/layout/NotFoundMessage";
-import { WhatsAppButton } from "../components/common/WhatsAppButton";
 import { TranslatableText } from "../components/common/TranslatableText";
 
 export const ServiceDetailPage = () => {
@@ -21,12 +19,10 @@ export const ServiceDetailPage = () => {
         const data = await obtenerDetallesServicio();
         const found = data.find((s) => s.idServicio.toString() === serviceId);
         setServicio(found || null);
-        setTimeout(() => {
-          setLoading(false);
-        }, 500);
       } catch (error) {
         console.error("Error loading service details", error);
-        setServicio(null);
+      } finally {
+        setTimeout(() => setLoading(false), 500);
       }
     };
     fetchData();
@@ -88,8 +84,8 @@ export const ServiceDetailPage = () => {
                 <ul className="list-disc list-inside space-y-1 mb-6 text-gray-800">
                   {servicio.incluyeLista.map((item) => (
                     <li key={item.id}>
-                       <TranslatableText text={item.descripcion} />
-                      </li>
+                      <TranslatableText text={item.descripcion} />
+                    </li>
                   ))}
                 </ul>
               </>
@@ -103,7 +99,7 @@ export const ServiceDetailPage = () => {
                 <ul className="list-disc list-inside space-y-1 text-gray-800">
                   {servicio.precio.map((p) => (
                     <li key={p.idPrecio}>
-                      <TranslatableText text={p.rangoPeso.nombre}/>:{" "}
+                      <TranslatableText text={p.rangoPeso.nombre} />:{" "}
                       <span className="font-medium text-green-600">
                         ${p.monto.toFixed(2)}
                       </span>
@@ -115,7 +111,6 @@ export const ServiceDetailPage = () => {
           </div>
         </div>
       </div>
-      <WhatsAppButton />
     </>
   );
 };

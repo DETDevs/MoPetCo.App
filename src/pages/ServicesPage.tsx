@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { obtenerServicios } from "../Service/serviceApi";
 import { Servicio } from "../types/Servicio";
 import { Header } from "../components/layout/Header";
 import { Loading } from "../components/layout/Loading";
-import { WhatsAppButton } from "../components/common/WhatsAppButton";
+import { obtenerDetallesServicio } from "../Service/serviceDetailApi";
 import { TranslatableText } from "../components/common/TranslatableText";
 import { PawprintsDecor } from "../components/common/PawprintsDecor";
 import { SectionTitle } from "../components/common/SectionTitle";
@@ -15,11 +14,15 @@ export const ServicesPage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await obtenerServicios();
-      setServicios(data);
-      setTimeout(() => {
-        setLoading(false);
-      }, 500);
+      try {
+        const data = await obtenerDetallesServicio();
+        setServicios(data);
+        setTimeout(() => {
+          setLoading(false);
+        }, 500);
+      } catch (error) {
+        console.error("Error fetching services", error);
+      }
     };
     fetchData();
   }, []);
@@ -35,23 +38,29 @@ export const ServicesPage = () => {
 
         {/* Título principal */}
         <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-800 tracking-wide mb-6 drop-shadow">
-          Services Pet Care with Love
+          <TranslatableText text="Pet Care Services with Love" />
         </h1>
 
         {/* Párrafos descriptivos */}
         <div className="text-gray-700 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto space-y-4 tracking-wide">
-          <p>
-            All grooming options include a complete organic and hypoallergenic
-            bath as well as the thorough nose-to-tail attention outlined below.
+          <p className="text-center text-content">
+            <TranslatableText
+              text="All grooming options include a complete organic and hypoallergenic
+            bath as well as the thorough nose-to-tail attention outlined below."
+            />
           </p>
-          <p>
-            Your groomer will have a full consultation with you before getting
-            started to review any additional costs.
+          <p className="text-content">
+            <TranslatableText
+              text="Your groomer will have a full consultation with you before getting
+            started to review any additional costs."
+            />
           </p>
-          <p>
-            Work from start to finish usually takes about an hour to an hour and
+          <p className="text-content">
+            <TranslatableText
+              text="Work from start to finish usually takes about an hour to an hour and
             a half. Pricing may vary depending on size, matting, coat condition
-            and length of hair.
+            and length of hair."
+            />
           </p>
         </div>
       </section>
@@ -93,8 +102,6 @@ export const ServicesPage = () => {
           ))}
         </div>
       </section>
-
-      <WhatsAppButton />
     </>
   );
 };

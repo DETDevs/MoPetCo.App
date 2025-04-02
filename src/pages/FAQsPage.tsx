@@ -1,8 +1,6 @@
 import { useEffect } from "react";
-import { Footer } from "../components/layout/Footer";
 import { Header } from "../components/layout/Header";
 import AOS from "aos";
-import { ScrollToTopButton } from "../components/common/ScrollToTopButton";
 import { TranslatableText } from "../components/common/TranslatableText";
 import { SectionTitle } from "../components/common/SectionTitle";
 
@@ -25,13 +23,13 @@ export const FAQsPage = () => {
             </SectionTitle>
           </h1>
 
-          <p className="text-lg leading-relaxed">
+          <p className="text-content">
             <strong>
               <TranslatableText text="Why choose mobile pet grooming?" />
             </strong>
           </p>
 
-          <p className="text-lg leading-relaxed">
+          <p className="text-content">
             <TranslatableText
               text="Mobile pet grooming provides a stress-free experience for both you
             and your pet. No more struggling with transportation or exposure to
@@ -42,7 +40,7 @@ export const FAQsPage = () => {
             />
           </p>
 
-          <p>
+          <p className="text-content">
             <TranslatableText
               text="We offer one-on-one service with the same groomer each time,
             ensuring a familiar and comfortable experience. Our Super luxury
@@ -51,7 +49,7 @@ export const FAQsPage = () => {
             />
           </p>
 
-          <p>
+           <p className="text-content">
             <TranslatableText
               text="With a clean, professional, and state-of-the-art grooming van, we
             guarantee a relaxing, high-quality, and stress-free grooming
@@ -59,7 +57,7 @@ export const FAQsPage = () => {
             />
           </p>
 
-          <p>
+           <p className="text-content">
             <strong>
               <TranslatableText
                 text="What can I expect when booking an appointment with Hair of the
@@ -68,7 +66,7 @@ export const FAQsPage = () => {
             </strong>
           </p>
 
-          <p>
+           <p className="text-content">
             <TranslatableText
               text="At MoPetCo, we provide a 5-star pet grooming experience with the
             highest standards of care for both pets and their owners. Our
@@ -79,7 +77,7 @@ export const FAQsPage = () => {
             />
           </p>
 
-          <p>
+           <p className="text-content">
             <TranslatableText
               text="During your first visit, we conduct a thorough nose-to-tail
             consultation to discuss your pet’s needs. Once you're satisfied, we
@@ -87,13 +85,13 @@ export const FAQsPage = () => {
             />
           </p>
 
-          <p>
+           <p className="text-content">
             <strong>
               <TranslatableText text="What areas does Hair of the Dog service?" />
             </strong>
           </p>
 
-          <p>
+           <p className="text-content">
             <TranslatableText
               text="We currently serve Miami-Dade from Pinecrest through Broward County
             and extend into Palm Beach County up to Okeechobee Blvd. As our
@@ -104,24 +102,24 @@ export const FAQsPage = () => {
             />
           </p>
 
-          <p>
+           <p className="text-content">
             <strong>Do you use our electricity or water?</strong>
           </p>
 
-          <p>
+           <p className="text-content">
             <TranslatableText
               text="We are completely self-sufficient and completely green too. All we
             leave behind is a clean, happy pet!"
             />
           </p>
 
-          <p>
+           <p className="text-content">
             <strong>
               <TranslatableText text="Can we be inside the Van while the groomer is at work?" />
             </strong>
           </p>
 
-          <p>
+           <p className="text-content">
             <TranslatableText
               text="You're welcome to take a look inside our mobile grooming van at any
             time; however, for safety and insurance reasons, only MoPetCo staff
@@ -129,7 +127,7 @@ export const FAQsPage = () => {
             />
           </p>
 
-          <p>
+           <p className="text-content">
             <TranslatableText
               text="Additionally, some pets may become anxious or restless when they see
             their owners during the grooming process, making it challenging to
@@ -139,13 +137,13 @@ export const FAQsPage = () => {
             />
           </p>
 
-          <p>
+           <p className="text-content">
             <strong>
               <TranslatableText text="How old does an animal have to be to have their first spa day?" />
             </strong>
           </p>
 
-          <p>
+           <p className="text-content">
             <TranslatableText
               text="An early start on a grooming regimen helps the groomer and your
             fur-friend start off on the right paw. Grooming is something your
@@ -156,13 +154,13 @@ export const FAQsPage = () => {
             />
           </p>
 
-          <p>
+           <p className="text-content">
             <strong>
               <TranslatableText text="Can I supply my own shampoo?" />
             </strong>
           </p>
 
-          <p>
+           <p className="text-content">
             <TranslatableText
               text="Absolutely! We understand that you want the very best for your furry
             friend, and we share the same goal. Rest assured, we’re happy to use
@@ -170,13 +168,13 @@ export const FAQsPage = () => {
             />
           </p>
 
-          <p>
+           <p className="text-content">
             <strong>
               <TranslatableText text="Do you express anal glands?" />
             </strong>
           </p>
 
-          <p>
+           <p className="text-content">
             <TranslatableText
               text="We offer external anal gland expression during grooming; however,
             for the best care, veterinarians and vet technicians perform this
@@ -187,13 +185,13 @@ export const FAQsPage = () => {
             />
           </p>
 
-          <p>
+           <p className="text-content">
             <strong>
               <TranslatableText text="Do you take credit cards?" />
             </strong>
           </p>
 
-          <p>
+           <p className="text-content">
             <TranslatableText
               text="We accept Cash, Zelle, Venmo, Debit, and Credit Cards. Please note
             that a merchant processing fee applies to all electronic
@@ -202,7 +200,6 @@ export const FAQsPage = () => {
           </p>
         </div>
       </main>
-      <ScrollToTopButton />
     </>
   );
 };

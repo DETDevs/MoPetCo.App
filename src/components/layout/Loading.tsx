@@ -1,4 +1,5 @@
 import "aos/dist/aos.css";
+import { TranslatableText } from "../common/TranslatableText";
 
 export const Loading = () => {
   return (
@@ -9,7 +10,7 @@ export const Loading = () => {
         className="w-32 h-32 mb-4 animate-bounce"
       />
       <p className="text-pink-500 font-bold text-lg animate-pulse">
-        Fetching cuteness...
+        <TranslatableText text="Fetching cuteness..."/>
       </p>
     </div>
   );

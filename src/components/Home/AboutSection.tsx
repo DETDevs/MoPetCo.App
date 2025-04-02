@@ -8,10 +8,13 @@ export const AboutSection = () => {
       className="flex flex-col md:flex-row w-full h-auto items-center justify-center mt-12"
     >
       <div className="w-full md:w-1/2 flex justify-center items-center flex-col lg:w-[24rem] xl:w-[37rem]">
-        <h1 className="text-3xl sm:text-5xl font-bold mb-4">
-          <SectionTitle>MoPetCO</SectionTitle>
-        </h1>
-        <p className="text-xl text-gray-500 w-full max-w-md px-4 md:px-0">
+        <div className="title">
+          <h1 className="text-3xl sm:text-5xl font-bold mb-4">
+            <SectionTitle>MoPetCO</SectionTitle>
+          </h1>
+          <img src="/assets/cropped-M-Logo.png" alt="logo" />
+        </div>
+        <p className="text-content">
           <TranslatableText
             text="We are a premier mobile grooming service with over 20 years of
           experience, proudly serving Miami-Dade, Broward, and Palm Beach
@@ -31,7 +34,7 @@ export const AboutSection = () => {
       <div className="flex justify-center items-center md:w-[20rem] lg:w-[30rem] lg:h-[30rem]">
         <img
           src="/assets/home_header-1.png"
-          alt=""
+          alt="woof"
           className="h-auto lg:h-[32rem] lg:w-[25rem]"
         />
       </div>

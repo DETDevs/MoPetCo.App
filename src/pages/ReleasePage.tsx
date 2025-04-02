@@ -24,7 +24,7 @@ export const ReleasePage = () => {
           <SectionTitle><TranslatableText text="MoPetCo Grooming Release Form" /> </SectionTitle>
           </h1>
 
-          <p className="text-lg leading-relaxed">
+          <p className="text-content">
             <TranslatableText
               text="Upon accepting your first grooming appointment with MoPetCo, you
             will receive a link to our grooming release form. This document
@@ -34,7 +34,7 @@ export const ReleasePage = () => {
             grooming service."
             />
           </p>
-          <p className="text-lg leading-relaxed">
+          <p className="text-content">
             <TranslatableText
               text="GROOMING RELEASE FORM -Every new client is required to read and
             agreed to the following. No ear hair plucking without veterinarian
@@ -55,7 +55,7 @@ export const ReleasePage = () => {
             during the grooming process."
             />
           </p>
-          <p className="text-lg leading-relaxed">
+          <p className="text-content">
             <TranslatableText
               text="SANITIZING: Our standards have always been to clean/sanitize all
             surfaces and tools before and after each session. For liability
@@ -78,7 +78,7 @@ export const ReleasePage = () => {
             />
           </p>
 
-          <p className="text-lg leading-relaxed">
+          <p className="text-content">
             <TranslatableText
               text="CANCELLATIONS AND NO SHOWS: Your pet’s appointment is very important
             to us. The time allocated for your pet’s appointment is reserved
@@ -89,7 +89,7 @@ export const ReleasePage = () => {
             />
           </p>
 
-          <p className="text-lg leading-relaxed">
+          <p className="text-content">
             <TranslatableText
               text="PAYMENT: Payment is due at time services are completed unless other
             arrangements have been discussed. Forms of payment: We accept Cash,
@@ -97,7 +97,7 @@ export const ReleasePage = () => {
             />
           </p>
 
-          <p className="text-lg leading-relaxed">
+          <p className="text-content">
             <TranslatableText
               text="SATISFACTION: Your satisfaction is important to us. If you are
             unhappy for any reason and would like something adjusted, we will be
@@ -108,7 +108,7 @@ export const ReleasePage = () => {
             />
           </p>
 
-          <p className="text-lg leading-relaxed">
+          <p className="text-content">
             <TranslatableText
               text="PHOTOGRAPHS: MePetCO has the right to take photos of your pet for
             our client records or for the company website/social media pages.
@@ -120,7 +120,7 @@ export const ReleasePage = () => {
             />
           </p>
 
-          <p className="text-lg leading-relaxed">
+          <p className="text-content">
             <TranslatableText
               text="Caring for your pet is a responsibility that MePetCO takes very
             seriously! We want your pet’s experience to be as pleasant and as
@@ -135,7 +135,7 @@ export const ReleasePage = () => {
             />
           </p>
 
-          <p className="text-lg leading-relaxed">
+          <p className="text-content">
             <TranslatableText
               text="MePetCO will not be held responsible for any sickness, injury or
             death caused by the pet to itself during its grooming session from
@@ -147,7 +147,7 @@ export const ReleasePage = () => {
             />
           </p>
 
-          <p className="text-lg leading-relaxed">
+          <p className="text-content">
             <TranslatableText
               text="In the event that your pet displays any aggressive behavior, the
             groomer reserves the right to use a muzzle or an Elizabethan collar
@@ -163,7 +163,7 @@ export const ReleasePage = () => {
             />
           </p>
 
-          <p className="text-lg leading-relaxed">
+          <p className="text-content">
             <TranslatableText
               text="By accepting our grooming service, you are agreeing that you have
             reviewed this Service Contract for accuracy, and that you understand
@@ -176,7 +176,7 @@ export const ReleasePage = () => {
             />
           </p>
 
-          <p className="text-lg leading-relaxed">
+          <p className="text-content">
             <TranslatableText
               text="MATTED DOG RELEASE FORM (If applicable) *Matted coats can cause a
             variety of skin and health problems. Matted fur does not allow for
@@ -189,7 +189,7 @@ export const ReleasePage = () => {
             />
           </p>
 
-          <p className="text-lg leading-relaxed">
+          <p className="text-content">
             <TranslatableText
               text="*In the event of matting, your pet’s hair may need to be shaved
             extremely short to the skin and may show signs of skin irritation
@@ -200,14 +200,14 @@ export const ReleasePage = () => {
             />
           </p>
 
-          <p className="text-lg leading-relaxed">
+          <p className="text-content">
             <TranslatableText
               text="*It is the goal of our salon and our groomers to make your pet’s
             grooming experience as stress free as possible."
             />
           </p>
 
-          <p className="text-lg leading-relaxed">
+          <p className="text-content">
             <TranslatableText
               text="*If we have determined that the only humane way to do this is to
             shave the dog’s coat down (Due to the condition of your dog’s coat).
@@ -217,7 +217,7 @@ export const ReleasePage = () => {
             />
           </p>
 
-          <p className="text-lg leading-relaxed">
+          <p className="text-content">
             <TranslatableText
               text="*There is a possibility that your pet’s skin will become irritated
             during the clipping process. We will use a medicated shampoo to help
@@ -225,7 +225,7 @@ export const ReleasePage = () => {
             />
           </p>
 
-          <p className="text-lg leading-relaxed">
+          <p className="text-content">
             <TranslatableText
               text="The matted hair rests tightly against the skin and the only way to
             remove it is to use a short blade clip between the skin and mats.
@@ -237,14 +237,14 @@ export const ReleasePage = () => {
             />
           </p>
 
-          <p className="text-lg leading-relaxed">
+          <p className="text-content">
             <TranslatableText
               text="*Please be sure to schedule a follow up appointment to speak with
             our groomer for the best methods of maintaining your dog’s coat."
             />
           </p>
 
-          <p className="text-lg leading-relaxed">
+          <p className="text-content">
             <TranslatableText
               text="*I hereby release the MePetCo and Grooming Staff from any liability
             associated with the above mentioned process and any and all medical
@@ -254,7 +254,7 @@ export const ReleasePage = () => {
             />
           </p>
 
-          <p className="text-lg leading-relaxed">
+          <p className="text-content">
             <TranslatableText
               text="SENIOR PET (pets over the age of ten) AND PETS WITH PRE-EXISTING
             MEDICAL CONDITIONS RELEASE FORM (if applicable) *Your pet is
@@ -271,7 +271,7 @@ export const ReleasePage = () => {
             />
           </p>
 
-          <p className="text-lg leading-relaxed">
+          <p className="text-content">
             <TranslatableText
               text="Client has read and understands the above, and as the owner or agent
             for the pet described herein agrees not to hold MePetCO responsible
@@ -283,7 +283,6 @@ export const ReleasePage = () => {
           </p>
         </div>
       </main>
-      <ScrollToTopButton />
     </>
   );
 };

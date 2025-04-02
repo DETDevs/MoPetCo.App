@@ -11,6 +11,10 @@ import { Footer } from "./components/layout/Footer";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { WhatsAppButton } from "./components/common/WhatsAppButton";
+import { ScrollToTopButton } from "./components/common/ScrollToTopButton";
+
+
 
 export const App = () => {
   return (
@@ -31,6 +35,8 @@ export const App = () => {
             />
           </Routes>
         </main>
+        <ScrollToTopButton />
+        <WhatsAppButton />
         <Footer />
 
         <ToastContainer

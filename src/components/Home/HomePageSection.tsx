@@ -26,19 +26,19 @@ export const HomePageSection = () => {
       <div className="text-center space-y-3 max-w-md mx-auto z-10 px-4">
         <h1 className="text-3xl md:text-[2.5rem] lg:text-[3rem] font-extrabold text-white leading-8 md:leading-none">
           <TranslatableText text="Only the best" />{" "}
-          <br className="block md:hidden" /> <TranslatableText text="for you" />{" "}
+          <br className="block md:hidden" /> <TranslatableText text="for Your" />{" "}
           <span className="text-white">
-            <TranslatableText text="furry friend" />
+            <TranslatableText text="Furry Friend" />
           </span>
         </h1>
         <p className="text-base md:text-lg lg:text-xl text-white">
-          Servicing Miami Dade & Broward, FL
+          Servicing Miami-Dade, Broward, And Palm Beach, FL
         </p>
         <button
           onClick={() => setIsModalOpen(true)}
           className="bg-pink-500 text-white rounded-lg px-6 py-2 font-semibold hover:bg-pink-600 lg:text-lg"
         >
-          Book an appointment
+          <TranslatableText text="Book an appointment"/>
         </button>
       </div>
 

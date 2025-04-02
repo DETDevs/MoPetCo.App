@@ -40,14 +40,18 @@ export const GalleryPage = () => {
     <>
       <Header />
 
-      <GalleryHeroSection title="Gallery of Grooming" subtitle="Experience the magic of our mobile pet spa" videoSrc="/assets/herogallery.mp4"/>
+      <GalleryHeroSection
+        title="Gallery of Grooming"
+        subtitle="Experience the magic of our mobile pet spa"
+        videoSrc="/assets/herogallery.mp4"
+      />
 
       <div className="max-w-7xl mx-auto px-4 py-12">
         <h2
           className="text-xl sm:text-2xl font-bold text-center mb-8"
           data-aos="fade-up"
         >
-          <TranslatableText text="Looking & Smelling Great!"/>
+          <TranslatableText text="Looking & Smelling Great!" />
         </h2>
 
         <div
@@ -82,13 +86,11 @@ export const GalleryPage = () => {
               onClick={handleLoadMore}
               className="bg-pink-500 text-white px-6 py-2 rounded-full font-semibold hover:bg-pink-600 transition-shadow shadow-lg hover:shadow-xl"
             >
-              <TranslatableText text="Browse more furry friends!"/>
+              <TranslatableText text="Browse more furry friends!" />
             </button>
           </div>
         )}
       </div>
-      <ScrollToTopButton />
-      <WhatsAppButton />
     </>
   );
 };

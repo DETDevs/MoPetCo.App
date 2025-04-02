@@ -63,9 +63,10 @@ export const ReviewSlider: React.FC<ReviewSliderProps> = ({ reviews }) => {
       <button
         className="
           absolute
-          top-[60%]
+          top-[65%]
+          md:top-[60%]
           -translate-y-1/2
-          left-2
+          left-0
           z-10
           bg-white
           shadow-md
@@ -119,9 +120,10 @@ export const ReviewSlider: React.FC<ReviewSliderProps> = ({ reviews }) => {
       <button
         className="
           absolute
-          top-[60%]
+          top-[65%]
+          md:top-[60%]
           -translate-y-1/2
-          right-2
+          right-0
           z-10
           bg-white
           shadow-md
