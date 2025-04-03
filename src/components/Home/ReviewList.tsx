@@ -4,7 +4,7 @@ import { ReviewSlider } from "./ReviewSlider";
 import { TranslatableText } from "../common/TranslatableText";
 import { fetchReviews } from "../../Service/reviewService";
 
-export const ReviewList: React.FC = () => {
+const ReviewList: React.FC = () => {
   const [reviews, setReviews] = useState<Review[] | null>(null);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export const ReviewList: React.FC = () => {
             className="w-24 h-24 object-contain"
           />
           <p className="text-gray-500 text-lg font-medium">
-            <TranslatableText text="Fetching paw-some reviews..."/>
+            <TranslatableText text="Fetching paw-some reviews..." />
           </p>
         </div>
       ) : reviews.length === 0 ? (
@@ -37,7 +37,7 @@ export const ReviewList: React.FC = () => {
             className="w-20 h-20 object-contain"
           />
           <p className="text-gray-500 text-lg font-medium">
-            <TranslatableText text="No furry feedback yet!"/>
+            <TranslatableText text="No furry feedback yet!" />
           </p>
         </div>
       ) : (
@@ -46,3 +46,5 @@ export const ReviewList: React.FC = () => {
     </div>
   );
 };
+
+export default ReviewList;

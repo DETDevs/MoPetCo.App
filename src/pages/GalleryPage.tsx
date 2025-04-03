@@ -4,14 +4,11 @@ import { GalleryImage } from "../types/galleryImage";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Header } from "../components/layout/Header";
-import { Footer } from "../components/layout/Footer";
 import { Loading } from "../components/layout/Loading";
-import { WhatsAppButton } from "../components/common/WhatsAppButton";
-import { ScrollToTopButton } from "../components/common/ScrollToTopButton";
 import { GalleryHeroSection } from "../components/layout/GalleryHeroSection";
 import { TranslatableText } from "../components/common/TranslatableText";
 
-export const GalleryPage = () => {
+const GalleryPage = () => {
   const [imagenes, setImagenes] = useState<GalleryImage[]>([]);
   const [visibleCount, setVisibleCount] = useState(7);
   const [loading, setLoading] = useState(true);
@@ -94,3 +91,5 @@ export const GalleryPage = () => {
     </>
   );
 };
+
+export default GalleryPage;

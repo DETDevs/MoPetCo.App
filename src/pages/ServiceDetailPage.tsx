@@ -7,7 +7,7 @@ import { Loading } from "../components/layout/Loading";
 import { NotFoundMessage } from "../components/layout/NotFoundMessage";
 import { TranslatableText } from "../components/common/TranslatableText";
 
-export const ServiceDetailPage = () => {
+const ServiceDetailPage = () => {
   const { serviceId } = useParams<{ serviceId: string }>();
   const navigate = useNavigate();
   const [servicio, setServicio] = useState<Servicio | null>(null);
@@ -114,3 +114,5 @@ export const ServiceDetailPage = () => {
     </>
   );
 };
+
+export default ServiceDetailPage;

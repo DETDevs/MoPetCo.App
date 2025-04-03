@@ -1,12 +1,11 @@
 import { useEffect } from "react";
-import { Footer } from "../components/layout/Footer";
 import { Header } from "../components/layout/Header";
 import { TranslatableText } from "../components/common/TranslatableText";
 
 import AOS from "aos";
-import { ScrollToTopButton } from "../components/common/ScrollToTopButton";
 import { SectionTitle } from "../components/common/SectionTitle";
-export const ReleasePage = () => {
+
+const ReleasePage = () => {
   useEffect(() => {
     AOS.init({ duration: 1000 }); // Animación al hacer scroll
   }, []);
@@ -21,7 +20,9 @@ export const ReleasePage = () => {
           data-aos="fade-down"
         >
           <h1 className="text-3xl font-bold text-center mb-8">
-          <SectionTitle><TranslatableText text="MoPetCo Grooming Release Form" /> </SectionTitle>
+            <SectionTitle>
+              <TranslatableText text="MoPetCo Grooming Release Form" />{" "}
+            </SectionTitle>
           </h1>
 
           <p className="text-content">
@@ -286,3 +287,5 @@ export const ReleasePage = () => {
     </>
   );
 };
+
+export default ReleasePage;

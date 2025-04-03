@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { TranslatableText } from "../common/TranslatableText";
 
-export const NotFoundPage = () => {
+const NotFoundPage = () => {
   return (
     <div className="min-h-screen flex flex-col justify-center items-center text-center p-4 bg-white">
       <img
@@ -28,3 +28,5 @@ export const NotFoundPage = () => {
     </div>
   );
 };
+
+export default NotFoundPage;

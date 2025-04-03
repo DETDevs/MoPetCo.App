@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { PawPrint } from "../../types/paw";
 import { TranslatableText } from "../common/TranslatableText";
 
-export const Footer = () => {
+const Footer = () => {
   const [paws, setPaws] = useState<PawPrint[]>([]);
 
   useEffect(() => {
@@ -52,7 +52,7 @@ export const Footer = () => {
       </div>
 
       {/* Contenido principal del footer */}
-      <div className="max-w-6xl mx-auto px-6 py-8 grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10 text-center md:text-left">
+      <div className="max-w-7xl mx-auto px-6 py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10 text-center md:text-left">
         <div
           className="space-y-4 text-sm text-gray-700 
              flex flex-col items-center text-center
@@ -72,7 +72,10 @@ export const Footer = () => {
               </p>
               <div className="flex items-start space-x-2 justify-center md:justify-start">
                 <span>📱</span>
-                <a href="tel:+19542719939" className="hover:underline">
+                <a
+                  href="tel:+19542719939"
+                  className="hover:underline font-bold"
+                >
                   Call/Text: (954) 271-9939
                 </a>
               </div>
@@ -82,19 +85,13 @@ export const Footer = () => {
               <p className="font-semibold text-pink-500">Miami FL</p>
               <div className="flex items-start space-x-2 justify-center md:justify-start">
                 <span>📱</span>
-                <a href="tel:+13059025008" className="hover:underline">
+                <a
+                  href="tel:+13059025008"
+                  className="hover:underline font-bold"
+                >
                   Call/Text: (305) 902-5008
                 </a>
               </div>
-            </div>
-          </div>
-
-          <div className="space-y-1">
-            <div className="flex items-start space-x-2 justify-center md:justify-start">
-              <span>✉️</span>
-              <a href="mailto:info@mopetco.com" className="hover:underline">
-                info@mopetco.com
-              </a>
             </div>
           </div>
         </div>
@@ -110,16 +107,24 @@ export const Footer = () => {
               <TranslatableText text="Office Hours:" />
             </h3>
           </div>
-          <p className="text-sm">
+          <p className="text-sm font-semibold">
             <TranslatableText text="Monday to Saturday: 9:00 AM – 5:30 PM" />
           </p>
-          <p className="text-sm">
+          <p className="text-sm font-semibold">
             <TranslatableText text="Sunday: Closed" />
           </p>
+          <div className="space-y-1 mt-6 md:mt-2">
+            <div className="flex items-start space-x-2 justify-center md:justify-start ">
+              <span>✉️</span>
+              <a href="mailto:info@mopetco.com" className="hover:underline">
+                info@mopetco.com
+              </a>
+            </div>
+          </div>
         </div>
 
         <div>
-          <div className="flex items-center justify-center space-x-2 mb-3">
+          <div className="flex items-center justify-center md:justify-start space-x-2 mb-3">
             <img
               src="/assets/sitting.png"
               alt="Redes Icon"
@@ -129,7 +134,7 @@ export const Footer = () => {
               <TranslatableText text="Social Media" />
             </h3>
           </div>
-          <div className="flex justify-center space-x-4 text-xl">
+          <div className="flex justify-center md:justify-start space-x-4 text-xl">
             <a
               target="_blank"
               href="https://www.facebook.com/share/169UsqCkHT/?mibextid=wwXIfr"
@@ -144,6 +149,22 @@ export const Footer = () => {
             </a>
           </div>
         </div>
+        <div className="md:col-span-1 flex flex-col items-center md:items-start">
+          <div className="flex items-center justify-center space-x-2 mb-3">
+            <i className="fas fa-building text-pink-500"></i>
+            <h3 className="font-bold text-lg text-pink-500">
+              <TranslatableText text="Company" />
+            </h3>
+          </div>
+          <p className="text-base text-center md:text-left font-bold">
+            Firebird Transporte LLC dba MoPetCo
+          </p>
+          <p className="text-[10px] text-center md:text-left text-gray-600">
+            2500 SW 22nd Ter, Unit 721
+            <br />
+            Fort Lauderdale, FL 33312
+          </p>
+        </div>
       </div>
 
       <div className="bg-black text-white text-center py-2 text-sm">
@@ -153,3 +174,5 @@ export const Footer = () => {
     </footer>
   );
 };
+
+export default Footer

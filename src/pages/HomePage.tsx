@@ -1,19 +1,31 @@
+// HomePage.tsx
 import { Header } from "../components/layout/Header";
-import { AboutSection } from "../components/Home/AboutSection";
-import { GallerySection } from "../components/Home/GallerySection";
 import { HomePageSection } from "../components/Home/HomePageSection";
-import { ReviewList } from "../components/Home/ReviewList";
+import { AboutSection } from "../components/Home/AboutSection";
 import { ServiceSection } from "../components/Home/ServiceSection";
+import { Suspense, lazy } from "react";
+import { Loading } from "../components/layout/Loading";
 
-export const HomePage = () => {
+const GallerySection = lazy(() => import("../components/Home/GallerySection"));
+const ReviewList = lazy(() => import("../components/Home/ReviewList"));
+
+const HomePage = () => {
   return (
     <>
       <Header />
       <HomePageSection />
       <AboutSection />
       <ServiceSection />
-      <GallerySection />
-      <ReviewList />
+
+      <Suspense fallback={<Loading />}>
+        <GallerySection />
+      </Suspense>
+
+      <Suspense fallback={<Loading />}>
+        <ReviewList />
+      </Suspense>
     </>
   );
 };
+
+export default HomePage;

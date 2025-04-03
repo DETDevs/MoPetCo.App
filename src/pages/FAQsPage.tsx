@@ -4,7 +4,7 @@ import AOS from "aos";
 import { TranslatableText } from "../components/common/TranslatableText";
 import { SectionTitle } from "../components/common/SectionTitle";
 
-export const FAQsPage = () => {
+const FAQsPage = () => {
   useEffect(() => {
     AOS.init({ duration: 1000 }); // Animación al hacer scroll
   }, []);
@@ -203,3 +203,5 @@ export const FAQsPage = () => {
     </>
   );
 };
+
+export default FAQsPage

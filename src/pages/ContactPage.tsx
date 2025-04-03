@@ -9,7 +9,7 @@ import { ReCAPTCHA } from "react-google-recaptcha";
 
 const SITE_KEY = "6Lf--gYrAAAAACN80_qyxiqyk2EQhgxx-c7G_MUV";
 
-export const ContactPage = () => {
+const ContactPage = () => {
   const [formData, setFormData] = useState({
     nombre: "",
     direccion: "",
@@ -239,3 +239,5 @@ export const ContactPage = () => {
     </>
   );
 };
+
+export default ContactPage;

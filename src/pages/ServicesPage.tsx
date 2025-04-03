@@ -8,7 +8,7 @@ import { TranslatableText } from "../components/common/TranslatableText";
 import { PawprintsDecor } from "../components/common/PawprintsDecor";
 import { SectionTitle } from "../components/common/SectionTitle";
 
-export const ServicesPage = () => {
+const ServicesPage = () => {
   const [servicios, setServicios] = useState<Servicio[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -105,3 +105,5 @@ export const ServicesPage = () => {
     </>
   );
 };
+
+export default ServicesPage;
