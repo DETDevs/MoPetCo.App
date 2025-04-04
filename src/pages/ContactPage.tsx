@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { enviarContacto } from "../Service/contactService";
 import { ContactoRequest } from "../types/contact";
 import { Header } from "../components/layout/Header";
 import { toast } from "react-toastify";
 import { TranslatableText } from "../components/common/TranslatableText";
 import { SectionTitle } from "../components/common/SectionTitle";
-import { ReCAPTCHA } from "react-google-recaptcha";
+import ReCAPTCHA from "react-google-recaptcha";
+import { verificarCaptcha } from "../Service/captchaService";
 
-const SITE_KEY = "6Lf--gYrAAAAACN80_qyxiqyk2EQhgxx-c7G_MUV";
+const SITE_KEY = "6LfiwAkrAAAAAD5LPzXJsij7YcHZG7reqDDoiwRF";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -19,8 +20,10 @@ const ContactPage = () => {
     correo: "",
     mensaje: "",
   });
-
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  
+  const captchaRef = useRef<ReCAPTCHA>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -37,36 +40,52 @@ const ContactPage = () => {
       return;
     }
 
-    const contacto: ContactoRequest = {
-      idContacto: 0,
-      nombre: formData.nombre,
-      direccion: formData.direccion,
-      ciudad: formData.ciudad,
-      codigoPostal: formData.codigoPostal,
-      number: formData.numero,
-      correo: formData.correo,
-      mensaje: formData.mensaje,
-      fechaEnvio: new Date().toISOString(),
-      estado: "Pendiente",
-    };
+    setIsSubmitting(true);
 
-    const success = await enviarContacto(contacto);
-    if (success) {
-      toast.success("Your message has been sent successfully!");
-      setFormData({
-        nombre: "",
-        direccion: "",
-        ciudad: "",
-        codigoPostal: "",
-        numero: "",
-        correo: "",
-        mensaje: "",
-      });
-      setCaptchaToken(null);
-    } else {
-      toast.error(
-        "There was an error sending your message. Please try again later."
-      );
+    try {
+      const captchaResponse = await verificarCaptcha(captchaToken);
+
+      if (!captchaResponse || !captchaResponse.content) {
+        toast.error("Captcha verification failed. Please try again.");
+        setIsSubmitting(false);
+        return;
+      }
+
+      const contacto: ContactoRequest = {
+        idContacto: 0,
+        nombre: formData.nombre,
+        direccion: formData.direccion,
+        ciudad: formData.ciudad,
+        codigoPostal: formData.codigoPostal,
+        number: formData.numero,
+        correo: formData.correo,
+        mensaje: formData.mensaje,
+        fechaEnvio: new Date().toISOString(),
+        estado: "Pendiente",
+      };
+
+      const success = await enviarContacto(contacto);
+      if (success) {
+        toast.success("Your message has been sent successfully!");
+        setFormData({
+          nombre: "",
+          direccion: "",
+          ciudad: "",
+          codigoPostal: "",
+          numero: "",
+          correo: "",
+          mensaje: "",
+        });
+        setCaptchaToken(null);
+        captchaRef.current?.reset(); 
+      } else {
+        toast.error("There was an error sending your message. Please try again later.");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast.error("An unexpected error occurred.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -82,13 +101,12 @@ const ContactPage = () => {
         <p className="text-center max-w-3xl mx-auto mb-10 text-gray-600">
           <TranslatableText
             text="Welcome to MoPetCo Guest Services. We’re always happy to hear from you
-            and will do our best to respond to your inquiry in a timely manner. To
-            contact us please fill out our Guest Service form below."
+            and will do our best to respond to your inquiry in a timely manner. 
+            To contact us please fill out our Guest Service form below."
           />
         </p>
 
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
-          {/* Formulario */}
           <div className="bg-pink-500 text-white p-6 rounded-lg shadow-md">
             <h2 className="text-2xl font-bold mb-1">
               <TranslatableText text="Drop us a line!" />
@@ -165,17 +183,26 @@ const ContactPage = () => {
               {/* CAPTCHA */}
               <div className="flex justify-center">
                 <ReCAPTCHA
+                  ref={captchaRef}
                   sitekey={SITE_KEY}
-                  onChange={(token) => setCaptchaToken(token)}
+                  onChange={(token) => {
+                    console.log("Token Captcha recibido:", token);
+                    setCaptchaToken(token);
+                  }}
                   theme="dark"
                 />
               </div>
 
               <button
                 type="submit"
-                className="bg-black text-white px-4 py-2 rounded font-bold hover:bg-gray-800"
+                className={`bg-black text-white px-4 py-2 rounded font-bold transition ${
+                  isSubmitting
+                    ? "opacity-50 cursor-not-allowed"
+                    : "hover:bg-gray-800"
+                }`}
+                disabled={isSubmitting}
               >
-                <TranslatableText text="Send Me" />
+                {isSubmitting ? "Sending..." : <TranslatableText text="Send Me" />}
               </button>
             </form>
           </div>
@@ -187,21 +214,14 @@ const ContactPage = () => {
             </h2>
             <p className="text-gray-600">
               <TranslatableText
-                text="If you would like to speak with a team member, please Call or Text
-              us at:"
+                text="If you would like to speak with a team member, please Call or Text us at:"
               />
               <br />
               <strong className="block mt-1">(954) 271-9939</strong>{" "}
-              <TranslatableText
-                text="for Broward
-              and Palm Beach"
-              />
+              <TranslatableText text="for Broward and Palm Beach" />
               <br />
               <strong className="block mt-1">(305) 902-5008</strong>{" "}
-              <TranslatableText
-                text="for Miami
-              Dade"
-              />
+              <TranslatableText text="for Miami Dade" />
               <br />
               <span className="block mt-1">
                 <TranslatableText text="Availability: Mon to Sat, 9:00 AM - 5:30 PM (ET)" />
@@ -209,17 +229,6 @@ const ContactPage = () => {
             </p>
 
             <div className="space-y-4 text-gray-800">
-              {/* <div className="flex items-center space-x-3">
-                <i className="fas fa-map-marker-alt text-pink-500 text-xl"></i>
-                <a
-                  href="https://www.google.com/maps/place/2500+SW+22nd+Ter+%23721,+Fort+Lauderdale,+FL+33312"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:underline"
-                >
-                  2500 SW 22nd Ter #721, Fort Lauderdale, FL 33312
-                </a>
-              </div> */}
               <div className="flex items-center space-x-3">
                 <i className="fas fa-phone-alt text-pink-500 text-xl"></i>
                 <a href="tel:+19542719939" className="hover:underline">

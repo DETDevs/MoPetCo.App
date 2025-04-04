@@ -1,5 +1,8 @@
 import { SectionTitle } from "../common/SectionTitle";
 import { TranslatableText } from "../common/TranslatableText";
+import homeHeader from "/assets/home_header-1.png";
+import croppedLogo from "/assets/cropped-M-Logo.png";
+
 
 export const AboutSection = () => {
   return (
@@ -12,7 +15,7 @@ export const AboutSection = () => {
           <h1 className="text-3xl sm:text-5xl font-bold mb-4">
             <SectionTitle>MoPetCO</SectionTitle>
           </h1>
-          <img src="/assets/cropped-M-Logo.webp" alt="logo" />
+          <img src={croppedLogo} alt="logo" />
         </div>
         <p className="text-content">
           <TranslatableText text="We are a premier mobile grooming service with over 20 years of experience, proudly serving Miami-Dade, Broward, and Palm Beach counties." />
@@ -35,7 +38,7 @@ export const AboutSection = () => {
       </div>
       <div className="flex justify-center items-center md:w-[20rem] lg:w-[30rem] lg:h-[30rem]">
         <img
-          src="/assets/home_header-1.webp"
+          src={homeHeader}
           alt="woof"
           className="h-auto lg:h-[32rem] lg:w-[25rem]"
         />
