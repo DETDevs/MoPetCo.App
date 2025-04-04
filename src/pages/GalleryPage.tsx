@@ -13,6 +13,9 @@ const GalleryPage = () => {
   const [visibleCount, setVisibleCount] = useState(7);
   const [loading, setLoading] = useState(true);
 
+  // Estado para la imagen seleccionada en el modal
+  const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
+
   useEffect(() => {
     AOS.init({ duration: 800 });
 
@@ -30,6 +33,16 @@ const GalleryPage = () => {
   };
 
   const visibleImages = imagenes.slice(0, visibleCount);
+
+  // Función para abrir el modal con la imagen que se hace clic
+  const handleImageClick = (img: GalleryImage) => {
+    setSelectedImage(img);
+  };
+
+  // Función para cerrar el modal
+  const handleCloseModal = () => {
+    setSelectedImage(null);
+  };
 
   if (loading) return <Loading />;
 
@@ -67,11 +80,12 @@ const GalleryPage = () => {
               <img
                 src={img.urlImagen}
                 alt={img.descripcion}
-                className={`w-full h-full object-cover transition-transform duration-300 ${
+                className={`w-full h-full object-cover transition-transform duration-300 cursor-pointer ${
                   index % 6 === 0 || index % 6 === 5
                     ? "hover:scale-95"
                     : "hover:scale-105"
                 }`}
+                onClick={() => handleImageClick(img)}
               />
             </div>
           ))}
@@ -88,6 +102,32 @@ const GalleryPage = () => {
           </div>
         )}
       </div>
+
+      {/* Modal */}
+      {selectedImage && (
+        <div className="fixed  inset-0 flex items-center justify-center z-50">
+          {/* Fondo oscuro */}
+          <div
+            className="absolute inset-0 bg-black bg-opacity-50"
+            onClick={handleCloseModal}
+          />
+          {/* Contenedor de la imagen y el botón de cierre */}
+          <div className="relative bg-white rounded shadow-lg p-4 max-w-3xl w-full mx-4">
+            {/* Botón de cierre */}
+            <button
+              className="absolute top-2 right-2 text-white bg-red-500 rounded-full p-2"
+              onClick={handleCloseModal}
+            >
+              X
+            </button>
+            <img
+              src={selectedImage.urlImagen}
+              alt={selectedImage.descripcion}
+              className="w-full max-h-[75vh] object-cover rounded"
+            />
+          </div>
+        </div>
+      )}
     </>
   );
 };

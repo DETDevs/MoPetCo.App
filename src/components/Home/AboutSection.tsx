@@ -13,7 +13,7 @@ export const AboutSection = () => {
       <div className="w-full md:w-1/2 flex justify-center items-center flex-col lg:w-[24rem] xl:w-[37rem]">
         <div className="title">
           <h1 className="text-3xl sm:text-5xl font-bold mb-4">
-            <SectionTitle>MoPetCO</SectionTitle>
+            {/* <SectionTitle>MoPetCO</SectionTitle> */}
           </h1>
           <img src={croppedLogo} alt="logo" />
         </div>

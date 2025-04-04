@@ -22,7 +22,9 @@ export const ServiceSection = () => {
 
   return (
     <section className="py-16 px-2 max-w-5xl mx-auto flex flex-col justify-center items-center">
-      <SectionTitle>Our Services</SectionTitle>
+      <SectionTitle>
+        <TranslatableText text="Our Services" />
+      </SectionTitle>
 
       <p className="text-content w-[85%]">
         <TranslatableText text="All grooming options include a complete organic and hypoallergenic bath as well as the thorough nose-to-tail attention outlined below. Your groomer will have a full consultation with you before getting started to review any additional costs. Work from start to finish usually takes about an hour to an hour and a half. Pricing may vary due to size, the condition of the coat, matting, knots and length of hair." />

@@ -76,36 +76,48 @@ const GallerySection = () => {
     >
       {inView && initialized && (
         <>
-          <div className="md:w-[85%]">
-            <h1 className="text-3xl sm:text-5xl font-bold mb-4">
-              <SectionTitle>Gallery</SectionTitle>
+          <div className="md:w-[85%] w-full">
+            <h1 className="text-3xl sm:text-5xl font-bold mb-4 text-center">
+              <SectionTitle>
+                <TranslatableText text="Gallery" />{" "}
+              </SectionTitle>
             </h1>
 
             <h2 className="text-xl font-bold text-center mb-6">
               <TranslatableText text="Looking & Smelling Great!" />
             </h2>
 
+            {/* Contenedor de galería */}
             <div
-              className={`transition-opacity w-full duration-500 flex justify-center items-center ${
+              className={`transition-opacity w-full duration-1000 ease-in-out flex justify-center items-center ${
                 fade ? "opacity-0" : "opacity-100"
               }`}
+              style={{ minHeight: "600px" }} // Aumentamos un poco para mobile
             >
               <div
                 data-aos="fade-up"
-                className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl w-full grid-auto-rows-[200px] md:auto-rows-[200px] md:w-full px-4 md:px-0"
+                className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl w-full grid-auto-rows-[150px] md:grid-auto-rows-[200px] md:w-full px-4 md:px-0"
               >
                 {currentSet.map((img, index) => (
-                  <img
+                  <div
                     key={img.idImagen}
-                    src={img.urlImagen}
-                    alt={img.descripcion}
-                    loading="lazy"
-                    className={`object-cover w-full h-full rounded-lg transition-transform duration-300 ${
+                    className={`relative w-full h-full ${
                       index === 0 || index === 7
-                        ? "col-span-2 row-span-2 hover:scale-95"
-                        : "hover:scale-105"
+                        ? "col-span-2 row-span-2"
+                        : ""
                     }`}
-                  />
+                    style={{
+                      aspectRatio:
+                        index === 0 || index === 7 ? "2 / 2" : "1 / 1",
+                    }}
+                  >
+                    <img
+                      src={img.urlImagen}
+                      alt={img.descripcion}
+                      loading="lazy"
+                      className="object-cover w-full h-full rounded-lg transition-transform duration-300 hover:scale-105"
+                    />
+                  </div>
                 ))}
               </div>
             </div>

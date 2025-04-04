@@ -1,9 +1,10 @@
-import { useState } from "react";
-import { LanguageSwitcher } from "../common/LanguageSwitcher"; // Ajustá la ruta si es distinta
+import { useEffect, useState } from "react";
+import { LanguageSwitcher } from "../common/LanguageSwitcher";
 import { TranslatableText } from "../common/TranslatableText";
 
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [currentPath, setCurrentPath] = useState("/");
 
   const staticPaws = [
     { id: 1, top: "5px", left: "0%" },
@@ -11,6 +12,22 @@ export const Header = () => {
     { id: 3, top: "45px", left: "50%" },
     { id: 4, top: "0px", left: "75%" },
   ];
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setCurrentPath(window.location.pathname);
+    }
+  }, []);
+
+  const isActive = (path: string) => currentPath === path;
+
+  const navLinkClass = (path: string) =>
+    `relative inline-block text-gray-700 font-medium transition-colors duration-300 md:text-sm after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 after:transition-all after:duration-300 ${
+      isActive(path)
+        ? "text-pink-500 font-semibold after:bg-pink-500"
+        : "hover:text-blue-600 after:bg-transparent"
+    }`;
+  
 
   return (
     <header className="bg-white shadow-md fixed w-full z-20 overflow-hidden">
@@ -38,47 +55,26 @@ export const Header = () => {
         ))}
 
         {/* Navegación Desktop */}
-        <nav className="hidden md:flex space-x-6 md:space-x-2 lg:space-x-6  items-center z-10">
-          <a
-            href="/"
-            className="text-gray-700 hover:text-blue-600 font-medium md:text-sm"
-          >
+        <nav className="hidden md:flex space-x-6 md:space-x-2 lg:space-x-6 items-center z-10">
+          <a href="/" className={navLinkClass("/")}>
             Home
           </a>
-          <a
-            href="#about"
-            className="text-gray-700 hover:text-blue-600 font-medium text-center md:text-sm"
-          >
+          <a href="#about" className={navLinkClass("#about")}>
             <TranslatableText text="About" />
           </a>
-          <a
-            href="/service"
-            className="text-gray-700 hover:text-blue-600 font-medium text-center md:text-sm"
-          >
+          <a href="/service" className={navLinkClass("/service")}>
             <TranslatableText text="Services" />
           </a>
-          <a
-            href="/gallery"
-            className="text-gray-700 hover:text-blue-600 font-medium text-center md:text-sm"
-          >
+          <a href="/gallery" className={navLinkClass("/gallery")}>
             <TranslatableText text="Gallery" />
           </a>
-          <a
-            href="/contact"
-            className="text-gray-700 hover:text-blue-600 font-medium text-center md:text-sm"
-          >
+          <a href="/contact" className={navLinkClass("/contact")}>
             <TranslatableText text="Contact" />
           </a>
-          <a
-            href="/release-form"
-            className="text-gray-700 hover:text-blue-600 font-medium text-center md:text-sm"
-          >
+          <a href="/release-form" className={navLinkClass("/release-form")}>
             <TranslatableText text="Release Form" />
           </a>
-          <a
-            href="/faqs"
-            className="text-gray-700 hover:text-blue-600 font-medium md:text-sm"
-          >
+          <a href="/faqs" className={navLinkClass("/faqs")}>
             <TranslatableText text="FAQs" />
           </a>
         </nav>
@@ -103,7 +99,11 @@ export const Header = () => {
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              d={menuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
+              d={
+                menuOpen
+                  ? "M6 18L18 6M6 6l12 12"
+                  : "M4 6h16M4 12h16M4 18h16"
+              }
             />
           </svg>
         </button>
@@ -119,51 +119,51 @@ export const Header = () => {
           <a
             href="/"
             onClick={() => setMenuOpen(false)}
-            className="text-gray-700 hover:text-blue-600 font-medium text-lg"
+            className={navLinkClass("/")}
           >
             Home
           </a>
           <a
             href="#about"
             onClick={() => setMenuOpen(false)}
-            className="text-gray-700 hover:text-blue-600 font-medium text-lg"
+            className={navLinkClass("#about")}
           >
-            <TranslatableText text="About Us"/>
+            <TranslatableText text="About Us" />
           </a>
           <a
             href="/service"
             onClick={() => setMenuOpen(false)}
-            className="text-gray-700 hover:text-blue-600 font-medium text-lg"
+            className={navLinkClass("/service")}
           >
-            <TranslatableText text="Services"/>
+            <TranslatableText text="Services" />
           </a>
           <a
             href="/gallery"
             onClick={() => setMenuOpen(false)}
-            className="text-gray-700 hover:text-blue-600 font-medium text-lg"
+            className={navLinkClass("/gallery")}
           >
-            <TranslatableText text="Gallery"/>
+            <TranslatableText text="Gallery" />
           </a>
           <a
             href="/contact"
             onClick={() => setMenuOpen(false)}
-            className="text-gray-700 hover:text-blue-600 font-medium text-lg"
+            className={navLinkClass("/contact")}
           >
-            <TranslatableText text="Contact"/>
+            <TranslatableText text="Contact" />
           </a>
           <a
             href="/release-form"
             onClick={() => setMenuOpen(false)}
-            className="text-gray-700 hover:text-blue-600 font-medium text-lg"
+            className={navLinkClass("/release-form")}
           >
-            <TranslatableText text="Release Form"/>
+            <TranslatableText text="Release Form" />
           </a>
           <a
             href="/faqs"
             onClick={() => setMenuOpen(false)}
-            className="text-gray-700 hover:text-blue-600 font-medium text-lg"
+            className={navLinkClass("/faqs")}
           >
-            <TranslatableText text="FAQs"/>
+            <TranslatableText text="FAQs" />
           </a>
 
           {/* Language Switcher para Mobile */}

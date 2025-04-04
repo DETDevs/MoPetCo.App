@@ -140,7 +140,7 @@ export const ReviewSlider: React.FC<ReviewSliderProps> = ({ reviews }) => {
       {/* Botón ver más en Google */}
       <div className="text-center my-6">
         <a
-          href="https://www.google.com/maps/place/?q=place_id:ChIJ4xNFOrG32YgROYhpWhMUv9E"
+          href="https://maps.google.com/?q=MoPetCo+-+Mobile+Pet+Grooming"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 transition-shadow shadow-lg hover:shadow-xl font-medium text-sm"

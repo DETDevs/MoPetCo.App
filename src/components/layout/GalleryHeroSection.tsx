@@ -1,5 +1,6 @@
 import { GalleryHeroSectionProps } from "../../types/GalleryHeroSectionProps";
 import { TranslatableText } from "../common/TranslatableText";
+import { VideoGallerySlider } from "./VideoGallerySlider";
 
 export const GalleryHeroSection = ({
   title,
@@ -10,16 +11,18 @@ export const GalleryHeroSection = ({
     <div className="w-full md:min-h-[80vh] flex items-center justify-center px-4 py-10">
       <div className="max-w-7xl w-full flex flex-col md:flex-row items-center gap-10 relative">
         <div className="relative w-full md:w-1/2">
-          <video
+          {/* <video
             autoPlay
             loop
             muted
             playsInline
-            className="w-full h-full max-h-[100vh] object-cover rounded-lg shadow-xl"
+            className="w-full h-full  max-h-[100vh]  lg:max-h-[95vh]  object-cover rounded-lg shadow-xl"
           >
             <source src={videoSrc} type="video/mp4" />
             <TranslatableText text="Your browser does not support the video tag." />
-          </video>
+          </video> */}
+
+          <VideoGallerySlider />
 
           <div className="absolute inset-0 bg-black/50 md:hidden z-1 rounded-lg" />
           <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-4 md:hidden z-2">

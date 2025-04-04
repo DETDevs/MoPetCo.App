@@ -3,10 +3,40 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { WhatsAppButton } from "./components/common/WhatsAppButton";
 import { ScrollToTopButton } from "./components/common/ScrollToTopButton";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { Loading } from "./components/layout/Loading";
+import { initTranslations } from "./Service/initTranslations";
+import { TranslationProvider, useTranslationContext } from "./contexts/TranslationContext";
 
 export const App = () => {
+  return (
+    <TranslationProvider>
+      <AppContent />
+    </TranslationProvider>
+  );
+};
+
+const AppContent = () => {
+  const [isAppReady, setIsAppReady] = useState(false);
+  const { setTranslations, setIsLoaded } = useTranslationContext();
+
+  useEffect(() => {
+    const initializeApp = async () => {
+      try {
+        const initialTranslations = await initTranslations();
+        setTranslations(initialTranslations || {});
+        setIsLoaded(true);
+        setIsAppReady(true);
+      } catch (error) {
+        console.error("Error initializing app:", error);
+        setIsLoaded(true); // Muy importante para no quedar bloqueados
+        setIsAppReady(true);
+      }
+    };
+
+    initializeApp();
+  }, [setTranslations, setIsLoaded]);
+
   const HomePage = lazy(() => import("./pages/HomePage"));
   const ReleasePage = lazy(() => import("./pages/ReleasePage"));
   const FAQsPage = lazy(() => import("./pages/FAQsPage"));
@@ -16,6 +46,10 @@ export const App = () => {
   const GalleryPage = lazy(() => import("./pages/GalleryPage"));
   const NotFoundPage = lazy(() => import("./components/layout/NotFoundPage"));
   const Footer = lazy(() => import("./components/layout/Footer"));
+
+  if (!isAppReady) {
+    return <Loading />;
+  }
 
   return (
     <Router>
@@ -29,10 +63,7 @@ export const App = () => {
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/service" element={<ServicesPage />} />
               <Route path="/gallery" element={<GalleryPage />} />
-              <Route
-                path="/services/:serviceId"
-                element={<ServiceDetailPage />}
-              />
+              <Route path="/services/:serviceId" element={<ServiceDetailPage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </Suspense>
