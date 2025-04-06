@@ -6,25 +6,40 @@ import { Header } from "../components/layout/Header";
 import { Loading } from "../components/layout/Loading";
 import { NotFoundMessage } from "../components/layout/NotFoundMessage";
 import { TranslatableText } from "../components/common/TranslatableText";
+import { obtenerSubServicios } from "../Service/subServiceApi";
+import { ServiceSubList } from "../components/layout/ServiceSubList";
 
 const ServiceDetailPage = () => {
   const { serviceId } = useParams<{ serviceId: string }>();
   const navigate = useNavigate();
   const [servicio, setServicio] = useState<Servicio | null>(null);
   const [loading, setLoading] = useState(true);
+  const [subServicios, setSubServicios] = useState<Servicio[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await obtenerDetallesServicio();
-        const found = data.find((s) => s.idServicio.toString() === serviceId);
+        const [dataServicios, dataSubServicios] = await Promise.all([
+          obtenerDetallesServicio(),
+          obtenerSubServicios(),
+        ]);
+
+        const found = dataServicios.find(
+          (s) => s.idServicio.toString() === serviceId
+        );
         setServicio(found || null);
+
+        const filteredSubServices = dataSubServicios.filter(
+          (sub) => sub.idServicio.toString() === serviceId
+        );
+        setSubServicios(filteredSubServices);
       } catch (error) {
         console.error("Error loading service details", error);
       } finally {
         setTimeout(() => setLoading(false), 500);
       }
     };
+
     fetchData();
   }, [serviceId]);
 
@@ -110,7 +125,9 @@ const ServiceDetailPage = () => {
             )}
           </div>
         </div>
+      <ServiceSubList subServicios={subServicios} />
       </div>
+
     </>
   );
 };

@@ -98,27 +98,30 @@ const GallerySection = () => {
                 data-aos="fade-up"
                 className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl w-full grid-auto-rows-[150px] md:grid-auto-rows-[200px] md:w-full px-4 md:px-0"
               >
-                {currentSet.map((img, index) => (
-                  <div
-                    key={img.idImagen}
-                    className={`relative w-full h-full ${
-                      index === 0 || index === 7
-                        ? "col-span-2 row-span-2"
-                        : ""
-                    }`}
-                    style={{
-                      aspectRatio:
-                        index === 0 || index === 7 ? "2 / 2" : "1 / 1",
-                    }}
-                  >
-                    <img
-                      src={img.urlImagen}
-                      alt={img.descripcion}
-                      loading="lazy"
-                      className="object-cover w-full h-full rounded-lg transition-transform duration-300 hover:scale-105"
-                    />
-                  </div>
-                ))}
+                {currentSet.map((img, index) => {
+                  const isLargeImage = index === 0 || index === 7;
+
+                  return (
+                    <div
+                      key={img.idImagen}
+                      className={`relative w-full h-full ${
+                        isLargeImage ? "col-span-2 row-span-2" : ""
+                      }`}
+                      style={{
+                        aspectRatio: isLargeImage ? "2 / 2" : "1 / 1",
+                      }}
+                    >
+                      <img
+                        src={img.urlImagen}
+                        alt={img.descripcion}
+                        loading="lazy"
+                        className={`object-cover w-full h-full rounded-lg transition-transform duration-300 ${
+                          isLargeImage ? "hover:scale-95" : "hover:scale-105"
+                        }`}
+                      />
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>

@@ -19,11 +19,12 @@ export interface IncluyeItem {
 export interface Servicio {
   idServicio: number;
   titulo: string;
-  subTitulo: string;
+  subTitulo: string | null;
   incluye: string;
   descripcion: string;
-  icon: string;
+  icon: string | null;
   urlImagen: string | null;
-  precio: PrecioItem[]; // ✅ Aquí corregido
+  precio: PrecioItem[];
   incluyeLista: IncluyeItem[];
+  idSubServicio?: number; 
 }

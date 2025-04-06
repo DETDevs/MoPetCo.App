@@ -25,7 +25,7 @@ export const Header = () => {
     `relative inline-block text-gray-700 font-medium transition-colors duration-300 md:text-sm after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 after:transition-all after:duration-300 ${
       isActive(path)
         ? "text-pink-500 font-semibold after:bg-pink-500"
-        : "hover:text-blue-600 after:bg-transparent"
+        : "hover:text-pink-700 after:bg-transparent"
     }`;
   
 
