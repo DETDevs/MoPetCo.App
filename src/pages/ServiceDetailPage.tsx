@@ -8,6 +8,7 @@ import { NotFoundMessage } from "../components/layout/NotFoundMessage";
 import { TranslatableText } from "../components/common/TranslatableText";
 import { obtenerSubServicios } from "../Service/subServiceApi";
 import { ServiceSubList } from "../components/layout/ServiceSubList";
+import { shouldScrollToTop } from "../utils/scrollUtils";
 
 const ServiceDetailPage = () => {
   const { serviceId } = useParams<{ serviceId: string }>();
@@ -33,6 +34,11 @@ const ServiceDetailPage = () => {
           (sub) => sub.idServicio.toString() === serviceId
         );
         setSubServicios(filteredSubServices);
+
+        if (shouldScrollToTop()) {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
       } catch (error) {
         console.error("Error loading service details", error);
       } finally {

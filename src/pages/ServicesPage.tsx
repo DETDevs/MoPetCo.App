@@ -7,6 +7,7 @@ import { obtenerDetallesServicio } from "../Service/serviceDetailApi";
 import { TranslatableText } from "../components/common/TranslatableText";
 import { PawprintsDecor } from "../components/common/PawprintsDecor";
 import { SectionTitle } from "../components/common/SectionTitle";
+import { saveScrollPosition } from "../utils/scrollUtils";
 
 const ServicesPage = () => {
   const [servicios, setServicios] = useState<Servicio[]>([]);
@@ -66,7 +67,7 @@ const ServicesPage = () => {
           </SectionTitle>
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
           {servicios.map((servicio, index) => {
             // Color para cada ícono, cíclico por índice:
             const iconColorClass =
@@ -89,12 +90,9 @@ const ServicesPage = () => {
                   </p>
                 )}
 
-                {/* 
-                  Botón con gradiente *único* 
-                  usando Tailwind: "bg-gradient-to-r from-... to-...".
-                */}
                 <Link
                   to={`/services/${servicio.idServicio}`}
+                  onClick={saveScrollPosition}
                   className="mt-auto text-sm bg-gradient-to-r from-pink-500 to-purple-500 text-white px-4 py-2 rounded-full font-medium hover:opacity-90 transition-all duration-300"
                 >
                   <TranslatableText text="Read More" /> →

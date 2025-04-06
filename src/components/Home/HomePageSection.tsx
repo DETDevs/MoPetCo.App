@@ -3,6 +3,7 @@ import { BookingModal } from "../modals/BookingModal";
 import { TranslatableText } from "../common/TranslatableText";
 import { obtenerVideosTypes } from "../../Service/videoService";
 import { VideoType } from "../../types/VideoType";
+import { Link } from "react-router-dom";
 
 export const HomePageSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -42,7 +43,7 @@ export const HomePageSection = () => {
       <div className="absolute inset-0 bg-black/30 z-0"></div>
 
       {/* Contenido sobre el video */}
-      <div className="text-center space-y-3 max-w-md mx-auto z-10 px-4">
+      <div className="text-center  max-w-md mx-auto z-10 px-4">
         <h1 className="text-3xl md:text-[2.5rem] lg:text-[3rem] font-extrabold text-white leading-8 md:leading-none">
           <TranslatableText text="Only the best" />{" "}
           <br className="block md:hidden" />{" "}
@@ -51,22 +52,18 @@ export const HomePageSection = () => {
             <TranslatableText text="Furry Friend" />
           </span>
         </h1>
-        <p className="text-base md:text-lg lg:text-xl text-white">
+        <p className="text-base md:text-lg lg:text-xl text-white mb-10">
           Servicing Miami-Dade, Broward, And Palm Beach, FL
         </p>
-        <button
-          onClick={() => setIsModalOpen(true)}
+        <Link
+          to="/booking"
           className="bg-pink-500 text-white rounded-lg px-6 py-2 font-semibold hover:bg-pink-600 lg:text-lg"
         >
           <TranslatableText text="Book an appointment" />
-        </button>
+        </Link>
       </div>
 
-      {/* Modal de agendar cita */}
-      <BookingModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
+      
     </div>
   );
 };

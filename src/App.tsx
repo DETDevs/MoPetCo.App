@@ -7,6 +7,7 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import { Loading } from "./components/layout/Loading";
 import { initTranslations } from "./Service/initTranslations";
 import { TranslationProvider, useTranslationContext } from "./contexts/TranslationContext";
+import { BookingPage } from "./pages/BookingPage";
 
 export const App = () => {
   return (
@@ -63,6 +64,7 @@ const AppContent = () => {
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/service" element={<ServicesPage />} />
               <Route path="/gallery" element={<GalleryPage />} />
+              <Route path="/booking" element={<BookingPage />} />
               <Route path="/services/:serviceId" element={<ServiceDetailPage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
