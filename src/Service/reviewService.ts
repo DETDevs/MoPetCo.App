@@ -8,7 +8,7 @@ export const fetchReviews = async (): Promise<Review[]> => {
     );
 
     if (!res.ok) {
-      const errorText = await res.text(); // leemos como texto por si es HTML
+      const errorText = await res.text(); 
       console.error("Respuesta del servidor inválida:", errorText);
       return [];
     }

@@ -50,6 +50,6 @@ export const initTranslations = async () => {
 
   } catch (error) {
     console.error("Error during initTranslations:", error);
-    return {}; // para evitar que rompa
+    return {}; 
   }
 };

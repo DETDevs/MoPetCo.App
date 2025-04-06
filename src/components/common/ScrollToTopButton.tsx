@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 export const ScrollToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
 
-  // Mostrar botón si scrollY > 200
   useEffect(() => {
     const toggleVisibility = () => {
       setIsVisible(window.scrollY > 200);

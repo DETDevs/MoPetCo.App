@@ -14,11 +14,10 @@ export const TranslatableText: React.FC<TranslatableTextProps> = ({ text }) => {
     const translate = async () => {
       try {
         if (language === "en") {
-          setTranslatedText(text); // ✅ Si el idioma es inglés, no hacemos nada
+          setTranslatedText(text); 
           return;
         }
 
-        // ✅ Revisamos la cache local primero
         const cachedTranslations = localStorage.getItem(`translations_${language}`);
         if (cachedTranslations) {
           const translations = JSON.parse(cachedTranslations);
@@ -28,12 +27,11 @@ export const TranslatableText: React.FC<TranslatableTextProps> = ({ text }) => {
           }
         }
 
-        // ✅ Si no está en cache, traducimos con la API
         const translated = await translateWithGoogle(text, language);
         setTranslatedText(translated);
       } catch (error) {
         console.error("Translation failed:", error);
-        setTranslatedText(text); // Fallback al texto original
+        setTranslatedText(text); 
       }
     };
 

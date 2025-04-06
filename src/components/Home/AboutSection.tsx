@@ -1,4 +1,3 @@
-import { SectionTitle } from "../common/SectionTitle";
 import { TranslatableText } from "../common/TranslatableText";
 import homeHeader from "/assets/home_header-1.png";
 import croppedLogo from "/assets/cropped-M-Logo.png";

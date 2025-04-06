@@ -41,7 +41,7 @@ export const LanguageSwitcher = () => {
       confirmButtonColor: "#f472b6",
       scrollbarPadding: false,
       customClass: {
-        actions: "justify-center", // Centra los botones
+        actions: "justify-center", 
       },
     }).then((result) => {
       if (result.isConfirmed) {

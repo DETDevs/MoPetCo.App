@@ -79,14 +79,12 @@ const ServiceDetailPage = () => {
         </div>
 
         <div className="flex flex-col md:flex-row gap-8 items-start">
-          {/* Imagen del servicio */}
           <img
             src={servicio.urlImagen ?? "/assets/default.jpg"}
             alt={servicio.titulo}
             className="w-full md:w-1/2 rounded-lg shadow-lg object-cover h-[38rem]"
           />
 
-          {/* Detalles del servicio */}
           <div className="w-full md:w-1/2">
             <h1 className="text-3xl font-bold mb-4 flex items-center gap-3 text-blue-700">
               <i className={`fas ${servicio.icon}`}></i>

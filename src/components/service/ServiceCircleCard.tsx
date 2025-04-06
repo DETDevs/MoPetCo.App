@@ -5,7 +5,7 @@ import { TranslatableText } from "../common/TranslatableText";
 interface ServiceCircleCardProps {
   label: string;
   iconClass: string;
-  link: string; // ruta absoluta o relativa
+  link: string; 
 }
 
 export const ServiceCircleCard: FC<ServiceCircleCardProps> = ({

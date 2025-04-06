@@ -36,7 +36,6 @@ const Footer = () => {
   ];
   return (
     <footer className="bg-white relative overflow-hidden border-t border-gray-200">
-      {/* Huellitas en zona segura */}
       <div className="absolute top-0 left-0 right-0 bottom-[100px] pointer-events-none z-0">
         {pawPositions.map((paw) => (
           <img
@@ -51,7 +50,6 @@ const Footer = () => {
         ))}
       </div>
 
-      {/* Contenido principal del footer */}
       <div className="max-w-7xl mx-auto px-6 py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10 text-center md:text-left">
         <div
           className="space-y-4 text-sm text-gray-700 

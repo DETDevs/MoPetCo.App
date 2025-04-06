@@ -30,7 +30,7 @@ const AppContent = () => {
         setIsAppReady(true);
       } catch (error) {
         console.error("Error initializing app:", error);
-        setIsLoaded(true); // Muy importante para no quedar bloqueados
+        setIsLoaded(true); 
         setIsAppReady(true);
       }
     };

@@ -13,7 +13,6 @@ const ServicesPage = () => {
   const [servicios, setServicios] = useState<Servicio[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Array de clases de color para íconos (igual que antes).
   const iconColorClasses = [
     "text-pink-500",
     "text-blue-500",
@@ -69,7 +68,6 @@ const ServicesPage = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
           {servicios.map((servicio, index) => {
-            // Color para cada ícono, cíclico por índice:
             const iconColorClass =
               iconColorClasses[index % iconColorClasses.length];
 

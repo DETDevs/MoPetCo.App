@@ -33,7 +33,6 @@ export const GalleryHeroSection = ({
           </div>
         </div>
 
-        {/* Desktop Right Content */}
         <div className="hidden md:flex flex-col w-full md:w-1/2 items-start justify-center space-y-8">
           <div>
             <h1 className="text-4xl font-extrabold bg-gradient-to-r from-pink-500 to-purple-500 text-transparent bg-clip-text py-2">

@@ -4,7 +4,7 @@ export interface ContactoRequest {
   direccion: string;
   ciudad: string;
   codigoPostal: string;
-  number: string; // este debe coincidir con el backend (no "numero")
+  number: string; 
   correo: string;
   mensaje: string;
   fechaEnvio: string;

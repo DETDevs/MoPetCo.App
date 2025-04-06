@@ -14,9 +14,9 @@ export const PawprintsDecor = () => {
         id: i,
         top: `${Math.floor(Math.random() * 80)}%`,
         left: `${Math.floor(Math.random() * 90)}%`,
-        size: `${Math.floor(Math.random() * 40) + 24}`, // 6 to 14
-        rotate: `${Math.floor(Math.random() * 60) - 30}`, // -30 to +30
-        opacity: `${(Math.random() * 0.2 + 0.05).toFixed(2)}`, // 0.05 to 0.25
+        size: `${Math.floor(Math.random() * 40) + 24}`, 
+        rotate: `${Math.floor(Math.random() * 60) - 30}`, 
+        opacity: `${(Math.random() * 0.2 + 0.05).toFixed(2)}`, 
       });
     }
 

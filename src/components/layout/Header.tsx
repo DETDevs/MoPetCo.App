@@ -32,7 +32,6 @@ export const Header = () => {
   return (
     <header className="bg-white shadow-md fixed w-full z-20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between relative">
-        {/* Logo */}
         <div>
           <a href="/">
             <img
@@ -43,7 +42,6 @@ export const Header = () => {
           </a>
         </div>
 
-        {/* Huellitas Estáticas */}
         {staticPaws.map((paw) => (
           <img
             key={paw.id}
@@ -59,9 +57,9 @@ export const Header = () => {
           <a href="/" className={navLinkClass("/")}>
             Home
           </a>
-          <a href="#about" className={navLinkClass("#about")}>
+          {/* <a href="#about" className={navLinkClass("#about")}>
             <TranslatableText text="About" />
-          </a>
+          </a> */}
           <a href="/service" className={navLinkClass("/service")}>
             <TranslatableText text="Services" />
           </a>
@@ -79,7 +77,6 @@ export const Header = () => {
           </a>
         </nav>
 
-        {/* Language Switcher alineado a la derecha */}
         <div className="hidden md:flex lg:mr-2 items-center">
           <LanguageSwitcher />
         </div>
@@ -123,13 +120,13 @@ export const Header = () => {
           >
             Home
           </a>
-          <a
+          {/* <a
             href="#about"
             onClick={() => setMenuOpen(false)}
             className={navLinkClass("#about")}
           >
             <TranslatableText text="About Us" />
-          </a>
+          </a> */}
           <a
             href="/service"
             onClick={() => setMenuOpen(false)}
@@ -166,7 +163,6 @@ export const Header = () => {
             <TranslatableText text="FAQs" />
           </a>
 
-          {/* Language Switcher para Mobile */}
           <div className="mt-4">
             <LanguageSwitcher />
           </div>

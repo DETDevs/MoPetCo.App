@@ -21,7 +21,7 @@ const ReviewList: React.FC = () => {
       {reviews === null ? (
         <div className="flex flex-col items-center space-y-4">
           <img
-            src="/assets/runningdog.gif" // Podés usar una imagen animada o estática tipo /assets/puppy.png
+            src="/assets/runningdog.gif" 
             alt="Cargando..."
             className="w-24 h-24 object-contain"
           />
@@ -32,7 +32,7 @@ const ReviewList: React.FC = () => {
       ) : reviews.length === 0 ? (
         <div className="flex flex-col items-center space-y-4">
           <img
-            src="/assets/saddoggi.gif" // Otra imagen simpática, puede ser un perrito triste o dormido
+            src="/assets/saddoggi.gif"
             alt="Sin reseñas"
             className="w-20 h-20 object-contain"
           />

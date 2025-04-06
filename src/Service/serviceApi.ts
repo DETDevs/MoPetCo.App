@@ -10,6 +10,6 @@ export const obtenerServicios = async (): Promise<Servicio[]> => {
     return response.data.content;
   } catch (error) {
     console.error("Error fetching services:", error);
-    return []; // Devuelve array vacío si falla
+    return []; 
   }
 };

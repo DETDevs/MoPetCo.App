@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
-import { BookingModal } from "../modals/BookingModal";
 import { TranslatableText } from "../common/TranslatableText";
 import { obtenerVideosTypes } from "../../Service/videoService";
 import { VideoType } from "../../types/VideoType";
 import { Link } from "react-router-dom";
 
 export const HomePageSection = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [video, setVideo] = useState<VideoType[] | null>(null);
 
   useEffect(() => {
@@ -16,11 +14,10 @@ export const HomePageSection = () => {
     };
 
     loadVideo();
-  });
+  },[]);
 
   return (
     <div className="relative w-full min-h-[60vh] flex items-center justify-center overflow-hidden">
-      {/* Video de fondo */}
       {video?.some((item) => item.tipo === "Home") && (
         <video
           autoPlay
@@ -39,10 +36,8 @@ export const HomePageSection = () => {
         </video>
       )}
 
-      {/* Overlay para contraste si lo necesitás */}
       <div className="absolute inset-0 bg-black/30 z-0"></div>
 
-      {/* Contenido sobre el video */}
       <div className="text-center  max-w-md mx-auto z-10 px-4">
         <h1 className="text-3xl md:text-[2.5rem] lg:text-[3rem] font-extrabold text-white leading-8 md:leading-none">
           <TranslatableText text="Only the best" />{" "}
@@ -61,9 +56,7 @@ export const HomePageSection = () => {
         >
           <TranslatableText text="Book an appointment" />
         </Link>
-      </div>
-
-      
+      </div> 
     </div>
   );
 };

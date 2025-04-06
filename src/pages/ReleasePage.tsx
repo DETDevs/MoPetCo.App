@@ -7,7 +7,7 @@ import { SectionTitle } from "../components/common/SectionTitle";
 
 const ReleasePage = () => {
   useEffect(() => {
-    AOS.init({ duration: 1000 }); // Animación al hacer scroll
+    AOS.init({ duration: 1000 }); 
   }, []);
 
   return (

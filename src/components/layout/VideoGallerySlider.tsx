@@ -6,10 +6,8 @@ export const VideoGallerySlider = () => {
   const [galleryVideos, setGalleryVideos] = useState<VideoType[]>([]);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
 
-  // Referencia al elemento <video> por si necesitamos manipularlo
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Para guardar la posición de inicio del swipe en móvil
   const touchStartX = useRef<number | null>(null);
 
   useEffect(() => {
@@ -22,17 +20,14 @@ export const VideoGallerySlider = () => {
     fetchVideos();
   }, []);
 
-  // Reproduce el siguiente video cuando termina el actual
   const handleVideoEnd = () => {
     setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % galleryVideos.length);
   };
 
-  // Navegación manual con dots
   const handleDotClick = (index: number) => {
     setCurrentVideoIndex(index);
   };
 
-  // Flechas “siguiente” y “anterior”
   const handleNext = () => {
     setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % galleryVideos.length);
   };
@@ -43,7 +38,6 @@ export const VideoGallerySlider = () => {
     );
   };
 
-  // Swipe touch en móviles
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
   };
@@ -54,13 +48,10 @@ export const VideoGallerySlider = () => {
     const touchEndX = e.touches[0].clientX;
     const distance = touchStartX.current - touchEndX;
 
-    // Umbral de 50px para decidir si se hace swipe
     if (distance > 50) {
-      // Swipe hacia la izquierda (siguiente video)
       handleNext();
       touchStartX.current = null;
     } else if (distance < -50) {
-      // Swipe hacia la derecha (video anterior)
       handlePrev();
       touchStartX.current = null;
     }
@@ -70,12 +61,10 @@ export const VideoGallerySlider = () => {
 
   return (
     <div
-      // Contenedor principal que detecta el swipe
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       className="relative w-full rounded-xl overflow-hidden"
     >
-      {/* Video */}
       <video
         ref={videoRef}
         key={galleryVideos[currentVideoIndex].idVideo}
@@ -87,7 +76,6 @@ export const VideoGallerySlider = () => {
         onEnded={handleVideoEnd}
       />
 
-      {/* Flecha Anterior */}
       {galleryVideos.length > 1 && (
         <button
           onClick={handlePrev}
@@ -110,7 +98,6 @@ export const VideoGallerySlider = () => {
         </button>
       )}
 
-      {/* Flecha Siguiente */}
       {galleryVideos.length > 1 && (
         <button
           onClick={handleNext}
@@ -133,7 +120,6 @@ export const VideoGallerySlider = () => {
         </button>
       )}
 
-      {/* Dots de navegación (visibles siempre) */}
       {galleryVideos.length > 1 && (
         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
           {galleryVideos.map((_, index) => (

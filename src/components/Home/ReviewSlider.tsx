@@ -48,7 +48,6 @@ export const ReviewSlider: React.FC<ReviewSliderProps> = ({ reviews }) => {
 
   return (
     <div className="relative px-4 sm:px-10">
-      {/* Título y subtítulo */}
       <div className="text-center my-8">
         <SectionTitle>
           <TranslatableText text="What Our Clients Are Saying" />
@@ -59,7 +58,6 @@ export const ReviewSlider: React.FC<ReviewSliderProps> = ({ reviews }) => {
         </p>
       </div>
 
-      {/* Botón - Flecha Izquierda */}
       <button
         className="
           absolute
@@ -80,7 +78,6 @@ export const ReviewSlider: React.FC<ReviewSliderProps> = ({ reviews }) => {
         <i className="fas fa-chevron-left"></i>
       </button>
 
-      {/* Contenedor de reviews */}
       <div className="flex justify-center gap-4">
         {visibleReviews.map((review, i) => (
           <div
@@ -116,7 +113,6 @@ export const ReviewSlider: React.FC<ReviewSliderProps> = ({ reviews }) => {
         ))}
       </div>
 
-      {/* Botón - Flecha Derecha */}
       <button
         className="
           absolute

@@ -18,7 +18,6 @@ export const useLanguage = () => useContext(LanguageContext);
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [language, setLanguageState] = useState<Language>("en");
 
-  // Leer del localStorage al montar
   useEffect(() => {
     const savedLang = localStorage.getItem("language") as Language;
     if (savedLang === "en" || savedLang === "es") {
@@ -26,7 +25,6 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     }
   }, []);
 
-  // Actualizar el estado y guardar en localStorage
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
     localStorage.setItem("language", lang);
