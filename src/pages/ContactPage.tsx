@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { enviarContacto } from "../Service/contactService";
 import { ContactoRequest } from "../types/contact";
 import { Header } from "../components/layout/Header";
@@ -7,6 +7,8 @@ import { TranslatableText } from "../components/common/TranslatableText";
 import { SectionTitle } from "../components/common/SectionTitle";
 import ReCAPTCHA from "react-google-recaptcha";
 import { verificarCaptcha } from "../Service/captchaService";
+import { useLanguage } from "../contexts/LanguageContext";
+import { getTranslation } from "../utils/translationHelper";
 
 const SITE_KEY = "6LfiwAkrAAAAAD5LPzXJsij7YcHZG7reqDDoiwRF";
 
@@ -22,8 +24,19 @@ const ContactPage = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
-  
+
   const captchaRef = useRef<ReCAPTCHA>(null);
+  const { language } = useLanguage();
+
+  const [placeholders, setPlaceholders] = useState({
+    nombre: "Your Name *",
+    direccion: "Your Address *",
+    ciudad: "Your City *",
+    codigoPostal: "Zip Code *",
+    numero: "Phone Number *",
+    correo: "Email Address *",
+    mensaje: "Your Question *",
+  });
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -77,9 +90,11 @@ const ContactPage = () => {
           mensaje: "",
         });
         setCaptchaToken(null);
-        captchaRef.current?.reset(); 
+        captchaRef.current?.reset();
       } else {
-        toast.error("There was an error sending your message. Please try again later.");
+        toast.error(
+          "There was an error sending your message. Please try again later."
+        );
       }
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -88,6 +103,33 @@ const ContactPage = () => {
       setIsSubmitting(false);
     }
   };
+
+  useEffect(() => {
+    const loadPlaceholders = async () => {
+      const translated = await Promise.all([
+        getTranslation("Your Name *", language),
+        getTranslation("Your Address *", language),
+        getTranslation("Your City *", language),
+        getTranslation("Zip Code *", language),
+        getTranslation("Phone Number *", language),
+        getTranslation("Email Address *", language),
+        getTranslation("Your Question *", language),
+      ]);
+  
+      setPlaceholders({
+        nombre: translated[0],
+        direccion: translated[1],
+        ciudad: translated[2],
+        codigoPostal: translated[3],
+        numero: translated[4],
+        correo: translated[5],
+        mensaje: translated[6],
+      });
+    };
+  
+    loadPlaceholders();
+  }, [language]);
+  
 
   return (
     <>
@@ -119,7 +161,7 @@ const ContactPage = () => {
               <input
                 type="text"
                 name="nombre"
-                placeholder="Your Name *"
+                placeholder={placeholders.nombre}
                 value={formData.nombre}
                 onChange={handleChange}
                 required
@@ -128,7 +170,7 @@ const ContactPage = () => {
               <input
                 type="text"
                 name="direccion"
-                placeholder="Your Address *"
+                placeholder={placeholders.direccion}
                 value={formData.direccion}
                 onChange={handleChange}
                 required
@@ -137,25 +179,25 @@ const ContactPage = () => {
               <input
                 type="text"
                 name="ciudad"
-                placeholder="Your City *"
+                placeholder={placeholders.ciudad}
                 value={formData.ciudad}
                 onChange={handleChange}
                 required
                 className="w-full p-2 rounded text-black"
               />
               <input
-                type="text"
+                type="number"
                 name="codigoPostal"
-                placeholder="Zip Code *"
+                placeholder={placeholders.codigoPostal}
                 value={formData.codigoPostal}
                 onChange={handleChange}
                 required
                 className="w-full p-2 rounded text-black"
               />
               <input
-                type="text"
+                type="number"
                 name="numero"
-                placeholder="Phone Number *"
+                placeholder={placeholders.numero}
                 value={formData.numero}
                 onChange={handleChange}
                 required
@@ -164,7 +206,7 @@ const ContactPage = () => {
               <input
                 type="email"
                 name="correo"
-                placeholder="Email Address *"
+                placeholder={placeholders.correo}
                 value={formData.correo}
                 onChange={handleChange}
                 required
@@ -172,7 +214,7 @@ const ContactPage = () => {
               />
               <textarea
                 name="mensaje"
-                placeholder="Your Question *"
+                placeholder={placeholders.mensaje}
                 value={formData.mensaje}
                 onChange={handleChange}
                 rows={4}
@@ -202,7 +244,11 @@ const ContactPage = () => {
                 }`}
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Sending..." : <TranslatableText text="Send Me" />}
+                {isSubmitting ? (
+                  "Sending..."
+                ) : (
+                  <TranslatableText text="Send Me" />
+                )}
               </button>
             </form>
           </div>
@@ -213,9 +259,7 @@ const ContactPage = () => {
               <TranslatableText text="Get in Touch" />
             </h2>
             <p className="text-gray-600">
-              <TranslatableText
-                text="If you would like to speak with a team member, please Call or Text us at:"
-              />
+              <TranslatableText text="If you would like to speak with a team member, please Call or Text us at:" />
               <br />
               <strong className="block mt-1">(954) 271-9939</strong>{" "}
               <TranslatableText text="for Broward and Palm Beach" />

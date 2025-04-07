@@ -47,7 +47,7 @@ export const HomePageSection = () => {
             <TranslatableText text="Furry Friend" />
           </span>
         </h1>
-        <p className="text-base md:text-lg lg:text-xl text-white mb-10">
+        <p className="text-base font-bold md:text-lg lg:text-xl text-pink-400 my-4">
           Servicing Miami-Dade, Broward, And Palm Beach, FL
         </p>
         <Link

@@ -4,7 +4,7 @@ import { API_BASE_URL } from "./apiConfig";
 export const fetchReviews = async (): Promise<Review[]> => {
   try {
     const res = await fetch(
-      `${API_BASE_URL}/api/googlemaps/reviews?placeId=ChIJ4xNFOrG32YgROYhpWhMUv9E`
+      `${API_BASE_URL}/api/Google/GetReviews/reviews?placeId=ChIJ4xNFOrG32YgROYhpWhMUv9E`
     );
 
     if (!res.ok) {

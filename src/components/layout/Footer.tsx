@@ -114,7 +114,7 @@ const Footer = () => {
           <div className="space-y-1 mt-6 md:mt-2">
             <div className="flex items-start space-x-2 justify-center md:justify-start ">
               <span>✉️</span>
-              <a href="mailto:info@mopetco.com" className="hover:underline">
+              <a href="mailto:info@mopetco.com" className="hover:underline font-bold">
                 info@mopetco.com
               </a>
             </div>

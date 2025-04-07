@@ -42,19 +42,23 @@ const ServicesPage = () => {
       <Header />
       <section className="relative bg-gradient-to-r from-white via-pink-50 to-blue-50 py-20 px-6 text-center overflow-hidden">
         <PawprintsDecor />
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-800 tracking-wide mb-6 drop-shadow">
+        <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-800 tracking-wide mb-4 drop-shadow">
           <TranslatableText text="Pet Care Services with Love" />
         </h1>
 
         <div className="text-gray-700 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto space-y-4 tracking-wide">
           <p className="text-center text-content">
-            <TranslatableText text="All grooming options include a complete organic and hypoallergenic bath..." />
+            <TranslatableText
+              text="All grooming options include a complete organic and hypoallergenic
+          bath as well as the thorough nose-to-tail attention outlined below"
+            />
           </p>
           <p className="text-content">
-            <TranslatableText text="Your groomer will have a full consultation with you before getting started..." />
+            <TranslatableText text="Your groomer will have a full consultation with you before getting started to review any additional costs" />
           </p>
           <p className="text-content">
-            <TranslatableText text="Work from start to finish usually takes about an hour to an hour and a half..." />
+            <TranslatableText text="Work from start to finish usually takes about an hour to an hour and a half  Pricing may vary due to size, the condition of the coat, matting,
+          knots and length of hair." />
           </p>
         </div>
       </section>
@@ -76,14 +80,18 @@ const ServicesPage = () => {
                 key={servicio.idServicio}
                 className="bg-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300 p-8 flex flex-col items-center text-center border border-gray-100 hover:shadow-pink-300"
               >
-                <i className={`fas ${servicio.icon} text-5xl mb-5 ${iconColorClass}`}></i>
+                <i
+                  className={`fas ${servicio.icon} text-5xl mb-5 ${iconColorClass}`}
+                ></i>
                 <h3 className="text-xl font-bold text-gray-800 mb-3">
                   <TranslatableText text={servicio.titulo} />
                 </h3>
 
                 {servicio.descripcion && (
                   <p className="text-gray-600 mb-5 text-sm leading-relaxed">
-                    <TranslatableText text={servicio.descripcion.slice(0, 90)} />
+                    <TranslatableText
+                      text={servicio.descripcion.slice(0, 90)}
+                    />
                     ...
                   </p>
                 )}

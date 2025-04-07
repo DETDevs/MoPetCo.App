@@ -26,7 +26,7 @@ export const ServiceSection = () => {
         <TranslatableText text="Our Services" />
       </SectionTitle>
 
-      <p className="text-content w-[85%]">
+      <p className="text-content md:w-[85%] mb-4">
         <TranslatableText text="All grooming options include a complete organic and hypoallergenic bath as well as the thorough nose-to-tail attention outlined below. Your groomer will have a full consultation with you before getting started to review any additional costs. Work from start to finish usually takes about an hour to an hour and a half. Pricing may vary due to size, the condition of the coat, matting, knots and length of hair." />
       </p>
 
