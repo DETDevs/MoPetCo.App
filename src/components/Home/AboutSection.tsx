@@ -1,6 +1,5 @@
 import { TranslatableText } from "../common/TranslatableText";
 import homeHeader from "/assets/home_header-1.png";
-import croppedLogo from "/assets/logo-about.webp";
 
 
 export const AboutSection = () => {
@@ -14,7 +13,7 @@ export const AboutSection = () => {
           <h1 className="text-3xl sm:text-5xl font-bold mb-4">
             {/* <SectionTitle>MoPetCO</SectionTitle> */}
           </h1>
-          <img  className="h-[12rem] mb-4" src={croppedLogo} alt="logo" />
+          <img  className="h-[12rem] mb-4" src="assets/logo-about.jpg" alt="logo" />
         </div>
         <p className="text-content">
           <TranslatableText text="We are a premier mobile grooming service with over 20 years of experience, proudly serving Miami-Dade, Broward, and Palm Beach counties." />
