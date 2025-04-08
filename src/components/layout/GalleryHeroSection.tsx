@@ -15,7 +15,7 @@ export const GalleryHeroSection = ({
   };
 
   return (
-    <div className="gallery-hero w-full flex items-center justify-center px-4 py-10 md:h-[75vh] md:mt-[9rem] lg:mt-[9rem] xl:mt-[12rem] lg:h-[75vh] xl:h-[70vh]">
+    <div className="gallery-hero w-full flex items-center justify-center px-4 py-10 md:h-[75vh] md:mt-[9rem] lg:mt-[9rem] xl:mt-[8rem] lg:h-[75vh] xl:h-[80vh]">
       <div className="max-w-7xl w-full flex flex-col md:flex-row items-center gap-10 relative">
         {/* Video + Overlay + Botón de audio */}
         <div className="relative w-full md:w-1/2">
