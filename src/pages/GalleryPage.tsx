@@ -48,12 +48,12 @@ const GalleryPage = () => {
       <Header />
 
       <GalleryHeroSection
-        title="Gallery of Grooming"
+        title="Grooming Gallery"
         subtitle="Experience the magic of our mobile pet spa"
         videoSrc="/assets/herogallery.mp4"
       />
 
-      <div className="max-w-7xl mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 py-12" id="gallery">
         <h2
           className="text-xl sm:text-2xl font-bold text-center mb-8"
           data-aos="fade-up"

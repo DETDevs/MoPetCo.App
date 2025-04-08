@@ -27,4 +27,5 @@ export interface Servicio {
   precio: PrecioItem[];
   incluyeLista: IncluyeItem[];
   idSubServicio?: number; 
+  nota?: string; 
 }

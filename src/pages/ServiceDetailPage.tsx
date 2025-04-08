@@ -38,7 +38,6 @@ const ServiceDetailPage = () => {
         if (shouldScrollToTop()) {
           window.scrollTo({ top: 0, behavior: "smooth" });
         }
-
       } catch (error) {
         console.error("Error loading service details", error);
       } finally {
@@ -125,13 +124,19 @@ const ServiceDetailPage = () => {
                     </li>
                   ))}
                 </ul>
+
+                {/* Renderizar la nota si existe */}
+                {servicio.nota && (
+                  <p className="mt-2 text-sm text-gray-500 italic">
+                    <TranslatableText text={servicio.nota} />
+                  </p>
+                )}
               </div>
             )}
           </div>
         </div>
-      <ServiceSubList subServicios={subServicios} />
+        <ServiceSubList subServicios={subServicios} />
       </div>
-
     </>
   );
 };

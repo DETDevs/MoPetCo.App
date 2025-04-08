@@ -115,7 +115,7 @@ const ContactPage = () => {
         getTranslation("Email Address *", language),
         getTranslation("Your Question *", language),
       ]);
-  
+
       setPlaceholders({
         nombre: translated[0],
         direccion: translated[1],
@@ -126,10 +126,9 @@ const ContactPage = () => {
         mensaje: translated[6],
       });
     };
-  
+
     loadPlaceholders();
   }, [language]);
-  
 
   return (
     <>

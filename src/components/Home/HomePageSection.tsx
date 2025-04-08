@@ -14,10 +14,10 @@ export const HomePageSection = () => {
     };
 
     loadVideo();
-  },[]);
+  }, []);
 
   return (
-    <div className="relative w-full min-h-[60vh] flex items-center justify-center overflow-hidden">
+    <div className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
       {video?.some((item) => item.tipo === "Home") && (
         <video
           autoPlay
@@ -36,17 +36,15 @@ export const HomePageSection = () => {
         </video>
       )}
 
-      <div className="absolute inset-0 bg-black/30 z-0"></div>
+      {/* Capa oscura */}
+      <div className="absolute inset-0 bg-black/30 z-10"></div>
 
-      <div className="text-center  max-w-md mx-auto z-10 px-4">
+      {/* Contenido centrado */}
+      <div className="z-20 text-center max-w-md mx-auto px-4">
         <h1 className="text-3xl md:text-[2.5rem] lg:text-[3rem] font-extrabold text-white leading-8 md:leading-none">
-          <TranslatableText text="Only the best" />{" "}
-          <br className="block md:hidden" />{" "}
-          <TranslatableText text="for Your" />{" "}
-          <span className="text-white">
-            <TranslatableText text="Furry Friend" />
-          </span>
+          <TranslatableText text="Only the best for your Furry Friend" />
         </h1>
+
         <p className="text-base font-bold md:text-lg lg:text-xl text-pink-400 my-4">
           Servicing Miami-Dade, Broward, And Palm Beach, FL
         </p>
@@ -56,7 +54,7 @@ export const HomePageSection = () => {
         >
           <TranslatableText text="Book an appointment" />
         </Link>
-      </div> 
+      </div>
     </div>
   );
 };
