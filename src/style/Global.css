@@ -39,8 +39,8 @@ body {
   }
 }
 
-@media (min-height: 700px) and (max-height: 800px) {
+@media (min-height: 600px) and (max-height: 800px) {
   .gallery-hero{
-    margin-top: 10.5rem !important;
+    margin-top: 2rem !important;
   }
 }
