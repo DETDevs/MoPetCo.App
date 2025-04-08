@@ -87,7 +87,7 @@ const ServiceDetailPage = () => {
           <div className="w-full md:w-1/2">
             <h1 className="text-3xl font-bold mb-4 flex items-center gap-3 text-blue-700">
               <i className={`fas ${servicio.icon}`}></i>
-              {servicio.titulo}
+              <TranslatableText text={servicio.titulo}/>
             </h1>
 
             <p className="text-gray-700 leading-relaxed mb-6">

@@ -17,7 +17,7 @@ export const HomePageSection = () => {
   }, []);
 
   return (
-    <div className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
+    <div className="relative w-full min-h-screen flex items-center justify-center overflow-hidden ">
       {video?.some((item) => item.tipo === "Home") && (
         <video
           autoPlay

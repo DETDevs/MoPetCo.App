@@ -53,7 +53,7 @@ const GalleryPage = () => {
         videoSrc="/assets/herogallery.mp4"
       />
 
-      <div className="max-w-7xl mx-auto px-4 py-12" id="gallery">
+      <div className="max-w-7xl mx-auto mt-20 px-4 py-12" id="gallery">
         <h2
           className="text-xl sm:text-2xl font-bold text-center mb-8"
           data-aos="fade-up"

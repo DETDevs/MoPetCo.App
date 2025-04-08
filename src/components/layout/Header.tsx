@@ -30,7 +30,7 @@ export const Header = () => {
   
 
   return (
-    <header className="bg-white shadow-md fixed w-full z-20 overflow-hidden">
+    <header className="bg-white shadow-md fixed w-full z-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between relative">
         <div>
           <a href="/">

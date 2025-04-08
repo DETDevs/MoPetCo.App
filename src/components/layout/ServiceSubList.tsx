@@ -23,7 +23,7 @@ export const ServiceSubList: React.FC<Props> = ({ subServicios }) => {
             className="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition duration-300"
           >
             <h3 className="text-xl font-semibold mb-2 text-blue-700">
-              {sub.titulo}
+            <TranslatableText text={sub.titulo}/>
             </h3>
             <p className="text-gray-600 mb-4">
               <TranslatableText text={sub.descripcion} />
