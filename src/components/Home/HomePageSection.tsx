@@ -40,8 +40,8 @@ export const HomePageSection = () => {
       <div className="absolute inset-0 bg-black/30 z-10"></div>
 
       {/* Contenido centrado */}
-      <div className="z-20 text-center max-w-md mx-auto px-4">
-        <h1 className="text-3xl md:text-[2.5rem] lg:text-[3rem] font-extrabold text-white leading-8 md:leading-none">
+      <div className="flex flex-col items-center z-20 text-center max-w-md mx-auto px-4">
+        <h1 className="text-3xl w-[85%] md:text-[2.5rem] lg:text-[3rem] font-extrabold text-white leading-8 md:leading-none">
           <TranslatableText text="Only the best for your Furry Friend" />
         </h1>
 
