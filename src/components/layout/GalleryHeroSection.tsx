@@ -31,7 +31,7 @@ export const GalleryHeroSection = ({
           {/* Botón para audio */}
           <button
             onClick={toggleMute}
-            className="absolute top-3 right-3 z-10 bg-white text-black rounded-full p-2 shadow-md hover:bg-pink-500 hover:text-white transition"
+            className="absolute top-7 md:top-3 right-1 md:right-3 z-10 bg-white text-black rounded-full p-1 md:p-2 shadow-md hover:bg-pink-500 hover:text-white transition"
           >
             {isMuted ? (
               <i className="fas fa-volume-mute"></i>
