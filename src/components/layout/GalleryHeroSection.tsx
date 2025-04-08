@@ -11,17 +11,19 @@ export const GalleryHeroSection = ({
   const [isMuted, setIsMuted] = useState(true);
 
   const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !videoRef.current.muted;
-      setIsMuted(videoRef.current.muted);
-    }
+    setIsMuted((prev) => !prev);
   };
+
   return (
     <div className="gallery-hero w-full flex items-center justify-center px-4 py-10 md:h-[75vh] md:mt-[9rem] lg:mt-[9rem] xl:mt-[12rem] lg:h-[75vh] xl:h-[70vh]">
       <div className="max-w-7xl w-full flex flex-col md:flex-row items-center gap-10 relative">
         {/* Video + Overlay + Botón de audio */}
         <div className="relative w-full md:w-1/2">
-          <VideoGallerySlider ref={videoRef} />
+          <VideoGallerySlider
+            ref={videoRef}
+            isMuted={isMuted}
+            onToggleMute={toggleMute}
+          />
 
           {/* Overlay oscuro */}
           <div className="absolute inset-0 bg-black/50 md:hidden z-1 rounded-lg" />
@@ -49,6 +51,7 @@ export const GalleryHeroSection = ({
           </div>
         </div>
 
+        {/* Sección de texto en pantallas grandes */}
         <div className="hidden md:flex flex-col w-full md:w-1/2 items-start justify-center space-y-8">
           <div>
             <h1 className="text-4xl font-extrabold bg-gradient-to-r from-pink-500 to-purple-500 text-transparent bg-clip-text py-2">
@@ -70,7 +73,7 @@ export const GalleryHeroSection = ({
             </p>
             <a
               href="#gallery"
-              className="bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600 text-sm "
+              className="bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600 text-sm"
             >
               <TranslatableText text="Explore Now" />
             </a>

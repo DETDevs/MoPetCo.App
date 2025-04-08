@@ -5,7 +5,7 @@ interface BookingModalProps {
   onClose: () => void;
 }
 
-export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
+const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
@@ -29,3 +29,5 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) =
     </div>
   );
 };
+
+export default BookingModal

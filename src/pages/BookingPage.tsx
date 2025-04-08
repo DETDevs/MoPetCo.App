@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Header } from "../components/layout/Header";
 
-export const BookingPage = () => {
+const BookingPage = () => {
   const navigate = useNavigate();
 
   return (
@@ -26,3 +26,5 @@ export const BookingPage = () => {
     </>
   );
 };
+
+export default BookingPage;
