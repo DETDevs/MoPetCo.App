@@ -145,6 +145,12 @@ const Footer = () => {
             >
               <i className="text-2xl fab fa-instagram text-pink-600"></i>
             </a>
+            <a
+              target="_blank"
+              href="https://www.tiktok.com/@mopetco?_t=ZT-8vNDv7QIkxu&_r=1"
+            >
+              <i className="fa-brands fa-tiktok"></i>
+            </a>
           </div>
         </div>
         <div className="md:col-span-1 flex flex-col items-center md:items-start">

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { obtenerDetallesServicio } from "../Service/serviceDetailApi";
 import { Servicio } from "../types/Servicio";
 import { Header } from "../components/layout/Header";
@@ -84,10 +84,10 @@ const ServiceDetailPage = () => {
             className="w-full md:w-1/2 rounded-lg shadow-lg object-cover h-[38rem]"
           />
 
-          <div className="w-full md:w-1/2">
+          <div className="w-full md:w-1/2 flex flex-col gap-2">
             <h1 className="text-3xl font-bold mb-4 flex items-center gap-3 text-blue-700">
               <i className={`fas ${servicio.icon}`}></i>
-              <TranslatableText text={servicio.titulo}/>
+              <TranslatableText text={servicio.titulo} />
             </h1>
 
             <p className="text-gray-700 leading-relaxed mb-6">
@@ -133,6 +133,12 @@ const ServiceDetailPage = () => {
                 )}
               </div>
             )}
+            <Link
+              to="/booking"
+              className="bg-pink-500 text-white rounded-lg px-6 py-2 font-semibold hover:bg-pink-600 lg:text-lg self-start"
+            >
+              <TranslatableText text="Book an appointment" />
+            </Link>
           </div>
         </div>
         <ServiceSubList subServicios={subServicios} />

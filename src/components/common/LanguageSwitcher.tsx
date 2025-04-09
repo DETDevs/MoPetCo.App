@@ -41,7 +41,7 @@ export const LanguageSwitcher = () => {
       confirmButtonColor: "#f472b6",
       scrollbarPadding: false,
       customClass: {
-        actions: "justify-center", 
+        actions: "justify-center",
       },
     }).then((result) => {
       if (result.isConfirmed) {
@@ -60,7 +60,7 @@ export const LanguageSwitcher = () => {
       aria-label={t.buttonAriaLabel}
     >
       <img src={t.flag} alt="" className="w-6 h-5" aria-hidden="true" />
-      <span className="  md:hidden lg:inline font-medium text-gray-600 whitespace-nowrap">
+      <span className="lg:inline font-medium text-gray-600 whitespace-nowrap">
         {t.switchTo}
       </span>
     </button>
