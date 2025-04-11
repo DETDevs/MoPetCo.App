@@ -12,8 +12,8 @@ import {
   GalleryPage,
   BookingPage,
   NotFoundPage,
+  PromocionesPage,
 } from "./lazyPages";
-
 
 export const AppRoutes = () => (
   <Suspense fallback={<Loading />}>
@@ -25,6 +25,7 @@ export const AppRoutes = () => (
       <Route path="/service" element={<ServicesPage />} />
       <Route path="/gallery" element={<GalleryPage />} />
       <Route path="/booking" element={<BookingPage />} />
+      <Route path="/promociones" element={<PromocionesPage />} />
       <Route path="/services/:serviceId" element={<ServiceDetailPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>

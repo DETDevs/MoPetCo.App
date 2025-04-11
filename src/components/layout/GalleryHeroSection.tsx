@@ -15,9 +15,8 @@ export const GalleryHeroSection = ({
   };
 
   return (
-    <div className="gallery-hero w-full flex items-center justify-center px-4 py-10 md:h-[75vh] md:mt-[9rem] lg:mt-[9rem] xl:mt-[8rem] lg:h-[75vh] xl:h-[80vh]">
+    <div className="gallery-hero w-full flex items-center justify-center px-4 py-10 md:h-[75vh] md:mt-[9rem] lg:mt-[9rem] xl:mt-[8rem] lg:h-r[75vh] xl:h-[80vh]">
       <div className="max-w-7xl w-full flex flex-col md:flex-row items-center gap-10 relative">
-        {/* Video + Overlay + Botón de audio */}
         <div className="relative w-full md:w-1/2">
           <VideoGallerySlider
             ref={videoRef}
@@ -25,10 +24,8 @@ export const GalleryHeroSection = ({
             onToggleMute={toggleMute}
           />
 
-          {/* Overlay oscuro */}
           <div className="absolute inset-0 bg-black/50 md:hidden z-1 rounded-lg" />
 
-          {/* Botón para audio */}
           <button
             onClick={toggleMute}
             className="absolute top-3 md:top-3 right-1 md:right-3 z-10 bg-white text-black rounded-full p-1 md:p-2 shadow-md hover:bg-pink-500 hover:text-white transition"
@@ -40,7 +37,6 @@ export const GalleryHeroSection = ({
             )}
           </button>
 
-          {/* Texto encima en mobile */}
           <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-4 md:hidden z-2">
             <h1 className="text-3xl font-extrabold tracking-wide drop-shadow-md">
               <TranslatableText text={title} />
@@ -51,7 +47,6 @@ export const GalleryHeroSection = ({
           </div>
         </div>
 
-        {/* Sección de texto en pantallas grandes */}
         <div className="hidden md:flex flex-col w-full md:w-1/2 items-start justify-center space-y-8">
           <div>
             <h1 className="text-4xl font-extrabold bg-gradient-to-r from-pink-500 to-purple-500 text-transparent bg-clip-text py-2">
