@@ -100,8 +100,8 @@ function PromocionesPage() {
         </a>
       </ParallaxSection>
       {/* section de promos */}
-      <section className="py-16 px-6 bg-black text-white text-center relative overflow-hidden">
-        <div className="container mx-auto">
+      <section className="py-16 px-6 bg-black text-white text-center relative overflow-hidden flex flex-col justify-center items-center">
+        <div>
           {/* Título */}
           <h2 className="text-2xl md:text-4xl font-extrabold mb-4">
             <TranslatableText text="COUPON TERMS & CONDITIONS" />
@@ -134,9 +134,9 @@ function PromocionesPage() {
           </ul>
 
           {/* Contenedor animado */}
-          <div className="relative w-fit mx-auto p-2 rounded-xl bg-black overflow-hidden border-4 border-transparent coupon-frame">
+          {/* <div className="relative w-fit mx-auto p-2 rounded-xl bg-black overflow-hidden border-4 border-transparent coupon-frame">
             <img src="/assets/Cupon.PNG" alt="Coupons" className="w-[40rem]" />
-          </div>
+          </div> */}
         </div>
       </section>
 

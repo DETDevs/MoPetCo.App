@@ -161,7 +161,7 @@ const Footer = () => {
             </h3>
           </div>
           <p className="text-base text-center md:text-left">
-            Firebird Transport LLC
+            Firebird Transport LLC d/b/a MoPetCo
           </p>
           <p className="text-[10px] text-center md:text-left text-gray-600">
             2500 SW 22nd Ter, Unit 721
