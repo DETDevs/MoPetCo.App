@@ -1,6 +1,19 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+
+  safelist: [
+    "bg-yellow-50",
+    "shadow-yellow-500",
+    "bg-blue-50",
+    "shadow-blue-500",
+    "bg-purple-50",
+    "shadow-purple-500",
+    "bg-green-50",
+    "shadow-green-500",
+    "text-black",
+  ],
+
   theme: {
     extend: {
       animation: {
@@ -32,9 +45,9 @@ export default {
           "0%": { opacity: 0 },
           "100%": { opacity: 1 },
         },
-        fontFamily: {
-          sans: ['Inter', 'sans-serif'],
-        },
+      },
+      fontFamily: {
+        sans: ["Inter", "sans-serif"],
       },
     },
   },

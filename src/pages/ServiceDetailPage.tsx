@@ -119,13 +119,12 @@ const ServiceDetailPage = () => {
                     <li key={p.idPrecio}>
                       <TranslatableText text={p.rangoPeso.nombre} />:{" "}
                       <span className="font-medium text-green-600">
-                        ${p.monto.toFixed(2)}
+                        ${p.monto}
                       </span>
                     </li>
                   ))}
                 </ul>
 
-                {/* Renderizar la nota si existe */}
                 {servicio.nota && (
                   <p className="mt-2 text-sm text-gray-500 italic">
                     <TranslatableText text={servicio.nota} />

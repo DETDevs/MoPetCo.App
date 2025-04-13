@@ -111,7 +111,7 @@ export const Header = () => {
       {/* Mobile Navigation */}
       <div
         className={`block md:block lg:hidden fixed top-0 left-0 w-full h-auto bg-white z-10 transform transition-transform duration-300 ease-in-out ${
-          menuOpen ? "translate-y-0" : "-translate-y-full"
+          menuOpen ? "translate-y-0" : "-translate-y-full" 
         }`}
       >
         <div className="px-4 py-6 space-y-4 mt-16 flex flex-col items-center">
@@ -129,6 +129,9 @@ export const Header = () => {
           </a>
           <a href="/release-form" onClick={() => setMenuOpen(false)} className={navLinkClass("/release-form")}>
             <TranslatableText text="Release Form" />
+          </a>
+          <a href="/promociones" onClick={() => setMenuOpen(false)} className={navLinkClass("/promociones")}>
+            <TranslatableText text="Promociones" />
           </a>
           <a href="/faqs" onClick={() => setMenuOpen(false)} className={navLinkClass("/faqs")}>
             <TranslatableText text="FAQs" />
