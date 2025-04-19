@@ -1,0 +1,4 @@
+/* src/styles/textStyles.css */
+.text-content {
+  @apply text-gray-700 px-3 md:px-0 text-base sm:text-lg md:text-[17px] lg:text-[1rem] xl:text-[1.2rem] leading-relaxed tracking-wide text-justify;
+}

@@ -1,0 +1,49 @@
+.slider-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+  
+  .slider-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .review-card {
+    flex: 0 0 33.3333%;
+    padding: 1rem;
+    box-sizing: border-box;
+    transition: transform 0.3s;
+  }
+  
+  .nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border: none;
+    padding: 0.5rem 0.8rem;
+    border-radius: 9999px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    z-index: 10;
+  }
+  
+  .nav-btn.left {
+    left: 0.5rem;
+  }
+  
+  .nav-btn.right {
+    right: 0.5rem;
+  }
+  
+  .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 9999px;
+    object-fit: cover;
+  }
+  
+  
