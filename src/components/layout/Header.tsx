@@ -131,7 +131,7 @@ export const Header = () => {
             <TranslatableText text="Release Form" />
           </a>
           <a href="/promociones" onClick={() => setMenuOpen(false)} className={navLinkClass("/promociones")}>
-            <TranslatableText text="Promociones" />
+            <TranslatableText text="promotions" />
           </a>
           <a href="/faqs" onClick={() => setMenuOpen(false)} className={navLinkClass("/faqs")}>
             <TranslatableText text="FAQs" />

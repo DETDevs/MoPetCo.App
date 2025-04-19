@@ -38,7 +38,7 @@ export const ServiceSubList: React.FC<Props> = ({ subServicios }) => {
                   {sub.precio.map((p) => (
                     <li key={p.idPrecio}>
                       <TranslatableText text={p.rangoPeso.nombre} />:{" "}
-                      <span className="font-medium">${p.monto.toFixed(2)}</span>
+                      <span className="font-medium">${p.monto}</span>
                     </li>
                   ))}
                 </ul>
