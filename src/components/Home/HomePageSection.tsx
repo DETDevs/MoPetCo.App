@@ -17,14 +17,14 @@ export const HomePageSection = () => {
   }, []);
 
   return (
-    <div className="relative w-full min-h-screen flex items-center justify-center overflow-hidden ">
+    <div className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-black to-pink-500">
       {video?.some((item) => item.tipo === "Home") && (
         <video
           autoPlay
           loop
           muted
           playsInline
-          preload="auto"
+          preload="none"
           className="absolute inset-0 w-full h-full object-cover z-0"
         >
           {video
@@ -36,10 +36,8 @@ export const HomePageSection = () => {
         </video>
       )}
 
-      {/* Capa oscura */}
       <div className="absolute inset-0 bg-black/30 z-10"></div>
 
-      {/* Contenido centrado */}
       <div className="flex flex-col items-center z-20 text-center max-w-md mx-auto px-4">
         <h1 className="text-3xl w-[85%] md:text-[2.5rem] lg:text-[3rem] font-extrabold text-white leading-8 md:leading-none">
           <TranslatableText text="Only the best for your Furry Friend" />

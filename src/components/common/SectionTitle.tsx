@@ -8,10 +8,12 @@ interface Props {
         <div className="flex justify-center mb-2">
           <img
             src="/assets/pawprint.png"
+            alt="pawprint"
             className="w-5 h-5 opacity-30 mr-1 animate-bounce"
           />
           <img
             src="/assets/pawprint.png"
+            alt="pawprint"
             className="w-5 h- opacity-30 ml-1 animate-bounce delay-150"
           />
         </div>

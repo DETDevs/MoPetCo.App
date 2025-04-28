@@ -7,8 +7,6 @@ export const fetchPromocion = async (): Promise<Promocion[]> => {
       `${API_BASE_URL}/api/Promociones/ObtenerPromocionesHome`
     );
 
-    console.log(res);
-
     if (!res.ok) {
       const errorText = await res.text();
       console.error("Respuesta del servidor inválida:", errorText);

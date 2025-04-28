@@ -28,6 +28,7 @@ export const GalleryHeroSection = ({
 
           <button
             onClick={toggleMute}
+            aria-label="muted"
             className="absolute top-3 md:top-3 right-1 md:right-3 z-10 bg-white text-black rounded-full p-1 md:p-2 shadow-md hover:bg-pink-500 hover:text-white transition"
           >
             {isMuted ? (

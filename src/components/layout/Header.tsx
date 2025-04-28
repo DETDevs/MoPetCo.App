@@ -90,6 +90,7 @@ export const Header = () => {
         {/* Hamburger button (mobile + tablet) */}
         <button
           className="block md:block lg:hidden text-gray-700 focus:outline-none z-30 ml-2"
+          title="Hamburger"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           <svg

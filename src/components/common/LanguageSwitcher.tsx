@@ -59,7 +59,7 @@ export const LanguageSwitcher = () => {
       title={t.switchTo}
       aria-label={t.buttonAriaLabel}
     >
-      <img src={t.flag} alt="" className="w-6 h-5" aria-hidden="true" />
+      <img src={t.flag} alt="language" className="w-6 h-5" aria-hidden="true" />
       <span className="lg:inline font-medium text-gray-600 whitespace-nowrap">
         {t.switchTo}
       </span>

@@ -90,12 +90,11 @@ export const VideoGallerySlider = forwardRef<HTMLVideoElement, VideoGallerySlide
           onEnded={handleVideoEnd}
         />
 
-        {/* Opcional: Podrías volver a tener un botón de audio aquí si quisieras duplicar el control */}
-
         {/* Botón anterior */}
         {galleryVideos.length > 1 && (
           <button
             onClick={handlePrev}
+            aria-label="last"
             className="hidden sm:block absolute left-0 top-1/2 transform -translate-y-1/2 text-white rounded-full p-3 hover:bg-black/70 transition"
           >
             <svg
@@ -114,6 +113,7 @@ export const VideoGallerySlider = forwardRef<HTMLVideoElement, VideoGallerySlide
         {galleryVideos.length > 1 && (
           <button
             onClick={handleNext}
+            aria-label="next"
             className="hidden sm:block absolute right-0 top-1/2 transform -translate-y-1/2 text-white rounded-full p-3 hover:bg-black/70 transition"
           >
             <svg
@@ -135,6 +135,7 @@ export const VideoGallerySlider = forwardRef<HTMLVideoElement, VideoGallerySlide
               <button
                 key={index}
                 onClick={() => handleDotClick(index)}
+                title="scroll"
                 className={`w-3 h-3 rounded-full transition-colors duration-300 ${
                   currentVideoIndex === index ? "bg-pink-500" : "bg-gray-400"
                 }`}

@@ -1,4 +1,5 @@
 // src/Layout.tsx
+import { CookieConsent } from "./components/common/CookieConsent";
 import { ScrollToTopButton } from "./components/common/ScrollToTopButton";
 import { WhatsAppButton } from "./components/common/WhatsAppButton";
 import Footer from "./components/layout/Footer";
@@ -11,6 +12,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => (
     <Suspense fallback={null}>
       <ScrollToTopButton />
       <WhatsAppButton />
+      <CookieConsent />
       <Footer />
     </Suspense>
   </div>

@@ -73,6 +73,7 @@ export const ReviewSlider: React.FC<ReviewSliderProps> = ({ reviews }) => {
           hover:bg-gray-100
           transition
         "
+        aria-label="left"
         onClick={handlePrev}
       >
         <i className="fas fa-chevron-left"></i>
@@ -128,6 +129,7 @@ export const ReviewSlider: React.FC<ReviewSliderProps> = ({ reviews }) => {
           hover:bg-gray-100
           transition
         "
+        aria-label="right"
         onClick={handleNext}
       >
         <i className="fas fa-chevron-right"></i>
