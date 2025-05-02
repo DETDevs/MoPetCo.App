@@ -1,12 +1,19 @@
 import { useState, useRef, useEffect } from "react";
-import { enviarContacto } from "../Service/contactService";
+import { useNavigate, useLocation } from "react-router-dom";
+import ReCAPTCHA from "react-google-recaptcha";
+import validator from "validator";
+import { toast } from "react-toastify";
+
+import {
+  enviarContacto,
+  sendCode,
+  validarZipCode,
+} from "../Service/contactService";
+
 import { ContactoRequest } from "../types/contact";
 import { Header } from "../components/layout/Header";
-import { toast } from "react-toastify";
 import { TranslatableText } from "../components/common/TranslatableText";
 import { SectionTitle } from "../components/common/SectionTitle";
-import ReCAPTCHA from "react-google-recaptcha";
-import { verificarCaptcha } from "../Service/captchaService";
 import { useLanguage } from "../contexts/LanguageContext";
 import { getTranslation } from "../utils/translationHelper";
 
@@ -22,11 +29,23 @@ const ContactPage = () => {
     correo: "",
     mensaje: "",
   });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [emailVerified, setEmailVerified] = useState(false);
+  const [zipValid, setZipValid] = useState(true);
 
   const captchaRef = useRef<ReCAPTCHA>(null);
   const { language } = useLanguage();
+  const navigate = useNavigate();
+  const location = useLocation() as {
+    state?: { emailVerified?: boolean; email?: string };
+  };
+
+  const isValidUSZip = (zip: string) => /^\d{5}$/.test(zip.trim());
+  const isValidUSPhone = (phone: string) =>
+    /^\d{10}$/.test(phone.replace(/\D/g, ""));
+  const isValidEmail = (mail: string) => validator.isEmail(mail.trim());
 
   const [placeholders, setPlaceholders] = useState({
     nombre: "Your Name *",
@@ -38,16 +57,83 @@ const ContactPage = () => {
     mensaje: "Your Question *",
   });
 
-  const handleChange = (
+  const zipOk = isValidUSZip(formData.codigoPostal);
+  const phoneOk = isValidUSPhone(formData.numero);
+
+  useEffect(() => {
+    const loadPlaceholders = async () => {
+      const translated = await Promise.all([
+        getTranslation("Your Name *", language),
+        getTranslation("Your Address *", language),
+        getTranslation("Your City *", language),
+        getTranslation("Zip Code *", language),
+        getTranslation("Phone Number *", language),
+        getTranslation("Email Address *", language),
+        getTranslation("Your Question *", language),
+      ]);
+      setPlaceholders({
+        nombre: translated[0],
+        direccion: translated[1],
+        ciudad: translated[2],
+        codigoPostal: translated[3],
+        numero: translated[4],
+        correo: translated[5],
+        mensaje: translated[6],
+      });
+    };
+    loadPlaceholders();
+  }, [language]);
+
+  // lee borrador si existe
+  useEffect(() => {
+    const draft = sessionStorage.getItem("contactDraft");
+    if (draft) {
+      setFormData(JSON.parse(draft));
+    }
+  }, []); // solo primera vez
+
+  const hasShownToast = useRef(false);
+
+  useEffect(() => {
+    if (location.state?.emailVerified && !hasShownToast.current) {
+      setEmailVerified(true);
+      setFormData((p) => ({ ...p, correo: location.state!.email! }));
+      toast.success("Correo confirmado 🎉");
+      hasShownToast.current = true; // ⚠️ solo una vez
+    }
+  }, [location.state]);
+
+  const handleChange = async (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+
+    if (name === "correo") {
+      setEmailVerified(false);
+    }
+
+    if (name === "codigoPostal" && /^\d{5}$/.test(value.trim())) {
+      const isValid = await validarZipCode(value.trim(), "US");
+      setZipValid(isValid);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (!emailVerified) {
+      toast.warn("Debes confirmar tu correo antes de enviar 📧");
+      return;
+    }
+    if (!isValidUSZip(formData.codigoPostal)) {
+      toast.error("Código postal no válido 🎯");
+      return;
+    }
+    if (!isValidUSPhone(formData.numero)) {
+      toast.error("Número telefónico no válido ☎️");
+      return;
+    }
     if (!captchaToken) {
       toast.error("Please verify that you're not a robot.");
       return;
@@ -56,14 +142,6 @@ const ContactPage = () => {
     setIsSubmitting(true);
 
     try {
-      const captchaResponse = await verificarCaptcha(captchaToken);
-
-      if (!captchaResponse || !captchaResponse.content) {
-        toast.error("Captcha verification failed. Please try again.");
-        setIsSubmitting(false);
-        return;
-      }
-
       const contacto: ContactoRequest = {
         idContacto: 0,
         nombre: formData.nombre,
@@ -89,8 +167,10 @@ const ContactPage = () => {
           correo: "",
           mensaje: "",
         });
+        setEmailVerified(false);
         setCaptchaToken(null);
         captchaRef.current?.reset();
+        sessionStorage.removeItem("contactDraft");
       } else {
         toast.error(
           "There was an error sending your message. Please try again later."
@@ -104,47 +184,32 @@ const ContactPage = () => {
     }
   };
 
-  useEffect(() => {
-    const loadPlaceholders = async () => {
-      const translated = await Promise.all([
-        getTranslation("Your Name *", language),
-        getTranslation("Your Address *", language),
-        getTranslation("Your City *", language),
-        getTranslation("Zip Code *", language),
-        getTranslation("Phone Number *", language),
-        getTranslation("Email Address *", language),
-        getTranslation("Your Question *", language),
-      ]);
+  const handleSendCode = async () => {
+    if (!isValidEmail(formData.correo)) return;
 
-      setPlaceholders({
-        nombre: translated[0],
-        direccion: translated[1],
-        ciudad: translated[2],
-        codigoPostal: translated[3],
-        numero: translated[4],
-        correo: translated[5],
-        mensaje: translated[6],
-      });
-    };
+    sessionStorage.setItem("contactDraft", JSON.stringify(formData));
 
-    loadPlaceholders();
-  }, [language]);
-
+    const ok = await sendCode(formData.correo);
+    if (ok) {
+      toast.info("Te enviamos un código a tu correo 📩");
+      navigate("/verify-email", { state: { email: formData.correo } });
+    } else {
+      toast.error("No pudimos enviar el código. Intenta más tarde.");
+    }
+  };
   return (
     <>
       <Header />
+
       <main className="bg-white text-gray-800 py-10 px-4 my-10">
         <h1 className="text-3xl font-bold text-center mb-2">
           <SectionTitle>
             <TranslatableText text="Contact Us" />
           </SectionTitle>
         </h1>
+
         <p className="text-center max-w-3xl mx-auto mb-10 text-gray-600">
-          <TranslatableText
-            text="Welcome to MoPetCo Guest Services. We’re always happy to hear from you
-            and will do our best to respond to your inquiry in a timely manner. 
-            To contact us please fill out our Guest Service form below."
-          />
+          <TranslatableText text="Welcome to MoPetCo Guest Services. We’re always happy to hear from you and will do our best to respond to your inquiry in a timely manner. To contact us please fill out our Guest Service form below." />
         </p>
 
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -185,32 +250,74 @@ const ContactPage = () => {
                 className="w-full p-2 rounded text-black"
               />
               <input
-                type="number"
+                type="text"
+                inputMode="numeric"
                 name="codigoPostal"
                 placeholder={placeholders.codigoPostal}
                 value={formData.codigoPostal}
                 onChange={handleChange}
+                maxLength={5}
+                pattern="\d{5}"
+                title="5-digit ZIP (e.g., 12345)"
                 required
                 className="w-full p-2 rounded text-black"
               />
+              {formData.codigoPostal && !zipOk && (
+                <p className="text-xs text-red-200">
+                  <TranslatableText text="ZIP must be 5 digits" />
+                </p>
+              )}
+              {!zipValid && (
+                <p className="text-xs text-red-200">
+                  <TranslatableText text="ZIP code is not valid" />
+                </p>
+              )}
               <input
-                type="number"
+                type="tel"
+                inputMode="numeric"
                 name="numero"
                 placeholder={placeholders.numero}
                 value={formData.numero}
                 onChange={handleChange}
+                maxLength={10}
+                pattern="\d{10}"
+                title="10-digit US phone number"
                 required
                 className="w-full p-2 rounded text-black"
               />
-              <input
-                type="email"
-                name="correo"
-                placeholder={placeholders.correo}
-                value={formData.correo}
-                onChange={handleChange}
-                required
-                className="w-full p-2 rounded text-black"
-              />
+              {formData.numero && !phoneOk && (
+                <p className="text-xs text-red-200">
+                  <TranslatableText text="Phone must be 10 digits" />
+                </p>
+              )}
+              <div>
+                <input
+                  type="email"
+                  name="correo"
+                  placeholder={placeholders.correo}
+                  value={formData.correo}
+                  onChange={handleChange}
+                  required
+                  className="w-full p-2 rounded text-black"
+                />
+                <button
+                  type="button"
+                  disabled={!isValidEmail(formData.correo) || emailVerified}
+                  onClick={handleSendCode}
+                  className={`mt-1 block text-sm underline ${
+                    !isValidEmail(formData.correo) || emailVerified
+                      ? "text-gray-300 cursor-not-allowed"
+                      : "text-white hover:text-gray-200"
+                  }`}
+                >
+                  {emailVerified ? (
+                    <TranslatableText text="Email verified ✔" />
+                  ) : (
+                    <TranslatableText text="Confirm your email" />
+                  )}
+                </button>
+              </div>
+
               <textarea
                 name="mensaje"
                 placeholder={placeholders.mensaje}
@@ -221,28 +328,40 @@ const ContactPage = () => {
                 className="w-full p-2 rounded text-black"
               ></textarea>
 
-              {/* CAPTCHA */}
               <div className="flex justify-center">
                 <ReCAPTCHA
                   ref={captchaRef}
                   sitekey={SITE_KEY}
-                  onChange={(token) => {
-                    console.log("Token Captcha recibido:", token);
-                    setCaptchaToken(token);
-                  }}
+                  onChange={(token) => setCaptchaToken(token)}
                   theme="dark"
                 />
               </div>
 
+              {!emailVerified && (
+                <p className="text-xs text-yellow-200">
+                  <TranslatableText text="Please fill in all fields correctly to enable sending" />
+                </p>
+              )}
+
               <button
                 type="submit"
                 title="sendme"
+                disabled={
+                  isSubmitting ||
+                  !emailVerified ||
+                  !phoneOk ||
+                  !zipValid ||
+                  !captchaToken
+                }
                 className={`bg-black text-white px-4 py-2 rounded font-bold transition ${
-                  isSubmitting
+                  isSubmitting ||
+                  !emailVerified ||
+                  !phoneOk ||
+                  !zipValid ||
+                  !captchaToken
                     ? "opacity-50 cursor-not-allowed"
                     : "hover:bg-gray-800"
                 }`}
-                disabled={isSubmitting}
               >
                 {isSubmitting ? (
                   "Sending..."
@@ -253,7 +372,6 @@ const ContactPage = () => {
             </form>
           </div>
 
-          {/* Información de contacto */}
           <div className="flex flex-col justify-center space-y-6">
             <h2 className="text-2xl font-bold text-gray-800">
               <TranslatableText text="Get in Touch" />

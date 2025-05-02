@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import { TranslatableText } from "./TranslatableText";
 
-// Cargador perezoso del script
 const loadRecaptcha = () => {
-  if (document.getElementById("recaptcha-script")) return; // ya existe
+  if (document.getElementById("recaptcha-script")) return;
   const s = document.createElement("script");
   s.src = "https://www.google.com/recaptcha/api.js?render=explicit";
   s.async = true;
