@@ -3,7 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/assets/animals.png" />
+    <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+    <meta property="og:title" content="MoPetCO" />
+    <meta
+      property="og:description"
+      content="MoPetCO is your professional solution for pet care, grooming, and appointment booking services. Book online easily and quickly."
+    />
+    <meta
+      property="og:image"
+      content="https://mopetco.com/assets/logo-about.jpg"
+    />
+    <meta property="og:url" content="https://mopetco.com" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="MoPetCO" />
+    <meta
+      name="twitter:description"
+      content="MoPetCO is your professional solution for pet care, grooming, and appointment booking services. Book online easily and quickly."
+    />
+    <meta
+      name="twitter:image"
+      content="https://mopetco.com/assets/logo-about.jpg"
+    />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="MoPetCO is your professional solution for pet care, grooming, and appointment booking services. Book online easily and quickly."
+    />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -11,12 +41,22 @@
     <link rel="stylesheet" href="./src/style/Global.css" />
     <link rel="stylesheet" href="./src/style/common.module.css" />
     <link rel="preload" as="image" href="/assets/home_header-1.png" />
-    <title>MoPetCO</title>
+
     <script
-      src="https://www.google.com/recaptcha/api.js"
       async
-      defer
+      src="https://www.googletagmanager.com/gtag/js?id=G-E538PJPXVL"
     ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-E538PJPXVL");
+    </script>
+
+    <title>MoPetCO</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   </head>
   <body>
     <div id="root"></div>

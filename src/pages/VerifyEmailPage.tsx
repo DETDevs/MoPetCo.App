@@ -57,7 +57,7 @@ const VerifyEmailPage = () => {
     }
     const ok = await validateCode(state.email, digits.join(""));
     if (ok) {
-      toast.success("✅ Código correcto");
+      // toast.success("✅ Código correcto");
       navigate("/contact", {
         state: { emailVerified: true, email: state.email },
       });
