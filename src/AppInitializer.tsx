@@ -1,4 +1,3 @@
-// src/AppInitializer.tsx
 import { useEffect, useState } from "react";
 import { useTranslationContext } from "./contexts/TranslationContext";
 import { initTranslations } from "./Service/initTranslations";

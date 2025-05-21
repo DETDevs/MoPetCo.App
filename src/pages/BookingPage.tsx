@@ -1,12 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { Header } from "../components/layout/Header";
 
 const BookingPage = () => {
   const navigate = useNavigate();
 
   return (
     <>
-      <Header />
+      
       <div className="max-w-6xl my-8 mx-auto py-10 px-4">
       <button
             onClick={() => navigate("/")}

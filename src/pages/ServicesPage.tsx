@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Servicio } from "../types/Servicio";
-import { Header } from "../components/layout/Header";
 import { Loading } from "../components/layout/Loading";
 import { obtenerDetallesServicio } from "../Service/serviceDetailApi";
 import { TranslatableText } from "../components/common/TranslatableText";
@@ -39,7 +38,6 @@ const ServicesPage = () => {
 
   return (
     <>
-      <Header />
       <section className="relative bg-gradient-to-r from-white via-pink-50 to-blue-50 py-20 px-6 text-center overflow-hidden">
         <PawprintsDecor />
         <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-800 tracking-wide mb-4 drop-shadow">

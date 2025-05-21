@@ -1,4 +1,3 @@
-// src/lazyPages.ts
 import { lazy } from "react";
 
 export const HomePage = lazy(() => import("./pages/HomePage"));
@@ -17,3 +16,5 @@ export const NotFoundPage = lazy(
 export const Footer = lazy(() => import("./components/layout/Footer"));
 export const PromocionesPage = lazy(() => import("./pages/PromocionesPage"));
 export const VerifyEmailPage = lazy(() => import("./pages/VerifyEmailPage"));
+export const ServicesShowcase = lazy(() => import("@/pages/ServicesShowcase"));
+export const BookingNewPage = lazy(() => import("@/pages/BookingPageNew"));

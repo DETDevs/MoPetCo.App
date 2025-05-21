@@ -66,7 +66,6 @@ const ServiceDetailPage = () => {
 
   return (
     <>
-      <Header />
       <div className="max-w-7xl mx-auto px-4 py-12 my-10">
         <div className="my-2">
           <button

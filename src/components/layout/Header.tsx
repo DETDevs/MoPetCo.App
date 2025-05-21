@@ -55,7 +55,7 @@ export const Header = () => {
         ))}
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex space-x-6 items-center z-10">
+        {/* <nav className="hidden lg:flex space-x-6 items-center z-10">
           <a href="/" className={navLinkClass("/")}>Home</a>
           <a href="/service" className={navLinkClass("/service")}>
             <TranslatableText text="Services" />
@@ -72,7 +72,7 @@ export const Header = () => {
           <a href="/faqs" className={navLinkClass("/faqs")}>
             <TranslatableText text="FAQs" />
           </a>
-        </nav>
+        </nav> */}
 
         {/* Language switcher (desktop) */}
         <div className="hidden lg:flex items-center mr-3">
@@ -116,7 +116,7 @@ export const Header = () => {
         }`}
       >
         <div className="px-4 py-6 space-y-4 mt-16 flex flex-col items-center">
-          <a href="/" onClick={() => setMenuOpen(false)} className={navLinkClass("/")}>
+          {/* <a href="/" onClick={() => setMenuOpen(false)} className={navLinkClass("/")}>
             Home
           </a>
           <a href="/service" onClick={() => setMenuOpen(false)} className={navLinkClass("/service")}>
@@ -136,7 +136,7 @@ export const Header = () => {
           </a>
           <a href="/faqs" onClick={() => setMenuOpen(false)} className={navLinkClass("/faqs")}>
             <TranslatableText text="FAQs" />
-          </a>
+          </a> */}
 
           {/* Language switcher (mobile) */}
           <div className="mt-4">

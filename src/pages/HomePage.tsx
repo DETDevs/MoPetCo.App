@@ -13,7 +13,6 @@ const ReviewList = lazy(() => import("../components/Home/ReviewList"));
 const HomePage = () => {
   return (
     <>
-      <Header />
       <HomePageSection />
       <AboutSection />
       <ServiceSection />

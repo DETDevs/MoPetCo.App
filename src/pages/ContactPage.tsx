@@ -11,7 +11,6 @@ import {
 } from "../Service/contactService";
 
 import { ContactoRequest } from "../types/contact";
-import { Header } from "../components/layout/Header";
 import { TranslatableText } from "../components/common/TranslatableText";
 import { SectionTitle } from "../components/common/SectionTitle";
 import { useLanguage } from "../contexts/LanguageContext";
@@ -199,8 +198,6 @@ const ContactPage = () => {
   };
   return (
     <>
-      <Header />
-
       <main className="bg-white text-gray-800 py-10 px-4 my-10">
         <h1 className="text-3xl font-bold text-center mb-2">
           <SectionTitle>

@@ -20,7 +20,6 @@ function PromocionesPage() {
 
   return (
     <>
-      <Header />
       <ParallaxSection
         imageUrl="/assets/dog-para.jpg"
         height="100vh"

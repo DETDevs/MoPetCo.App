@@ -11,7 +11,6 @@ const FAQsPage = () => {
 
   return (
     <>
-      <Header />
       <main className="bg-white pt-24 pb-12 px-4">
         <div
           className="max-w-4xl mx-auto text-gray-800 space-y-6"

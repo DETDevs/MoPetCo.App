@@ -45,7 +45,6 @@ const GalleryPage = () => {
 
   return (
     <>
-      <Header />
 
       <GalleryHeroSection
         title="Grooming Gallery"

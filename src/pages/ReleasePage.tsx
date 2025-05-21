@@ -12,7 +12,6 @@ const ReleasePage = () => {
 
   return (
     <>
-      <Header />
 
       <main className="bg-white pt-24 pb-12 px-4">
         <div

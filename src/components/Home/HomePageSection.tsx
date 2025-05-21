@@ -47,7 +47,7 @@ export const HomePageSection = () => {
           Servicing Miami-Dade, Broward, And Palm Beach, FL
         </p>
         <Link
-          to="/booking"
+          to="/serivecesshow"
           className="bg-pink-500 text-white rounded-lg px-6 py-2 font-semibold hover:bg-pink-600 lg:text-lg"
         >
           <TranslatableText text="Book an appointment" />
