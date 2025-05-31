@@ -1,24 +1,15 @@
-import { useEffect, useState } from "react";
 import { TranslatableText } from "../common/TranslatableText";
-import { obtenerVideosTypes } from "../../Service/videoService";
-import { VideoType } from "../../types/VideoType";
+import { useVideos } from "../../hooks/useVideos"; // ✅ Nuevo hook
 import { Link } from "react-router-dom";
 
 export const HomePageSection = () => {
-  const [video, setVideo] = useState<VideoType[] | null>(null);
+  const { data: videos, isLoading } = useVideos(); // ✅ React Query
 
-  useEffect(() => {
-    const loadVideo = async () => {
-      const data = await obtenerVideosTypes();
-      setVideo(data);
-    };
-
-    loadVideo();
-  }, []);
+  const videoToShow = videos?.filter((item) => item.tipo === "Home");
 
   return (
     <div className="relative w-full min-h-screen flex items-center justify-center overflow-hidden ">
-      {video?.some((item) => item.tipo === "Home") && (
+      {!isLoading && videos?.some((item) => item.tipo === "Home L") && (
         <video
           autoPlay
           loop
@@ -27,11 +18,9 @@ export const HomePageSection = () => {
           preload="auto"
           className="absolute inset-0 w-full h-full object-cover z-0"
         >
-          {video
-            .filter((item) => item.tipo === "Home")
-            .map((item) => (
-              <source key={item.idVideo} src={item.urlVideo} type="video/mp4" />
-            ))}
+          {videoToShow?.map((item) => (
+            <source key={item.idVideo} src={item.urlVideo} type="video/webm" />
+          ))}
           Tu navegador no soporta el video.
         </video>
       )}
@@ -48,6 +37,7 @@ export const HomePageSection = () => {
         <p className="text-base font-bold md:text-lg lg:text-xl text-pink-400 my-4">
           Servicing Miami-Dade, Broward, And Palm Beach, FL
         </p>
+
         <Link
           to="/booking"
           className="bg-pink-500 text-white rounded-lg px-6 py-2 font-semibold hover:bg-pink-600 lg:text-lg"

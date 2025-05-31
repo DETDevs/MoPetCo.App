@@ -1,57 +1,48 @@
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useRef, useEffect } from "react";
 import { SectionTitle } from "../common/SectionTitle";
 import { TranslatableText } from "../common/TranslatableText";
-import { fetchPromocion } from "../../Service/promocionesApi";
-import { Promocion } from "../../types/promociones";
 import { useWindowSize } from "../../hooks/useWindowSize";
+import { usePromociones } from "../../hooks/usePromociones"; // ✅ hook nuevo
 
-export function PromocionSection() {
+function PromocionSection() {
   const { width } = useWindowSize();
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [promociones, setPromociones] = useState<Promocion[] | null>(null);
 
-  const marginPerCard = width >= 768 ? 35 : 15; // md breakpoint
+  const { data: promociones, isLoading } = usePromociones(); // ✅ react query
 
-  const loadPromociones = useCallback(async () => {
-    const data = await fetchPromocion();
-    setPromociones(data);
-    console.log(data);
-  }, []);
-
-  useEffect(() => {
-    loadPromociones();
-  }, [loadPromociones]);
+  const marginPerCard = width >= 768 ? 35 : 15;
 
   useEffect(() => {
     if (!promociones?.length) return;
 
-    const thresholds = Array.from({ length: 101 }, (_, i) => i / 100);
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(({ target, intersectionRatio }) => {
-          const currentIndex = Number(target.getAttribute("data-index"));
-          const prevCard = sectionRefs.current[currentIndex - 1];
-          if (!prevCard) return;
+    const thresholds = [0, 0.25, 0.5, 0.75, 1];
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(({ target, intersectionRatio }) => {
+        const currentIndex = Number(target.getAttribute("data-index"));
+        const prevCard = sectionRefs.current[currentIndex - 1];
+        if (!prevCard) return;
 
-          const translateY = -12 * intersectionRatio;
-          const scale = 1 - intersectionRatio * 0.1;
+        const translateY = -12 * intersectionRatio;
+        const scale = 1 - intersectionRatio * 0.1;
 
-          prevCard.style.transform = `translateY(${translateY}%) scale(${scale})`;
-        });
-      },
-      { threshold: thresholds }
-    );
+        prevCard.style.transform = `translateY(${translateY}%) scale(${scale})`;
+      });
+    }, { threshold: thresholds });
 
-    sectionRefs.current.forEach(
-      (section) => section && observer.observe(section)
-    );
+    sectionRefs.current.forEach((section) => section && observer.observe(section));
 
     return () => {
-      sectionRefs.current.forEach(
-        (section) => section && observer.unobserve(section)
-      );
+      sectionRefs.current.forEach((section) => section && observer.unobserve(section));
     };
   }, [promociones]);
+
+  if (isLoading) {
+    return (
+      <div className="text-center py-10 text-lg font-medium text-gray-600">
+        <TranslatableText text="Loading promotions..." />
+      </div>
+    );
+  }
 
   return (
     <article className="mb-20">
@@ -87,17 +78,17 @@ export function PromocionSection() {
                 }
               }}
               className={`
-              sticky top-[15vh] left-[5%] md:left-[8%]
-              w-[90%] md:w-[85%] xl:w-[70%] 2xl:w-[55%]
-              h-[40rem] md:h-[45vh]
-              border-2 border-pink-100 rounded-xl shadow-xl shadow-slate-200
-              ${bgColorClass} ${textColor}
-              flex items-center justify-center text-center p-6 md:p-10
-              transition-transform duration-700 ease-out
-              z-[${1000 - index}]
-              gap-8 lg:flex-row flex-col
-              hover:-translate-y-2 hover:scale-105 hover:${shadowColorClass}
-            `}
+                sticky top-[15vh] left-[5%] md:left-[8%]
+                w-[90%] md:w-[85%] xl:w-[70%] 2xl:w-[55%]
+                h-[40rem] md:h-[45vh]
+                border-2 border-pink-100 rounded-xl shadow-xl shadow-slate-200
+                ${bgColorClass} ${textColor}
+                flex items-center justify-center text-center p-6 md:p-10
+                transition-transform duration-700 ease-out
+                z-[${1000 - index}]
+                gap-8 lg:flex-row flex-col
+                hover:-translate-y-2 hover:scale-105 hover:${shadowColorClass}
+              `}
               style={{
                 marginTop: index === 0 ? 0 : `${index * marginPerCard}vh`,
               }}
@@ -133,3 +124,5 @@ export function PromocionSection() {
     </article>
   );
 }
+
+export default PromocionSection;
