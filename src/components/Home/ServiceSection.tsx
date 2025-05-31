@@ -5,7 +5,7 @@ import { TranslatableText } from "../common/TranslatableText";
 import { obtenerServicios } from "../../Service/serviceApi";
 import { Servicio } from "../../types/Servicio";
 
-export const ServiceSection = () => {
+const ServiceSection = () => {
   const [servicios, setServicios] = useState<Servicio[]>([]);
 
   // Definimos los colores como en la otra página
@@ -76,3 +76,5 @@ export const ServiceSection = () => {
     </section>
   );
 };
+
+export default ServiceSection;

@@ -29,7 +29,6 @@ export const NotFoundMessage: React.FC<NotFoundMessageProps> = ({
       <p className="text-gray-600 mb-4 max-w-md">{message}</p>
       <button
         onClick={() => navigate(redirectPath)}
-        aria-label="back"
         className="bg-pink-500 text-white px-6 py-2 rounded-full font-semibold hover:bg-pink-600 transition-shadow shadow-lg hover:shadow-xl"
       >
         {buttonText}

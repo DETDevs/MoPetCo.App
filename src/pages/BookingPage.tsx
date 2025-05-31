@@ -10,7 +10,6 @@ const BookingPage = () => {
       <div className="max-w-6xl my-8 mx-auto py-10 px-4">
       <button
             onClick={() => navigate("/")}
-            aria-label="booking"
             className="text-black font-bold px-2 py-1 rounded-full shadow-md bg-white hover:bg-slate-200 transition duration-300 my-2"
           >
             <i className="fa-solid fa-arrow-left text-pink-500"></i>

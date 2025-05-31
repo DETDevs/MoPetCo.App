@@ -16,4 +16,3 @@ export const NotFoundPage = lazy(
 );
 export const Footer = lazy(() => import("./components/layout/Footer"));
 export const PromocionesPage = lazy(() => import("./pages/PromocionesPage"));
-export const VerifyEmailPage = lazy(() => import("./pages/VerifyEmailPage"));

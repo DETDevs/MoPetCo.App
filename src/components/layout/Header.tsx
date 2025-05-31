@@ -90,7 +90,6 @@ export const Header = () => {
         {/* Hamburger button (mobile + tablet) */}
         <button
           className="block md:block lg:hidden text-gray-700 focus:outline-none z-30 ml-2"
-          title="Hamburger"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           <svg
@@ -132,7 +131,7 @@ export const Header = () => {
             <TranslatableText text="Release Form" />
           </a>
           <a href="/promociones" onClick={() => setMenuOpen(false)} className={navLinkClass("/promociones")}>
-            <TranslatableText text="Promotions" />
+            <TranslatableText text="promotions" />
           </a>
           <a href="/faqs" onClick={() => setMenuOpen(false)} className={navLinkClass("/faqs")}>
             <TranslatableText text="FAQs" />

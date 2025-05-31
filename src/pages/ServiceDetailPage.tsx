@@ -71,7 +71,6 @@ const ServiceDetailPage = () => {
         <div className="my-2">
           <button
             onClick={() => navigate("/service")}
-            aria-label="servicedetail"
             className="text-black font-bold px-2 py-1 rounded-full shadow-md bg-white hover:bg-slate-200 transition duration-300"
           >
             <i className="fa-solid fa-arrow-left text-pink-500"></i>

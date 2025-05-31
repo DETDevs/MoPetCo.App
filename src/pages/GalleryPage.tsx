@@ -92,7 +92,6 @@ const GalleryPage = () => {
           <div className="text-center mt-8">
             <button
               onClick={handleLoadMore}
-              aria-label="back"
               className="bg-pink-500 text-white px-6 py-2 rounded-full font-semibold hover:bg-pink-600 transition-shadow shadow-lg hover:shadow-xl"
             >
               <TranslatableText text="Browse more furry friends!" />
@@ -110,7 +109,6 @@ const GalleryPage = () => {
           <div className="relative bg-white rounded shadow-lg p-4 max-w-3xl w-full mx-4">
             <button
               className="absolute top-2 right-2 text-white bg-red-500 rounded-full p-2"
-              aria-label="close"
               onClick={handleCloseModal}
             >
               X

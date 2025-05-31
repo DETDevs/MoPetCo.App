@@ -1,12 +1,11 @@
-// HomePage.tsx
+import { Suspense, lazy } from "react";
 import { Header } from "../components/layout/Header";
 import { HomePageSection } from "../components/Home/HomePageSection";
-import { AboutSection } from "../components/Home/AboutSection";
-import { ServiceSection } from "../components/Home/ServiceSection";
-import { Suspense, lazy } from "react";
 import { Loading } from "../components/layout/Loading";
-import { PromocionSection } from "../components/Home/PromocionSection";
 
+const AboutSection = lazy(() => import("../components/Home/AboutSection"));
+const ServiceSection = lazy(() => import("../components/Home/ServiceSection"));
+const PromocionSection = lazy(() => import("../components/Home/PromocionSection"));
 const GallerySection = lazy(() => import("../components/Home/GallerySection"));
 const ReviewList = lazy(() => import("../components/Home/ReviewList"));
 
@@ -15,14 +14,22 @@ const HomePage = () => {
     <>
       <Header />
       <HomePageSection />
-      <AboutSection />
-      <ServiceSection />
+
+      <Suspense fallback={<Loading />}>
+        <AboutSection />
+      </Suspense>
+
+      <Suspense fallback={<Loading />}>
+        <ServiceSection />
+      </Suspense>
+
+      <Suspense fallback={<Loading />}>
+        <PromocionSection />
+      </Suspense>
 
       <Suspense fallback={<Loading />}>
         <GallerySection />
       </Suspense>
-
-      <PromocionSection />
 
       <Suspense fallback={<Loading />}>
         <ReviewList />

@@ -1,60 +1,54 @@
-# 🐾 MoPetCo - Mobile Pet Grooming Web Platform
+# React + TypeScript + Vite
 
-MoPetCo is a modern web application that allows users to book pet grooming appointments online, explore services, contact support, and enjoy a seamless pet care experience. Built for a mobile grooming business operating in South Florida, it delivers a high-quality user experience and professional design.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## 🛠️ Tech Stack
+Currently, two official plugins are available:
 
-- **Frontend**: React + Vite + TypeScript
-- **Styling**: Tailwind CSS + CSS Modules
-- **Backend**: ASP.NET Core (.NET 6/8)
-- **Database**: SQL Server
-- **Hosting & Analytics**:
-  - Google Analytics (via gtag.js)
-  - Google reCAPTCHA for form validation
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## 🎯 Key Features
+## Expanding the ESLint configuration
 
-- 🐶 Clean and responsive landing page
-- 🛁 Full list of grooming services with detailed descriptions
-- 🗓️ Appointment booking form (validated with reCAPTCHA)
-- 🏷️ Offers and discounts for new customers
-- 🌍 Bilingual support (English & Spanish)
-- ⭐ Customer reviews (Google-style cards)
-- 📞 Contact form with live support numbers
-- 📊 Google Analytics integration for tracking
-- 🌐 SEO-ready with Open Graph & Twitter meta tags
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-## 🚀 Getting Started
+```js
+export default tseslint.config({
+  extends: [
+    // Remove ...tseslint.configs.recommended and replace with this
+    ...tseslint.configs.recommendedTypeChecked,
+    // Alternatively, use this for stricter rules
+    ...tseslint.configs.strictTypeChecked,
+    // Optionally, add this for stylistic rules
+    ...tseslint.configs.stylisticTypeChecked,
+  ],
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
+```
 
-### 1. Clone the repository
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```bash
-git clone https://github.com/your-username/mopetco.git
-cd mopetco
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-npm install
-
-npm run dev
-
-dotnet run
-
-## 📂 Project Structure
-
-mopetco/
-├── public/
-│   ├── assets/
-│   │   ├── og-image.jpg
-│   │   └── ...
-│   └── index.html
-├── src/
-│   ├── components/
-│   ├── pages/
-│   ├── services/
-│   ├── style/
-│   └── main.tsx
-├── backend/
-│   ├── Controllers/
-│   ├── Models/
-│   ├── Data/
-│   └── Program.cs
-
+export default tseslint.config({
+  plugins: {
+    // Add the react-x and react-dom plugins
+    'react-x': reactX,
+    'react-dom': reactDom,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended typescript rules
+    ...reactX.configs['recommended-typescript'].rules,
+    ...reactDom.configs.recommended.rules,
+  },
+})
+```

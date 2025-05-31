@@ -2,7 +2,7 @@ import { TranslatableText } from "../common/TranslatableText";
 import homeHeader from "/assets/home_header-1.png";
 
 
-export const AboutSection = () => {
+const AboutSection = () => {
   return (
     <div
       id="about"
@@ -44,3 +44,5 @@ export const AboutSection = () => {
     </div>
   );
 };
+
+export default AboutSection;

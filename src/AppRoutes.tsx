@@ -13,7 +13,6 @@ import {
   BookingPage,
   NotFoundPage,
   PromocionesPage,
-  VerifyEmailPage,
 } from "./lazyPages";
 
 export const AppRoutes = () => (
@@ -26,7 +25,6 @@ export const AppRoutes = () => (
       <Route path="/service" element={<ServicesPage />} />
       <Route path="/gallery" element={<GalleryPage />} />
       <Route path="/booking" element={<BookingPage />} />
-      <Route path="//verify-email" element={<VerifyEmailPage />} />
       <Route path="/promociones" element={<PromocionesPage />} />
       <Route path="/services/:serviceId" element={<ServiceDetailPage />} />
       <Route path="*" element={<NotFoundPage />} />

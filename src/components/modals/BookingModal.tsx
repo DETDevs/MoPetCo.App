@@ -13,7 +13,6 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
       <div className="bg-black white rounded-2xl max-w-5xl w-full relative p-4 shadow-2xl animate-bounce-in">
         <button
           onClick={onClose}
-          aria-label="close"
           className="absolute py-1 px-2 top-4 cursor-pointer right-10 text-white bg-red-500 rounded-full hover:text-pink-700 text-center text-xs font-bold"
         >
           X
