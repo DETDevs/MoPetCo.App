@@ -18,10 +18,10 @@ export default function SizeSelect({
     <RadioGroup
       value={value ? String(value) : undefined}
       onValueChange={(id) => onChange(Number(id))}
-      className="grid sm:grid-cols-2 gap-3"
+      className="grid sm:grid-cols-2 gap-6 md:gap-3"
     >
       {prices.map((p) => (
-        <div key={p.idPrecio} className="flex items-center gap-2">
+        <div key={p.idPrecio} className="flex items-center gap-2 py-2 rounded-xl px-1 shadow-md shadow-gray-400 hover:bg-gray-200 transition-all ease-in-out duration-300">
           <RadioGroupItem value={String(p.idPrecio)} id={String(p.idPrecio)} />
           <Label htmlFor={String(p.idPrecio)} className="flex-1 cursor-pointer">
             {p.rangoPeso.nombre}: <span className="font-medium">${p.monto}</span>

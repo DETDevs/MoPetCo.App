@@ -44,10 +44,8 @@ export default function Step3ClientForm({ onNext, onPrev }: Props) {
   const onSubmit = async (data: FormData) => {
     if (!service || !employee || !date || !time) return;
 
-    // 1. guarda cliente localmente
     setClient(data);
 
-    // 2. construye request
     const body: BookingRequest = {
       serviceId: service.id,
       employeeId: employee.id,
@@ -58,8 +56,8 @@ export default function Step3ClientForm({ onNext, onPrev }: Props) {
 
     try {
       const resp = await createBooking(body);
-      setBookingId(resp.id);        // guarda para Step 4
-      onNext();                     // avanza
+      setBookingId(resp.id);        
+      onNext();                     
     } catch (e) {
       console.error("Error creando reserva", e);
       alert("No se pudo crear la reserva. Intenta de nuevo.");
@@ -67,7 +65,7 @@ export default function Step3ClientForm({ onNext, onPrev }: Props) {
   };
 
   return (
-    <section className="flex-1 space-y-6">
+    <section className="relative flex flex-col py-2 px-3 space-y-6 w-[22rem] md:w-[24vw] h-[35rem] shadow-lg shadow-slate-400 rounded-lg">
       <h1 className="text-2xl font-semibold">Tus datos</h1>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 max-w-md">
@@ -87,7 +85,7 @@ export default function Step3ClientForm({ onNext, onPrev }: Props) {
           <Input {...register("phone")} />
         </Field>
 
-        <div className="flex gap-4 pt-4">
+        <div className="absolute bottom-6 flex gap-4 pt-4">
           <Button variant="outline" type="button" onClick={onPrev}>
             Atrás
           </Button>

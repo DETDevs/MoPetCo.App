@@ -1,22 +1,16 @@
 import { currency } from "./utilss/format";
 import { useBooking } from "@/store/booking";
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
-export default function AsideSummary({
-  currentStep,
-  totalSteps,
-}: {
-  currentStep: number;
-  totalSteps: number;
-}) {
+export default function AsideSummary() {
   const { service, petSize, employee, date, time, reset, client } =
     useBooking();
 
   const price = petSize?.price ?? service?.price ?? 0;
 
   return (
-    <aside className="w-full lg:w-[22rem] shrink-0  rounded-md p-4 space-y-6 mt-10 h-[30rem] shadow-md shadow-gray-400">
+    <aside className="w-full lg:w-[22rem] shrink-0  rounded-md p-4 space-y-6  h-[30rem] shadow-lg shadow-slate-400">
       <h2 className="text-lg font-semibold">Resumen</h2>
 
       <section className="space-y-1">
@@ -87,14 +81,14 @@ export default function AsideSummary({
         <span>{currency(price)}</span>
       </section>
 
-      <Button
+      {/* <Button
         variant="outline"
         className="w-fullA shadow-md shadow-gray-400"
         onClick={reset}
         disabled={currentStep === totalSteps - 1}
       >
         Reiniciar flujo
-      </Button>
+      </Button> */}
     </aside>
   );
 }

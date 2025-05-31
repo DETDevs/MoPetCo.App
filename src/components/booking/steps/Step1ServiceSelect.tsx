@@ -44,7 +44,7 @@ export default function Step1ServiceSelect({ onNext }: { onNext: () => void }) {
   if (loading) return <p className="p-6">Cargando servicios…</p>;
 
   return (
-    <section className="flex flex-col space-y-8 mt-10  w-full h-screen">
+    <section className="flex flex-col h-[36rem] md:h-[30rem] justify-evenly shadow-lg shadow-slate-400 rounded-lg md:w-[30vw] px-4">
       <div className="my-2">
         <button
           onClick={() => navigate("/serivecesshow")}
@@ -56,7 +56,7 @@ export default function Step1ServiceSelect({ onNext }: { onNext: () => void }) {
       </div>
       {!service && (
         <Tabs defaultValue={categories[0]} className="space-y-4">
-          <TabsList className="flex flex-wrap gap-2">
+          <TabsList className="flex flex-wrap gap-4">
             {categories.map((c) => (
               <TabsTrigger key={c} value={c}>
                 {c}
@@ -92,7 +92,7 @@ export default function Step1ServiceSelect({ onNext }: { onNext: () => void }) {
         <>
           {service.prices.length ? (
             <div className="space-y-2">
-              <h2 className="text-lg font-medium">
+              <h2 className="text-lg font-bold">
                 Elige el tamaño de tu mascota
               </h2>
               <SizeSelect
@@ -116,10 +116,10 @@ export default function Step1ServiceSelect({ onNext }: { onNext: () => void }) {
             </p>
           )}
 
-          <div className="space-y-2">
-            <h2 className="text-lg font-medium">
-              Encargado para{" "}
-              <span className="font-semibold">{service.name}</span>
+          <div className="space-y-2 mt-4">
+            <h2 className="text-lg font-bold">
+              Elige el encargado de tu servicio:
+              {/* <span className="font-semibold">{service.name}</span> */}
             </h2>
             <EmployeeSelect
               empleados={empleados}
@@ -130,7 +130,7 @@ export default function Step1ServiceSelect({ onNext }: { onNext: () => void }) {
         </>
       )}
 
-      <Button className="mt-4" disabled={!canContinue} onClick={onNext}>
+      <Button className="my-4   w-28" disabled={!canContinue} onClick={onNext}>
         Continuar
       </Button>
     </section>

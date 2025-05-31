@@ -24,12 +24,12 @@ export default function BookingFlow() {
   const prev = () => setStep((s) => Math.max(s - 1, 0));
 
   return (
-    <div className="flex flex-col justify-around w-[80%] lg:flex-row gap-8">
+    <div className="relative flex flex-col items-center justify-center w-[65%] md:h-auto lg:flex-row gap-8">
       <div className="">
         <StepIndicator step={step} total={steps.length} /> 
         <StepComponent onNext={next} onPrev={prev} />
       </div>
-       <AsideSummary currentStep={step} totalSteps={steps.length} />
+       <AsideSummary />
     </div>
   );
 }
