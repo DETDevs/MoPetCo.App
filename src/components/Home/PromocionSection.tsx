@@ -2,13 +2,13 @@ import { useRef, useEffect } from "react";
 import { SectionTitle } from "../common/SectionTitle";
 import { TranslatableText } from "../common/TranslatableText";
 import { useWindowSize } from "../../hooks/useWindowSize";
-import { usePromociones } from "../../hooks/usePromociones"; // ✅ hook nuevo
+import { usePromociones } from "../../hooks/usePromociones"; 
 
 function PromocionSection() {
   const { width } = useWindowSize();
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const { data: promociones, isLoading } = usePromociones(); // ✅ react query
+  const { data: promociones, isLoading } = usePromociones(); 
 
   const marginPerCard = width >= 768 ? 35 : 15;
 

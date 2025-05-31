@@ -1,9 +1,9 @@
 import { TranslatableText } from "../common/TranslatableText";
-import { useVideos } from "../../hooks/useVideos"; // ✅ Nuevo hook
+import { useVideos } from "../../hooks/useVideos";
 import { Link } from "react-router-dom";
 
 export const HomePageSection = () => {
-  const { data: videos, isLoading } = useVideos(); // ✅ React Query
+  const { data: videos, isLoading } = useVideos(); 
 
   const videoToShow = videos?.filter((item) => item.tipo === "Home");
 
