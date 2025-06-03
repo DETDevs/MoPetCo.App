@@ -1,21 +1,29 @@
+/* ────────────── Step3ClientForm.tsx ────────────── */
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import ReCAPTCHA from "react-google-recaptcha";
+import { CheckCircle2, XCircle } from "lucide-react";
 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { useBooking } from "@/store/booking";
 
+import { useBooking } from "@/store/booking";
 import { createBooking, BookingRequest } from "../api/booking";
+
+const SITE_KEY = "6LfiwAkrAAAAAD5LPzXJsij7YcHZG7reqDDoiwRF";
 
 const schema = z.object({
   name: z.string().min(2, "Nombre muy corto"),
-  idNumber: z.string().min(5, "Documento inválido"),
+  idNumber: z
+    .string()
+    .min(5, "Mín. 5 caracteres")
+    .max(20, "Máx. 20 caracteres"),
   email: z.string().email("Correo inválido"),
-  phone: z.string().min(8, "Teléfono inválido"),
+  phone: z.string().regex(/^\d{8,15}$/, "Solo números 8-15 dígitos"),
 });
-
 type FormData = z.infer<typeof schema>;
 
 interface Props {
@@ -24,25 +32,23 @@ interface Props {
 }
 
 export default function Step3ClientForm({ onNext, onPrev }: Props) {
-  const {
-    service,
-    employee,
-    date,
-    time,
-    setClient,
-    setBookingId,
-  } = useBooking();
+  const { service, employee, date, time, setClient, setBookingId } =
+    useBooking();
+
+  const captchaRef = useRef<ReCAPTCHA>(null);
+  const [captcha, setCaptcha] = useState<string | null>(null);
 
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors, touchedFields, isSubmitting, isValid },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
+    mode: "onChange", // para que isValid sea reactivo
   });
 
   const onSubmit = async (data: FormData) => {
-    if (!service || !employee || !date || !time) return;
+    if (!captcha || !service || !employee || !date || !time) return;
 
     setClient(data);
 
@@ -56,40 +62,90 @@ export default function Step3ClientForm({ onNext, onPrev }: Props) {
 
     try {
       const resp = await createBooking(body);
-      setBookingId(resp.id);        
-      onNext();                     
-    } catch (e) {
-      console.error("Error creando reserva", e);
+      setBookingId(resp.id);
+      onNext();
+    } catch (err) {
+      console.error(err);
       alert("No se pudo crear la reserva. Intenta de nuevo.");
     }
   };
 
+  const Icon = ({ name }: { name: keyof FormData }) => {
+    if (!touchedFields[name]) return null;
+    return errors[name] ? (
+      <XCircle className="w-5 h-5 text-destructive" />
+    ) : (
+      <CheckCircle2 className="w-5 h-5 text-emerald-500" />
+    );
+  };
+
   return (
-    <section className="relative flex flex-col py-2 px-3 space-y-6 w-[22rem] md:w-[24vw] h-[35rem] shadow-lg shadow-slate-400 rounded-lg">
+    <section
+      className="relative flex flex-col py-6 px-4 space-y-6 max-w-md w-full
+                        rounded-xl shadow-lg bg-white"
+    >
       <h1 className="text-2xl font-semibold">Tus datos</h1>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 max-w-md">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <Field label="Nombre completo" error={errors.name?.message}>
-          <Input {...register("name")} />
+          <div className="relative">
+            <Input placeholder="Juan Pérez" {...register("name")} />
+            <span className="absolute right-2 top-2">
+              <Icon name="name" />
+            </span>
+          </div>
         </Field>
 
         <Field label="Documento de identidad" error={errors.idNumber?.message}>
-          <Input {...register("idNumber")} />
+          <div className="relative">
+            <Input
+              placeholder="0102030405"
+              maxLength={20}
+              {...register("idNumber")}
+            />
+            <span className="absolute right-2 top-2">
+              <Icon name="idNumber" />
+            </span>
+          </div>
         </Field>
 
         <Field label="Correo electrónico" error={errors.email?.message}>
-          <Input type="email" {...register("email")} />
+          <div className="relative">
+            <Input
+              type="email"
+              placeholder="correo@ejemplo.com"
+              {...register("email")}
+            />
+            <span className="absolute right-2 top-2">
+              <Icon name="email" />
+            </span>
+          </div>
         </Field>
 
         <Field label="Teléfono" error={errors.phone?.message}>
-          <Input {...register("phone")} />
+          <div className="relative">
+            <Input placeholder="ej. 88112233" {...register("phone")} />
+            <span className="absolute right-2 top-2">
+              <Icon name="phone" />
+            </span>
+          </div>
         </Field>
 
-        <div className="absolute bottom-6 flex gap-4 pt-4">
+        <div className="flex justify-center">
+          <ReCAPTCHA
+            ref={captchaRef}
+            sitekey={SITE_KEY}
+            theme="light"
+            onChange={(token) => setCaptcha(token)}
+            onExpired={() => setCaptcha(null)}
+          />
+        </div>
+
+        <div className="flex gap-4 pt-4">
           <Button variant="outline" type="button" onClick={onPrev}>
             Atrás
           </Button>
-          <Button disabled={isSubmitting} type="submit">
+          <Button type="submit" disabled={!isValid || !captcha || isSubmitting}>
             {isSubmitting ? "Enviando…" : "Confirmar reserva"}
           </Button>
         </div>
@@ -98,7 +154,6 @@ export default function Step3ClientForm({ onNext, onPrev }: Props) {
   );
 }
 
-/* -------- componente auxiliar ---------- */
 function Field({
   label,
   error,

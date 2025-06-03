@@ -1,14 +1,22 @@
-// src/components/booking/StepIndicator.tsx
-export default function StepIndicator({
-  step,
-  total,
-}: {
-  step: number;
+type Props = {
+  step: number;  
   total: number;
-}) {
+};
+
+export default function StepIndicator({ step, total }: Props) {
+  const progressPct = ((step + 1) / total) * 100; 
+  const label       = `Paso ${step + 1} de ${total}`;
+
   return (
-    <p className="absolute right-2 md:left-32 top-1 md:top-0 text-md font-medium text-muted-foreground mb-4">
-      Paso <span className="text-pink-500">{step + 1}</span> de <span className="text-pink-500">{total}</span>
-    </p>
+    <div className="w-full space-y-1">
+      <p className="text-sm font-semibold text-pink-600">{label}</p>
+
+      <div className="h-2 w-full rounded-full bg-gray-200 overflow-hidden">
+        <div
+          className="h-full bg-pink-500 transition-all duration-300 rounded-full"
+          style={{ width: `${progressPct}%` }}
+        />
+      </div>
+    </div>
   );
 }

@@ -1,9 +1,10 @@
 import {
-  RadioGroup,
-  RadioGroupItem,
-} from "@/components/ui/radio-group";
-import { Label } from "@/components/ui/label";
-import type { PriceItem } from "@/components/booking/types/Servicio"; // ✅
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
+import type { PriceItem } from "@/components/booking/types/Servicio";
 
 export default function SizeSelect({
   prices,
@@ -14,20 +15,42 @@ export default function SizeSelect({
   value?: number;
   onChange: (idPrecio: number) => void;
 }) {
+  const iconBySize = (label: string) => {
+    const l = label.toLowerCase();
+    if (l.includes("extra small")) return "🐾";
+    if (l.includes("small")) return "🐶";
+    if (l.includes("medium")) return "🐕";
+    if (l.includes("large")) return "🦮";
+    if (l.includes("x large")) return "🐕‍🦺";
+    return "🐾";
+  };
+
   return (
-    <RadioGroup
-      value={value ? String(value) : undefined}
-      onValueChange={(id) => onChange(Number(id))}
-      className="grid sm:grid-cols-2 gap-6 md:gap-3"
-    >
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
       {prices.map((p) => (
-        <div key={p.idPrecio} className="flex items-center gap-2 py-2 rounded-xl px-1 shadow-md shadow-gray-400 hover:bg-gray-200 transition-all ease-in-out duration-300">
-          <RadioGroupItem value={String(p.idPrecio)} id={String(p.idPrecio)} />
-          <Label htmlFor={String(p.idPrecio)} className="flex-1 cursor-pointer">
-            {p.rangoPeso.nombre}: <span className="font-medium">${p.monto}</span>
-          </Label>
-        </div>
+        <Tooltip key={p.idPrecio}>
+          <TooltipTrigger asChild>
+            <button
+              onClick={() => onChange(p.idPrecio)}
+              className={cn(
+                "flex items-center gap-4 p-4 rounded-xl border transition-all shadow-sm text-left",
+                p.idPrecio === value
+                  ? "border-pink-500 bg-pink-50 shadow-md"
+                  : "border-gray-300 hover:bg-gray-100"
+              )}
+            >
+              <div className="text-2xl">{iconBySize(p.rangoPeso.nombre)}</div>
+              <div className="flex flex-col">
+                <span className="font-bold">{p.rangoPeso.nombre}</span>
+                <span className="text-sm text-gray-600">${p.monto}</span>
+              </div>
+            </button>
+          </TooltipTrigger>
+          <TooltipContent className="max-w-xs bg-white text-black border border-gray-300 shadow">
+            {p.rangoPeso.nombre ?? "Rango de peso específico para este tamaño."}
+          </TooltipContent>
+        </Tooltip>
       ))}
-    </RadioGroup>
+    </div>
   );
 }

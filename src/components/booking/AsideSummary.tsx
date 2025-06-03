@@ -1,94 +1,130 @@
+import { motion } from "framer-motion";
+import { CalendarCheck2, PawPrint, User, Clock, ZapOff } from "lucide-react";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { currency } from "./utilss/format";
 import { useBooking } from "@/store/booking";
-// import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 export default function AsideSummary() {
-  const { service, petSize, employee, date, time, reset, client } =
-    useBooking();
-
+  const { service, petSize, employee, date, time, client } = useBooking();
   const price = petSize?.price ?? service?.price ?? 0;
 
+  const fadeIn = { hidden: { opacity: 0, y: 6 }, show: { opacity: 1, y: 0 } };
+
   return (
-    <aside className="w-full lg:w-[22rem] shrink-0  rounded-md p-4 space-y-6  h-[30rem] shadow-lg shadow-slate-400">
-      <h2 className="text-lg font-semibold">Resumen</h2>
+    <aside
+      className="w-full lg:w-[22rem] shrink-0 rounded-md lg:sticky lg:top-24 
+                       bg-white shadow-lg p-4 space-y-6"
+    >
+      <h2 className="text-xl font-bold">Resumen</h2>
 
-      <section className="space-y-1">
-        <h3 className="text-sm text-muted-foreground">Servicio</h3>
+      <Section label="Servicio" icon={<PawPrint className="w-4 h-4" />}>
         {service ? (
-          <p className="font-medium">{service.name}</p>
+          <motion.p variants={fadeIn} initial="hidden" animate="show">
+            {service.name}
+          </motion.p>
         ) : (
-          <p className="italic text-muted-foreground">Sin seleccionar</p>
+          <Placeholder />
         )}
-      </section>
+      </Section>
 
-      <section className="space-y-1">
-        <h3 className="text-sm text-muted-foreground">Tamaño</h3>
+      <Section label="Tamaño" icon={<PawPrint className="w-4 h-4" />}>
         {petSize ? (
-          <p className="flex justify-between">
-            {petSize.label} <span>{currency(petSize.price)}</span>
-          </p>
+          <motion.p
+            className="flex justify-between"
+            variants={fadeIn}
+            initial="hidden"
+            animate="show"
+          >
+            <span>{petSize.label}</span>
+            <span>{currency(price)}</span>
+          </motion.p>
         ) : (
-          <p className="italic text-muted-foreground">Sin seleccionar</p>
+          <Placeholder />
         )}
-      </section>
+      </Section>
 
-      <section className="space-y-1">
-        <h3 className="text-sm text-muted-foreground">Encargado</h3>
+      <Section label="Encargado" icon={<User className="w-4 h-4" />}>
         {employee ? (
-          <div className="flex items-center gap-2">
+          <motion.div
+            className="flex items-center gap-2"
+            variants={fadeIn}
+            initial="hidden"
+            animate="show"
+          >
             <Avatar className="h-6 w-6">
               <AvatarFallback>
                 {employee.name.slice(0, 2).toUpperCase()}
               </AvatarFallback>
             </Avatar>
             <span>{employee.name}</span>
-          </div>
+          </motion.div>
         ) : (
-          <p className="italic text-muted-foreground">Sin seleccionar</p>
+          <Placeholder />
         )}
-      </section>
+      </Section>
 
-      <section className="space-y-1">
-        <h3 className="text-sm text-muted-foreground">Fecha y hora</h3>
+      <Section
+        label="Fecha y hora"
+        icon={<CalendarCheck2 className="w-4 h-4" />}
+      >
         {date && time ? (
-          <p>
-            {date} – {time}
-          </p>
+          <motion.p variants={fadeIn} initial="hidden" animate="show">
+            {date} <Clock className="inline w-4 h-4 mx-1 -mt-0.5" /> {time}
+          </motion.p>
         ) : (
-          <p className="italic text-muted-foreground">Sin seleccionar</p>
+          <Placeholder />
         )}
-      </section>
+      </Section>
 
-      <section className="space-y-1">
-        <h3 className="text-sm text-muted-foreground">Cliente</h3>
+      <Section label="Cliente" icon={<User className="w-4 h-4" />}>
         {client ? (
-          <div className="flex items-center gap-2">
+          <motion.div
+            className="flex items-center gap-2"
+            variants={fadeIn}
+            initial="hidden"
+            animate="show"
+          >
             <Avatar className="h-6 w-6">
               <AvatarFallback>
                 {client.name.slice(0, 2).toUpperCase()}
               </AvatarFallback>
             </Avatar>
             <span>{client.name}</span>
-          </div>
+          </motion.div>
         ) : (
-          <p className="italic text-muted-foreground">Sin seleccionar</p>
+          <Placeholder />
         )}
-      </section>
+      </Section>
 
-      <section className="flex justify-between pt-4 border-t font-semibold">
-        <span>Total</span>
-        <span>{currency(price)}</span>
-      </section>
-
-      {/* <Button
-        variant="outline"
-        className="w-fullA shadow-md shadow-gray-400"
-        onClick={reset}
-        disabled={currentStep === totalSteps - 1}
-      >
-        Reiniciar flujo
-      </Button> */}
+      <div className="pt-4 border-t flex justify-between items-center">
+        <span className="font-semibold">Total</span>
+        <span className="font-mono text-lg">{currency(price)}</span>
+      </div>
     </aside>
   );
 }
+
+function Section({
+  label,
+  icon,
+  children,
+}: {
+  label: string;
+  icon: React.ReactNode;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="space-y-1">
+      <h3 className="flex items-center gap-1 text-sm text-muted-foreground">
+        {icon} {label}
+      </h3>
+      {children}
+    </div>
+  );
+}
+
+const Placeholder = () => (
+  <p className="flex items-center gap-1 italic text-gray-500">
+    <ZapOff className="w-3 h-3" /> Sin seleccionar
+  </p>
+);

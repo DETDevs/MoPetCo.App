@@ -1,8 +1,11 @@
 import { TranslationProvider } from "./contexts/TranslationContext";
 import { AppContent } from "./AppContent";
+import { TooltipProvider } from "@/components/ui/tooltip"; 
 
 export const App = () => (
-  <TranslationProvider>
-    <AppContent />
-  </TranslationProvider>
+  <TooltipProvider> 
+    <TranslationProvider>
+      <AppContent />
+    </TranslationProvider>
+  </TooltipProvider>
 );

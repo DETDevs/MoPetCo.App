@@ -44,95 +44,109 @@ export default function Step1ServiceSelect({ onNext }: { onNext: () => void }) {
   if (loading) return <p className="p-6">Cargando servicios…</p>;
 
   return (
-    <section className="flex flex-col h-[36rem] md:h-[30rem] justify-evenly shadow-lg shadow-slate-400 rounded-lg md:w-[30vw] px-4">
-      <div className="my-2">
-        <button
-          onClick={() => navigate("/serivecesshow")}
-          aria-label="servicedetail"
-          className="text-black font-bold px-2 py-1 rounded-full shadow-md bg-white hover:bg-slate-200 transition duration-300"
-        >
-          <i className="fa-solid fa-arrow-left text-pink-500"></i>
-        </button>
-      </div>
-      {!service && (
-        <Tabs defaultValue={categories[0]} className="space-y-4">
-          <TabsList className="flex flex-wrap gap-4">
-            {categories.map((c) => (
-              <TabsTrigger key={c} value={c}>
-                {c}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-          {categories.map((c) => (
-            <TabsContent
-              key={c}
-              value={c}
-              className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
-            >
-              {services
-                .filter((s) => s.category === c)
-                .map((svc) => (
-                  <ServiceCard
-                    key={svc.id}
-                    svc={svc}
-                    selected={false}
-                    onSelect={() => {
-                      setService(svc);
-                      setEmployee(undefined);
-                      setPetSize(undefined);
-                    }}
-                  />
-                ))}
-            </TabsContent>
-          ))}
-        </Tabs>
-      )}
+<section className="w-full px-4 py-6 bg-white rounded-xl shadow-md overflow-hidden">
+  <div className="mb-4">
+    <button
+      onClick={() => navigate("/serivecesshow")}
+      className="text-black font-bold px-3 py-1 rounded-full shadow bg-white hover:bg-slate-200 transition"
+    >
+      <i className="fa-solid fa-arrow-left text-pink-500"></i>
+    </button>
+  </div>
 
-      {service && (
-        <>
-          {service.prices.length ? (
-            <div className="space-y-2">
-              <h2 className="text-lg font-bold">
-                Elige el tamaño de tu mascota
-              </h2>
-              <SizeSelect
-                prices={service.prices}
-                value={petSize?.idPrecio}
-                onChange={(idPrecio) => {
-                  const item = service.prices.find(
-                    (p) => p.idPrecio === idPrecio
-                  )!;
-                  setPetSize({
-                    idPrecio: item.idPrecio,
-                    label: item.rangoPeso.nombre,
-                    price: item.monto,
-                  });
+  {!service && (
+    <Tabs defaultValue={categories[0]} className="space-y-4">
+      <TabsList className="flex flex-wrap gap-2 justify-center">
+        {categories.map((c) => (
+          <TabsTrigger key={c} value={c} className="text-sm">
+            {c}
+          </TabsTrigger>
+        ))}
+      </TabsList>
+      {categories.map((c) => (
+        <TabsContent
+          key={c}
+          value={c}
+          className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+        >
+          {services
+            .filter((s) => s.category === c)
+            .map((svc) => (
+              <ServiceCard
+                key={svc.id}
+                svc={svc}
+                selected={false}
+                onSelect={() => {
+                  setService(svc);
+                  setEmployee(undefined);
+                  setPetSize(undefined);
                 }}
               />
-            </div>
-          ) : (
-            <p className="text-sm text-muted-foreground">
-              Este servicio no tiene precios configurados.
-            </p>
-          )}
+            ))}
+        </TabsContent>
+      ))}
+    </Tabs>
+  )}
 
-          <div className="space-y-2 mt-4">
-            <h2 className="text-lg font-bold">
-              Elige el encargado de tu servicio:
-              {/* <span className="font-semibold">{service.name}</span> */}
-            </h2>
-            <EmployeeSelect
-              empleados={empleados}
-              value={employee?.id}
-              onChange={(id) => setEmployee(empleados.find((e) => e.id === id))}
-            />
-          </div>
-        </>
+  {service && (
+    <>
+      {service.prices.length ? (
+        <div className="space-y-4 mt-4">
+          <h2 className="text-base sm:text-lg font-bold">
+            Elige el tamaño de tu mascota
+          </h2>
+          <SizeSelect
+            prices={service.prices}
+            value={petSize?.idPrecio}
+            onChange={(idPrecio) => {
+              const item = service.prices.find(
+                (p) => p.idPrecio === idPrecio
+              )!;
+              setPetSize({
+                idPrecio: item.idPrecio,
+                label: item.rangoPeso.nombre,
+                price: item.monto,
+              });
+            }}
+          />
+          {petSize && (
+            <div className="text-sm bg-pink-50 border border-pink-200 rounded-md px-4 py-2">
+              Tamaño seleccionado: <strong>{petSize.label}</strong> – Precio:{" "}
+              <strong>${petSize.price}</strong>
+            </div>
+          )}
+        </div>
+      ) : (
+        <p className="text-sm text-muted-foreground">
+          Este servicio no tiene precios configurados.
+        </p>
       )}
 
-      <Button className="my-4   w-28" disabled={!canContinue} onClick={onNext}>
-        Continuar
-      </Button>
-    </section>
+      <div className="space-y-2 mt-6">
+        <h2 className="text-base sm:text-lg font-bold">
+          Elige el encargado de tu servicio
+        </h2>
+        <EmployeeSelect
+          empleados={empleados}
+          value={employee?.id}
+          onChange={(id) =>
+            setEmployee(empleados.find((e) => e.id === id))
+          }
+        />
+      </div>
+    </>
+  )}
+
+  <div className="flex justify-center mt-6">
+    <Button
+      className="w-full sm:w-2/3"
+      disabled={!canContinue}
+      onClick={onNext}
+    >
+      Continuar
+    </Button>
+  </div>
+</section>
+
   );
 }
