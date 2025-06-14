@@ -1,5 +1,5 @@
 // src/AppRoutes.tsx
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { Suspense } from "react";
 import { Loading } from "./components/layout/Loading";
 import {
@@ -27,7 +27,9 @@ export const AppRoutes = () => (
       <Route path="/booking" element={<BookingPage />} />
       <Route path="/promociones" element={<PromocionesPage />} />
       <Route path="/services/:serviceId" element={<ServiceDetailPage />} />
-      <Route path="*" element={<NotFoundPage />} />
+      <Route path="/not-found-page" element={<NotFoundPage />}/>
+
+      <Route path="/*" element={<Navigate to="/not-found-page" />} />
     </Routes>
   </Suspense>
 );
