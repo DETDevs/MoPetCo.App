@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { UIService } from "@/components/booking/types/Servicio"; // <--- Cambia el import según tu ruta real
+import type { UIService } from "@/components/booking/types/Servicio"; 
 
 interface BookingState {
   service?: UIService;
