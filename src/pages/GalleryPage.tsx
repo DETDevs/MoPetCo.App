@@ -3,7 +3,6 @@ import { obtenerImagenesGaleria } from "../Service/galleryService";
 import { GalleryImage } from "../types/galleryImage";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Header } from "../components/layout/Header";
 import { Loading } from "../components/layout/Loading";
 import { GalleryHeroSection } from "../components/layout/GalleryHeroSection";
 import { TranslatableText } from "../components/common/TranslatableText";
@@ -45,7 +44,6 @@ const GalleryPage = () => {
 
   return (
     <>
-
       <GalleryHeroSection
         title="Grooming Gallery"
         subtitle="Experience the magic of our mobile pet spa"

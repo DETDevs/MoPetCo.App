@@ -8,6 +8,7 @@ import SizeSelect from "../ui/SizeSelect";
 import empleadosData from "@/data/empleados.json";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect } from "react";
+import { useTranslation } from "@/i18n";
 
 interface EmployeeMock {
   id: string;
@@ -17,11 +18,19 @@ interface EmployeeMock {
 }
 
 export default function Step1ServiceSelect({ onNext }: { onNext: () => void }) {
-  const { service, employee, petSize, setService, setEmployee, setPetSize, reset } =
-    useBooking();
-  const { services, loading } = useServicios();
+  const {
+    service,
+    employee,
+    petSize,
+    setService,
+    setEmployee,
+    setPetSize,
+    reset,
+  } = useBooking();
+  const { services, loading, error, refetch } = useServicios();
   const [params] = useSearchParams();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (!services.length) return;
@@ -35,25 +44,56 @@ export default function Step1ServiceSelect({ onNext }: { onNext: () => void }) {
   const categories = [...new Set(services.map((s) => s.category))];
   const empleados = service
     ? (empleadosData as EmployeeMock[]).filter(
-        (e) => String(e.serviceId) === service.id
+        (e) => String(e.serviceId) === service.id,
       )
     : [];
 
   const canContinue = !!service && !!employee && !!petSize;
 
-  if (loading) return <p className="p-6">Cargando servicios…</p>;
+  if (loading) {
+    return (
+      <section className="w-full px-5 py-8 bg-white rounded-2xl shadow-xl shadow-gray-100/50 border border-gray-100 space-y-4">
+        <div className="animate-pulse space-y-5">
+          <div className="h-8 bg-gradient-to-r from-gray-200 to-gray-100 rounded-xl w-1/3" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <div
+                key={i}
+                className="h-32 bg-gradient-to-br from-gray-100 to-gray-50 rounded-2xl"
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="w-full px-5 py-12 bg-white rounded-2xl shadow-xl shadow-gray-100/50 border border-gray-100 text-center space-y-4">
+        <p className="text-red-500 font-medium">{t("booking.errorServices")}</p>
+        <Button
+          onClick={refetch}
+          variant="outline"
+          className="rounded-full px-6"
+        >
+          {t("common.retry")}
+        </Button>
+      </section>
+    );
+  }
 
   return (
-    <section className="w-full px-4 py-6 bg-white rounded-xl shadow-md overflow-hidden">
+    <section className="w-full px-5 py-8 bg-white rounded-2xl shadow-xl shadow-gray-100/50 border border-gray-100 overflow-hidden">
       <div className="mb-4">
         <button
           onClick={() => {
             reset();
-            navigate("/serivecesshow");
+            navigate("/services-showcase");
           }}
-          className="text-black font-bold px-3 py-1 rounded-full shadow bg-white hover:bg-slate-200 transition"
+          className="flex items-center justify-center w-9 h-9 rounded-full bg-gray-50 border border-gray-200 hover:bg-pink-50 hover:border-pink-200 hover:text-pink-500 text-gray-500 transition-all duration-200 shadow-sm"
         >
-          <i className="fa-solid fa-arrow-left text-pink-500"></i>
+          <i className="fa-solid fa-arrow-left text-sm"></i>
         </button>
       </div>
 
@@ -96,14 +136,14 @@ export default function Step1ServiceSelect({ onNext }: { onNext: () => void }) {
           {service.prices.length ? (
             <div className="space-y-4 mt-4">
               <h2 className="text-base sm:text-lg font-bold">
-                Elige el tamaño de tu mascota
+                {t("booking.selectSize")}
               </h2>
               <SizeSelect
                 prices={service.prices}
                 value={petSize?.idPrecio}
                 onChange={(idPrecio) => {
                   const item = service.prices.find(
-                    (p) => p.idPrecio === idPrecio
+                    (p) => p.idPrecio === idPrecio,
                   )!;
                   setPetSize({
                     idPrecio: item.idPrecio,
@@ -114,20 +154,22 @@ export default function Step1ServiceSelect({ onNext }: { onNext: () => void }) {
               />
               {petSize && (
                 <div className="text-sm bg-pink-50 border border-pink-200 rounded-md px-4 py-2">
-                  Tamaño seleccionado: <strong>{petSize.label}</strong> –
-                  Precio: <strong>${petSize.price}</strong>
+                  {t("booking.selectedSize")}{" "}
+                  <strong className="text-pink-600">{petSize.label}</strong> –{" "}
+                  {t("booking.price")}{" "}
+                  <strong className="text-pink-600">${petSize.price}</strong>
                 </div>
               )}
             </div>
           ) : (
             <p className="text-sm text-muted-foreground">
-              Este servicio no tiene precios configurados.
+              {t("booking.noPrices")}
             </p>
           )}
 
           <div className="space-y-2 mt-6">
             <h2 className="text-base sm:text-lg font-bold">
-              Elige el encargado de tu servicio
+              {t("booking.selectEmployee")}
             </h2>
             <EmployeeSelect
               empleados={empleados}
@@ -138,13 +180,13 @@ export default function Step1ServiceSelect({ onNext }: { onNext: () => void }) {
         </>
       )}
 
-      <div className="flex justify-center mt-6">
+      <div className="flex justify-center mt-8">
         <Button
-          className="w-full sm:w-2/3 cursor-pointer"
+          className="w-full sm:w-2/3 cursor-pointer rounded-full h-12 text-base font-semibold bg-gradient-to-r from-pink-500 to-pink-400 hover:from-pink-600 hover:to-pink-500 shadow-lg shadow-pink-200/50 transition-all duration-300 disabled:opacity-40 disabled:shadow-none"
           disabled={!canContinue}
           onClick={onNext}
         >
-          Continuar
+          {t("booking.continue")}
         </Button>
       </div>
     </section>

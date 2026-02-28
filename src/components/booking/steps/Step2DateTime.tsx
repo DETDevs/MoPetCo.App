@@ -7,6 +7,7 @@ import { useBooking } from "@/store/booking";
 import { useSlots } from "../hooks/useSlots";
 import TimeSlotList from "../ui/TimeSlotList";
 import HorizontalCalendar from "../ui/CalendarHoriz";
+import { useTranslation } from "@/i18n";
 
 const SkeletonSlots = () => (
   <div className="grid grid-cols-3 gap-2 animate-pulse">
@@ -23,12 +24,13 @@ interface Props {
 
 export default function Step2DateTime({ onNext, onPrev }: Props) {
   const { service, employee, date, time, setDateTime } = useBooking();
+  const { t } = useTranslation();
 
   const today = new Date();
   const endOfThisYear = endOfYear(today);
 
   const [selectedDay, setSelectedDay] = useState<Date>(
-    date ? new Date(date) : today
+    date ? new Date(date) : today,
   );
 
   const calRef = useRef<HTMLUListElement | null>(null);
@@ -51,10 +53,10 @@ export default function Step2DateTime({ onNext, onPrev }: Props) {
   }, [selectedDay]);
 
   return (
-    <section className="flex flex-col space-y-6 max-w-xl w-full md:w-[30vw] mx-auto rounded-xl shadow-lg bg-white py-6 px-4">
-      <h1 className="flex items-center gap-2 text-2xl font-semibold">
+    <section className="flex flex-col space-y-6 w-full max-w-xl mx-auto rounded-2xl shadow-xl shadow-gray-100/50 border border-gray-100 bg-white py-8 px-5">
+      <h1 className="flex items-center gap-2 text-xl font-bold text-gray-800">
         <CalendarDays className="w-6 h-6 text-pink-500" />
-        Seleccionar fecha y hora
+        {t("booking.selectDatetime")}
       </h1>
 
       <HorizontalCalendar
@@ -69,20 +71,25 @@ export default function Step2DateTime({ onNext, onPrev }: Props) {
       />
 
       <p className="text-xs text-gray-500 -mt-2">
-        Horarios mostrados en&nbsp;
+        {t("booking.timezoneNote")}&nbsp;
         <span className="font-medium">
-          hora local&nbsp;(GMT‑{Math.abs(today.getTimezoneOffset() / 60)}, {tz})
+          {t("booking.localTime")}&nbsp;(GMT‑
+          {Math.abs(today.getTimezoneOffset() / 60)}, {tz})
         </span>
       </p>
 
       <div className="space-y-2">
         <h2 className="flex items-center gap-2 text-lg font-medium">
           <Clock className="w-5 h-5 text-pink-500" />
-          Horarios disponibles — {format(selectedDay, "dd MMM yyyy")}
+          {t("booking.availableSlots")} — {format(selectedDay, "dd MMM yyyy")}
         </h2>
 
         {loading ? (
           <SkeletonSlots />
+        ) : slots.length === 0 ? (
+          <p className="text-sm text-gray-500 italic py-4 text-center">
+            {t("booking.noSlots")}
+          </p>
         ) : (
           <TimeSlotList
             slots={slots}
@@ -92,16 +99,21 @@ export default function Step2DateTime({ onNext, onPrev }: Props) {
         )}
       </div>
 
-      <div className="flex gap-4 pt-4">
-        <Button variant="outline" onClick={onPrev}>
-          Atrás
+      <div className="flex gap-3 pt-4">
+        <Button
+          variant="outline"
+          onClick={onPrev}
+          className="rounded-full px-6 border-2 border-gray-200 hover:border-pink-200 hover:bg-pink-50 transition-all duration-200"
+        >
+          {t("booking.back")}
         </Button>
         <Button
           disabled={!canContinue}
-          title={!canContinue ? "Selecciona una hora" : undefined}
+          title={!canContinue ? t("booking.selectTime") : undefined}
           onClick={onNext}
+          className="rounded-full px-8 bg-gradient-to-r from-pink-500 to-pink-400 hover:from-pink-600 hover:to-pink-500 shadow-lg shadow-pink-200/50 transition-all duration-300 disabled:opacity-40 disabled:shadow-none font-semibold"
         >
-          Continuar
+          {t("booking.continue")}
         </Button>
       </div>
     </section>

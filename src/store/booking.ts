@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { UIService } from "@/components/booking/types/Servicio"; 
+import type { UIService } from "@/components/booking/types/Servicio";
 
 interface BookingState {
   service?: UIService;
@@ -12,16 +12,17 @@ interface BookingState {
     idNumber: string;
     email: string;
     phone: string;
+    petName: string;
   };
   bookingId?: string;
 
-  setService:   (s: UIService | undefined)  => void;
-  setEmployee:  (e: BookingState["employee"]) => void;
-  setDateTime:  (d: string, t: string)        => void;
-  setClient:    (c: BookingState["client"])   => void;
-  setPetSize:   (s: BookingState["petSize"]) => void;
-  setBookingId: (id: string)                  => void;  
-  reset:        () => void;
+  setService: (s: UIService | undefined) => void;
+  setEmployee: (e: BookingState["employee"]) => void;
+  setDateTime: (d: string, t: string) => void;
+  setClient: (c: BookingState["client"]) => void;
+  setPetSize: (s: BookingState["petSize"]) => void;
+  setBookingId: (id: string) => void;
+  reset: () => void;
 }
 
 export const useBooking = create<BookingState>((set) => ({
@@ -33,12 +34,12 @@ export const useBooking = create<BookingState>((set) => ({
   bookingId: undefined,
   petSize: undefined,
 
-  setPetSize:   (petSize)    => set({ petSize }),
-  setService:   (service)    => set({ service }),
-  setEmployee:  (employee)   => set({ employee }),
-  setDateTime:  (date, time) => set({ date, time }),
-  setClient:    (client)     => set({ client }),
-  setBookingId: (bookingId)  => set({ bookingId }),     
+  setPetSize: (petSize) => set({ petSize }),
+  setService: (service) => set({ service }),
+  setEmployee: (employee) => set({ employee }),
+  setDateTime: (date, time) => set({ date, time }),
+  setClient: (client) => set({ client }),
+  setBookingId: (bookingId) => set({ bookingId }),
   reset: () =>
     set({
       service: undefined,

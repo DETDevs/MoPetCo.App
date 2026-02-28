@@ -1,5 +1,4 @@
 // HomePage.tsx
-import { Header } from "../components/layout/Header";
 import { HomePageSection } from "../components/Home/HomePageSection";
 import { AboutSection } from "../components/Home/AboutSection";
 import { ServiceSection } from "../components/Home/ServiceSection";

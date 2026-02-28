@@ -1,29 +1,23 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext } from "react";
 
 interface TranslationContextType {
-  translations: Record<string, string>;
-  setTranslations: (translations: Record<string, string>) => void;
   isLoaded: boolean;
-  setIsLoaded: (isLoaded: boolean) => void;
 }
 
-const TranslationContext = createContext<TranslationContextType | undefined>(undefined);
+const TranslationContext = createContext<TranslationContextType>({
+  isLoaded: true,
+});
 
-export const TranslationProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [translations, setTranslations] = useState<Record<string, string>>({});
-  const [isLoaded, setIsLoaded] = useState(false);
-
+export const TranslationProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   return (
-    <TranslationContext.Provider value={{ translations, setTranslations, isLoaded, setIsLoaded }}>
+    <TranslationContext.Provider value={{ isLoaded: true }}>
       {children}
     </TranslationContext.Provider>
   );
 };
 
 export const useTranslationContext = () => {
-  const context = useContext(TranslationContext);
-  if (!context) {
-    throw new Error("useTranslationContext must be used within a TranslationProvider");
-  }
-  return context;
+  return useContext(TranslationContext);
 };

@@ -1,7 +1,6 @@
 import { SectionTitle } from "../components/common/SectionTitle";
 import { TranslatableText } from "../components/common/TranslatableText";
 import { ParallaxSection } from "../components/common/ParallaxSection";
-import { Header } from "../components/layout/Header";
 import { useEffect, useState } from "react";
 import { Promocion } from "../types/promociones";
 import { fetchPromocion } from "../Service/promocionesApi";
@@ -20,10 +19,7 @@ function PromocionesPage() {
 
   return (
     <>
-      <ParallaxSection
-        imageUrl="/assets/dog-para.jpg"
-        height="100vh"
-      >
+      <ParallaxSection imageUrl="/assets/dog-para.jpg" height="100vh">
         <div className="p-0 w-full flex flex-col justify-center items-center">
           <h1 className="text-4xl lg:w-1/2 text-center md:text-5xl lg:text-6xl font-extrabold  text-white">
             <TranslatableText text="Grooming Specials & Loyalty Rewards" />
@@ -72,10 +68,7 @@ function PromocionesPage() {
           </div>
         </section>
       </main>
-      <ParallaxSection
-        imageUrl="/assets/cat-para.jpg"
-        height="80vh"
-      >
+      <ParallaxSection imageUrl="/assets/cat-para.jpg" height="80vh">
         <h2 className="text-3xl md:text-5xl font-extrabold mb-4">
           <TranslatableText text="More Ways to Save" />
         </h2>

@@ -11,17 +11,16 @@ import { Button } from "@/components/ui/button";
 
 import { useBooking } from "@/store/booking";
 import { createBooking, BookingRequest } from "../api/booking";
+import { useTranslation } from "@/i18n";
 
-const SITE_KEY = "6LfiwAkrAAAAAD5LPzXJsij7YcHZG7reqDDoiwRF";
+const SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
 const schema = z.object({
-  name: z.string().min(2, "Nombre muy corto"),
-  idNumber: z
-    .string()
-    .min(5, "Mín. 5 caracteres")
-    .max(20, "Máx. 20 caracteres"),
-  email: z.string().email("Correo inválido"),
-  phone: z.string().regex(/^\d{8,15}$/, "Solo números 8-15 dígitos"),
+  name: z.string().min(2),
+  idNumber: z.string().min(5).max(20),
+  email: z.string().email(),
+  phone: z.string().regex(/^\d{8,15}$/),
+  petName: z.string().min(1),
 });
 type FormData = z.infer<typeof schema>;
 
@@ -33,6 +32,7 @@ interface Props {
 export default function Step3ClientForm({ onNext, onPrev }: Props) {
   const { service, employee, date, time, setClient, setBookingId } =
     useBooking();
+  const { t } = useTranslation();
 
   const captchaRef = useRef<ReCAPTCHA>(null);
   const [captcha, setCaptcha] = useState<string | null>(null);
@@ -43,7 +43,7 @@ export default function Step3ClientForm({ onNext, onPrev }: Props) {
     formState: { errors, touchedFields, isSubmitting, isValid },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
-    mode: "onChange", // para que isValid sea reactivo
+    mode: "onChange",
   });
 
   const onSubmit = async (data: FormData) => {
@@ -65,7 +65,7 @@ export default function Step3ClientForm({ onNext, onPrev }: Props) {
       onNext();
     } catch (err) {
       console.error(err);
-      alert("No se pudo crear la reserva. Intenta de nuevo.");
+      alert(t("booking.submitError"));
     }
   };
 
@@ -80,25 +80,30 @@ export default function Step3ClientForm({ onNext, onPrev }: Props) {
 
   return (
     <section
-      className="relative flex flex-col py-6 px-4 space-y-6 max-w-md w-full
-                        rounded-xl shadow-lg bg-white"
+      className="relative flex flex-col py-8 px-5 space-y-6 max-w-md w-full
+                        rounded-2xl shadow-xl shadow-gray-100/50 border border-gray-100 bg-white"
     >
-      <h1 className="text-2xl font-semibold">Tus datos</h1>
+      <h1 className="text-xl font-bold text-gray-800">
+        {t("booking.yourData")}
+      </h1>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        <Field label="Nombre completo" error={errors.name?.message}>
+        <Field label={t("booking.fullName")} error={errors.name?.message}>
           <div className="relative">
-            <Input placeholder="Juan Pérez" {...register("name")} />
+            <Input
+              placeholder={t("booking.fullName.placeholder")}
+              {...register("name")}
+            />
             <span className="absolute right-2 top-2">
               <Icon name="name" />
             </span>
           </div>
         </Field>
 
-        <Field label="Documento de identidad" error={errors.idNumber?.message}>
+        <Field label={t("booking.idNumber")} error={errors.idNumber?.message}>
           <div className="relative">
             <Input
-              placeholder="0102030405"
+              placeholder={t("booking.idNumber.placeholder")}
               maxLength={20}
               {...register("idNumber")}
             />
@@ -108,11 +113,11 @@ export default function Step3ClientForm({ onNext, onPrev }: Props) {
           </div>
         </Field>
 
-        <Field label="Correo electrónico" error={errors.email?.message}>
+        <Field label={t("booking.email")} error={errors.email?.message}>
           <div className="relative">
             <Input
               type="email"
-              placeholder="correo@ejemplo.com"
+              placeholder={t("booking.email.placeholder")}
               {...register("email")}
             />
             <span className="absolute right-2 top-2">
@@ -121,11 +126,26 @@ export default function Step3ClientForm({ onNext, onPrev }: Props) {
           </div>
         </Field>
 
-        <Field label="Teléfono" error={errors.phone?.message}>
+        <Field label={t("booking.phone")} error={errors.phone?.message}>
           <div className="relative">
-            <Input placeholder="ej. 88112233" {...register("phone")} />
+            <Input
+              placeholder={t("booking.phone.placeholder")}
+              {...register("phone")}
+            />
             <span className="absolute right-2 top-2">
               <Icon name="phone" />
+            </span>
+          </div>
+        </Field>
+
+        <Field label={t("booking.petName")} error={errors.petName?.message}>
+          <div className="relative">
+            <Input
+              placeholder={t("booking.petName.placeholder")}
+              {...register("petName")}
+            />
+            <span className="absolute right-2 top-2">
+              <Icon name="petName" />
             </span>
           </div>
         </Field>
@@ -140,12 +160,23 @@ export default function Step3ClientForm({ onNext, onPrev }: Props) {
           />
         </div>
 
-        <div className="flex gap-4 pt-4">
-          <Button variant="outline" type="button" onClick={onPrev}>
-            Atrás
+        <div className="flex gap-3 pt-4">
+          <Button
+            variant="outline"
+            type="button"
+            onClick={onPrev}
+            className="rounded-full px-6 border-2 border-gray-200 hover:border-pink-200 hover:bg-pink-50 transition-all duration-200"
+          >
+            {t("booking.back")}
           </Button>
-          <Button type="submit" disabled={!isValid || !captcha || isSubmitting}>
-            {isSubmitting ? "Enviando…" : "Confirmar reserva"}
+          <Button
+            type="submit"
+            disabled={!isValid || !captcha || isSubmitting}
+            className="rounded-full px-8 bg-gradient-to-r from-pink-500 to-pink-400 hover:from-pink-600 hover:to-pink-500 shadow-lg shadow-pink-200/50 transition-all duration-300 disabled:opacity-40 disabled:shadow-none font-semibold"
+          >
+            {isSubmitting
+              ? t("booking.submitting")
+              : t("booking.confirmBooking")}
           </Button>
         </div>
       </form>

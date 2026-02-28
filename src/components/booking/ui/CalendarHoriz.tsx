@@ -26,7 +26,9 @@ const HorizontalCalendar = forwardRef<HTMLUListElement, Props>(
     const maxDate = toDate ?? endOfYear(fromDate);
 
     const [currentMonth, setCurrentMonth] = useState(() =>
-      startOfMonth(selected && !isBefore(selected, fromDate) ? selected : fromDate)
+      startOfMonth(
+        selected && !isBefore(selected, fromDate) ? selected : fromDate,
+      ),
     );
 
     useEffect(() => {
@@ -37,7 +39,7 @@ const HorizontalCalendar = forwardRef<HTMLUListElement, Props>(
 
     useEffect(() => {
       setCurrentMonth((m) =>
-        isBefore(m, fromDate) ? startOfMonth(fromDate) : m
+        isBefore(m, fromDate) ? startOfMonth(fromDate) : m,
       );
     }, [fromDate]);
 
@@ -47,11 +49,14 @@ const HorizontalCalendar = forwardRef<HTMLUListElement, Props>(
           start: currentMonth,
           end: endOfMonth(currentMonth),
         }),
-      [currentMonth]
+      [currentMonth],
     );
 
     const nextMonth = addMonths(currentMonth, 1);
-    const canGoPrev = !isBefore(startOfMonth(currentMonth), startOfMonth(fromDate));
+    const canGoPrev = !isBefore(
+      startOfMonth(currentMonth),
+      startOfMonth(fromDate),
+    );
     const canGoNext = !isAfter(nextMonth, startOfMonth(maxDate));
 
     const handleSelect = (day: Date, disabled: boolean) => {
@@ -63,7 +68,7 @@ const HorizontalCalendar = forwardRef<HTMLUListElement, Props>(
     return (
       <div className="w-full">
         <div className="flex items-center justify-between mb-4">
-          <p className="text-sm font-medium select-none px-4">
+          <p className="text-sm font-semibold text-gray-700 select-none px-1 tracking-wide">
             {format(currentMonth, "MMMM yyyy")}
           </p>
 
@@ -71,8 +76,8 @@ const HorizontalCalendar = forwardRef<HTMLUListElement, Props>(
             {canGoPrev && (
               <button
                 onClick={() => setCurrentMonth((m) => addMonths(m, -1))}
-                aria-label="Mes anterior"
-                className="p-1 rounded-md hover:bg-slate-100 focus-visible:outline-pink-500"
+                aria-label="Previous month"
+                className="p-1.5 rounded-full hover:bg-pink-50 text-gray-500 hover:text-pink-500 transition-all duration-200 focus-visible:outline-pink-500"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
@@ -81,8 +86,8 @@ const HorizontalCalendar = forwardRef<HTMLUListElement, Props>(
             {canGoNext && (
               <button
                 onClick={() => setCurrentMonth((m) => addMonths(m, 1))}
-                aria-label="Mes siguiente"
-                className="p-1 rounded-md hover:bg-slate-100 focus-visible:outline-pink-500"
+                aria-label="Next month"
+                className="p-1.5 rounded-full hover:bg-pink-50 text-gray-500 hover:text-pink-500 transition-all duration-200 focus-visible:outline-pink-500"
               >
                 <ChevronRight className="w-4 h-4" />
               </button>
@@ -92,37 +97,41 @@ const HorizontalCalendar = forwardRef<HTMLUListElement, Props>(
 
         <ul
           ref={ref}
-          className="flex gap-2 overflow-x-auto pb-1 scroll-smooth"
+          className="flex gap-2 overflow-x-auto pb-2 scroll-smooth scrollbar-thin scrollbar-thumb-pink-200 scrollbar-track-transparent"
         >
           {days.map((day) => {
             const disabled =
               isBefore(day, fromDate) || (maxDate && isAfter(day, maxDate));
             const isSelected = selected ? isSameDay(day, selected) : false;
+            const isToday = isSameDay(day, new Date());
 
             return (
               <li
                 key={day.toISOString()}
-                className="flex-shrink-0 px-2"
+                className="flex-shrink-0"
                 data-selected={isSelected || undefined}
               >
                 <button
                   onClick={() => handleSelect(day, disabled)}
                   disabled={disabled}
                   className={clsx(
-                    "flex flex-col items-center w-14 py-2 rounded-lg border transition",
+                    "relative flex flex-col items-center w-14 py-2.5 rounded-2xl border-2 transition-all duration-300 ease-out",
                     "focus-visible:outline focus-visible:outline-2 focus-visible:outline-pink-500",
                     isSelected
-                      ? "bg-pink-500 text-white border-pink-500"
-                      : "border-slate-200",
+                      ? "bg-gradient-to-b from-pink-500 to-pink-400 text-white border-pink-400 shadow-lg shadow-pink-200/50 scale-105"
+                      : isToday
+                        ? "border-pink-300 bg-pink-50 text-pink-600"
+                        : "border-gray-100 bg-white",
                     disabled
-                      ? "opacity-40 cursor-not-allowed"
-                      : "hover:bg-slate-100"
+                      ? "opacity-30 cursor-not-allowed"
+                      : !isSelected &&
+                          "hover:border-pink-200 hover:bg-pink-50/50 hover:-translate-y-0.5",
                   )}
                 >
-                  <span className="text-[0.65rem] font-medium leading-none uppercase select-none">
+                  <span className="text-[0.6rem] font-semibold leading-none uppercase select-none tracking-wider">
                     {format(day, "EEE")}
                   </span>
-                  <span className="text-sm font-semibold select-none">
+                  <span className="text-base font-bold select-none mt-0.5">
                     {format(day, "d")}
                   </span>
                 </button>
@@ -132,7 +141,7 @@ const HorizontalCalendar = forwardRef<HTMLUListElement, Props>(
         </ul>
       </div>
     );
-  }
+  },
 );
 
 export default HorizontalCalendar;

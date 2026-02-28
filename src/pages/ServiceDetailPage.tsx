@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { obtenerDetallesServicio } from "../Service/serviceDetailApi";
 import { Servicio } from "../types/Servicio";
-import { Header } from "../components/layout/Header";
 import { Loading } from "../components/layout/Loading";
 import { NotFoundMessage } from "../components/layout/NotFoundMessage";
 import { TranslatableText } from "../components/common/TranslatableText";
@@ -26,12 +25,12 @@ const ServiceDetailPage = () => {
         ]);
 
         const found = dataServicios.find(
-          (s) => s.idServicio.toString() === serviceId
+          (s) => s.idServicio.toString() === serviceId,
         );
         setServicio(found || null);
 
         const filteredSubServices = dataSubServicios.filter(
-          (sub) => sub.idServicio.toString() === serviceId
+          (sub) => sub.idServicio.toString() === serviceId,
         );
         setSubServicios(filteredSubServices);
 

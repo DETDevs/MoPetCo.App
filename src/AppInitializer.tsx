@@ -1,31 +1,12 @@
-import { useEffect, useState } from "react";
-import { useTranslationContext } from "./contexts/TranslationContext";
-import { initTranslations } from "./Service/initTranslations";
-import { Loading } from "./components/layout/Loading";
+import React from "react";
 
+/**
+ * AppInitializer — previously loaded translations from the Google Translate API.
+ * With the new static JSON-based i18n, translations are imported synchronously,
+ * so this component simply renders its children immediately.
+ *
+ * Kept as a wrapper to avoid changing the component tree in AppContent.tsx.
+ */
 export const AppInitializer = ({ children }: { children: React.ReactNode }) => {
-  const [isAppReady, setIsAppReady] = useState(false);
-  const { setTranslations, setIsLoaded } = useTranslationContext();
-
-  useEffect(() => {
-    const initializeApp = async () => {
-      try {
-        const initialTranslations = await initTranslations();
-        setTranslations(initialTranslations || {});
-      } catch (error) {
-        console.error("Error initializing app:", error);
-      } finally {
-        setIsLoaded(true);
-        setIsAppReady(true);
-      }
-    };
-
-    initializeApp();
-  }, [setTranslations, setIsLoaded]);
-
-  if (!isAppReady) {
-    return <Loading />;
-  }
-
   return <>{children}</>;
 };

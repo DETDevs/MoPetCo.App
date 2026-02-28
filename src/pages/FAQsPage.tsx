@@ -1,12 +1,11 @@
 import { useEffect } from "react";
-import { Header } from "../components/layout/Header";
 import AOS from "aos";
 import { TranslatableText } from "../components/common/TranslatableText";
 import { SectionTitle } from "../components/common/SectionTitle";
 
 const FAQsPage = () => {
   useEffect(() => {
-    AOS.init({ duration: 1000 }); 
+    AOS.init({ duration: 1000 });
   }, []);
 
   return (
@@ -48,7 +47,7 @@ const FAQsPage = () => {
             />
           </p>
 
-           <p className="text-content">
+          <p className="text-content">
             <TranslatableText
               text="With a clean, professional, and state-of-the-art grooming van, we
             guarantee a relaxing, high-quality, and stress-free grooming
@@ -56,7 +55,7 @@ const FAQsPage = () => {
             />
           </p>
 
-           <p className="text-content">
+          <p className="text-content">
             <strong>
               <TranslatableText
                 text="What can I expect when booking an appointment with Hair of the
@@ -65,7 +64,7 @@ const FAQsPage = () => {
             </strong>
           </p>
 
-           <p className="text-content">
+          <p className="text-content">
             <TranslatableText
               text="At MoPetCo, we provide a 5-star pet grooming experience with the
             highest standards of care for both pets and their owners. Our
@@ -76,7 +75,7 @@ const FAQsPage = () => {
             />
           </p>
 
-           <p className="text-content">
+          <p className="text-content">
             <TranslatableText
               text="During your first visit, we conduct a thorough nose-to-tail
             consultation to discuss your pet’s needs. Once you're satisfied, we
@@ -84,13 +83,13 @@ const FAQsPage = () => {
             />
           </p>
 
-           <p className="text-content">
+          <p className="text-content">
             <strong>
               <TranslatableText text="What areas does Hair of the Dog service?" />
             </strong>
           </p>
 
-           <p className="text-content">
+          <p className="text-content">
             <TranslatableText
               text="We currently serve Miami-Dade from Pinecrest through Broward County
             and extend into Palm Beach County up to Okeechobee Blvd. As our
@@ -101,24 +100,24 @@ const FAQsPage = () => {
             />
           </p>
 
-           <p className="text-content">
+          <p className="text-content">
             <strong>Do you use our electricity or water?</strong>
           </p>
 
-           <p className="text-content">
+          <p className="text-content">
             <TranslatableText
               text="We are completely self-sufficient and completely green too. All we
             leave behind is a clean, happy pet!"
             />
           </p>
 
-           <p className="text-content">
+          <p className="text-content">
             <strong>
               <TranslatableText text="Can we be inside the Van while the groomer is at work?" />
             </strong>
           </p>
 
-           <p className="text-content">
+          <p className="text-content">
             <TranslatableText
               text="You're welcome to take a look inside our mobile grooming van at any
             time; however, for safety and insurance reasons, only MoPetCo staff
@@ -126,7 +125,7 @@ const FAQsPage = () => {
             />
           </p>
 
-           <p className="text-content">
+          <p className="text-content">
             <TranslatableText
               text="Additionally, some pets may become anxious or restless when they see
             their owners during the grooming process, making it challenging to
@@ -136,13 +135,13 @@ const FAQsPage = () => {
             />
           </p>
 
-           <p className="text-content">
+          <p className="text-content">
             <strong>
               <TranslatableText text="How old does an animal have to be to have their first spa day?" />
             </strong>
           </p>
 
-           <p className="text-content">
+          <p className="text-content">
             <TranslatableText
               text="An early start on a grooming regimen helps the groomer and your
             fur-friend start off on the right paw. Grooming is something your
@@ -153,13 +152,13 @@ const FAQsPage = () => {
             />
           </p>
 
-           <p className="text-content">
+          <p className="text-content">
             <strong>
               <TranslatableText text="Can I supply my own shampoo?" />
             </strong>
           </p>
 
-           <p className="text-content">
+          <p className="text-content">
             <TranslatableText
               text="Absolutely! We understand that you want the very best for your furry
             friend, and we share the same goal. Rest assured, we’re happy to use
@@ -167,13 +166,13 @@ const FAQsPage = () => {
             />
           </p>
 
-           <p className="text-content">
+          <p className="text-content">
             <strong>
               <TranslatableText text="Do you express anal glands?" />
             </strong>
           </p>
 
-           <p className="text-content">
+          <p className="text-content">
             <TranslatableText
               text="We offer external anal gland expression during grooming; however,
             for the best care, veterinarians and vet technicians perform this
@@ -184,13 +183,13 @@ const FAQsPage = () => {
             />
           </p>
 
-           <p className="text-content">
+          <p className="text-content">
             <strong>
               <TranslatableText text="Do you take credit cards?" />
             </strong>
           </p>
 
-           <p className="text-content">
+          <p className="text-content">
             <TranslatableText
               text="We accept Cash, Zelle, Venmo, Debit, and Credit Cards. Please note
             that a merchant processing fee applies to all electronic
@@ -203,4 +202,4 @@ const FAQsPage = () => {
   );
 };
 
-export default FAQsPage
+export default FAQsPage;

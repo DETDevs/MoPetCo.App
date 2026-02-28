@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { Header } from "../components/layout/Header";
 import { TranslatableText } from "../components/common/TranslatableText";
 
 import AOS from "aos";
@@ -7,12 +6,11 @@ import { SectionTitle } from "../components/common/SectionTitle";
 
 const ReleasePage = () => {
   useEffect(() => {
-    AOS.init({ duration: 1000 }); 
+    AOS.init({ duration: 1000 });
   }, []);
 
   return (
     <>
-
       <main className="bg-white pt-24 pb-12 px-4">
         <div
           className="max-w-4xl mx-auto text-gray-800 space-y-6"

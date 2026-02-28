@@ -14,9 +14,9 @@ import { ContactoRequest } from "../types/contact";
 import { TranslatableText } from "../components/common/TranslatableText";
 import { SectionTitle } from "../components/common/SectionTitle";
 import { useLanguage } from "../contexts/LanguageContext";
-import { getTranslation } from "../utils/translationHelper";
+import { useTranslation } from "../i18n";
 
-const SITE_KEY = "6LfiwAkrAAAAAD5LPzXJsij7YcHZG7reqDDoiwRF";
+const SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -36,6 +36,7 @@ const ContactPage = () => {
 
   const captchaRef = useRef<ReCAPTCHA>(null);
   const { language } = useLanguage();
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation() as {
     state?: { emailVerified?: boolean; email?: string };
@@ -46,42 +47,18 @@ const ContactPage = () => {
     /^\d{10}$/.test(phone.replace(/\D/g, ""));
   const isValidEmail = (mail: string) => validator.isEmail(mail.trim());
 
-  const [placeholders, setPlaceholders] = useState({
-    nombre: "Your Name *",
-    direccion: "Your Address *",
-    ciudad: "Your City *",
-    codigoPostal: "Zip Code *",
-    numero: "Phone Number *",
-    correo: "Email Address *",
-    mensaje: "Your Question *",
-  });
+  const placeholders = {
+    nombre: t("contact.placeholder.name"),
+    direccion: t("contact.placeholder.address"),
+    ciudad: t("contact.placeholder.city"),
+    codigoPostal: t("contact.placeholder.zipCode"),
+    numero: t("contact.placeholder.phone"),
+    correo: t("contact.placeholder.email"),
+    mensaje: t("contact.placeholder.question"),
+  };
 
   const zipOk = isValidUSZip(formData.codigoPostal);
   const phoneOk = isValidUSPhone(formData.numero);
-
-  useEffect(() => {
-    const loadPlaceholders = async () => {
-      const translated = await Promise.all([
-        getTranslation("Your Name *", language),
-        getTranslation("Your Address *", language),
-        getTranslation("Your City *", language),
-        getTranslation("Zip Code *", language),
-        getTranslation("Phone Number *", language),
-        getTranslation("Email Address *", language),
-        getTranslation("Your Question *", language),
-      ]);
-      setPlaceholders({
-        nombre: translated[0],
-        direccion: translated[1],
-        ciudad: translated[2],
-        codigoPostal: translated[3],
-        numero: translated[4],
-        correo: translated[5],
-        mensaje: translated[6],
-      });
-    };
-    loadPlaceholders();
-  }, [language]);
 
   // lee borrador si existe
   useEffect(() => {
@@ -103,7 +80,7 @@ const ContactPage = () => {
   }, [location.state]);
 
   const handleChange = async (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -172,7 +149,7 @@ const ContactPage = () => {
         sessionStorage.removeItem("contactDraft");
       } else {
         toast.error(
-          "There was an error sending your message. Please try again later."
+          "There was an error sending your message. Please try again later.",
         );
       }
     } catch (error) {
